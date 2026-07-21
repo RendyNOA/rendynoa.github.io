@@ -156,7 +156,7 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 
 /* SKILLS PAGE */
 .skills-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px;}
-.skill-card{background:var(--panel); border:1px solid var(--grid-line); padding:26px 20px; text-align:center; transition:border-color .15s ease, transform .15s ease; box-shadow:0 6px 18px rgba(0,0,0,0.3);}
+.skill-card{background:var(--panel); border:1px solid var(--grid-line); padding:26px 20px; text-align:center; transition:border-color .15s ease, transform .15s ease; box-shadow:0 6px 18px rgba(0,0,0,0.3); cursor:pointer;}
 .skill-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
 .skill-icon{font-size:2rem; margin-bottom:14px;}
 .skill-name{font-weight:600; font-size:1.02rem; margin-bottom:8px;}
@@ -224,6 +224,41 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .carousel-dot{width:7px; height:7px; border-radius:50%; background:var(--grid-line); cursor:pointer; border:none; padding:0;}
 .carousel-dot.active{background:var(--cyan);}
 .carousel-caption{margin-top:12px; font-size:0.86rem; color:var(--muted); text-align:center; min-height:1.4em; font-family:'IBM Plex Mono', monospace;}
+
+/* SKILL MODAL POPUP */
+.skill-modal-overlay{
+  position:fixed; inset:0; z-index:90; background:rgba(10,7,4,0.65);
+  display:none; align-items:center; justify-content:center; padding:20px;
+}
+.skill-modal-overlay.open{display:flex;}
+.skill-modal{
+  background:var(--panel-raised); border:1px solid var(--grid-line);
+  max-width:420px; width:100%; padding:26px; position:relative;
+  box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+.skill-modal-close{
+  position:absolute; top:14px; right:14px; width:28px; height:28px;
+  border-radius:50%; border:1px solid var(--grid-line); background:transparent;
+  color:var(--muted); cursor:pointer; font-size:0.9rem; display:flex; align-items:center; justify-content:center;
+}
+.skill-modal-close:hover{color:var(--text); border-color:var(--cyan);}
+.skill-modal-title{font-weight:700; font-size:1.1rem; margin-bottom:6px;}
+.skill-modal-label{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.1em; color:var(--muted); text-transform:uppercase; margin:16px 0 8px;}
+.skill-modal-label:first-of-type{margin-top:0;}
+.skill-modal-story{font-size:0.86rem; color:var(--text); opacity:0.85; line-height:1.6; margin-bottom:4px;}
+.tool-level-row{display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--grid-line); font-size:0.85rem;}
+.tool-level-row:last-child{border-bottom:none;}
+.tool-level-row .t-name{color:var(--text);}
+.tool-level-row .t-level{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--cyan); border:1px solid rgba(201,168,118,0.3); padding:2px 9px;}
+.skill-modal-link{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:14px 16px; background:var(--panel); border:1px solid var(--grid-line);
+  text-decoration:none; color:var(--text); margin-bottom:10px; transition:border-color .15s ease;
+}
+.skill-modal-link:last-child{margin-bottom:0;}
+.skill-modal-link:hover{border-color:var(--cyan);}
+.skill-modal-link .l-title{font-size:0.9rem; font-weight:600;}
+.skill-modal-link .l-arrow{color:var(--cyan); font-family:'IBM Plex Mono', monospace;}
 
 /* CERTIFICATES PAGE */
 .cert-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:18px;}
@@ -338,35 +373,60 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
 <div class="page-header">
   <div class="section-eyebrow">KEMAMPUAN</div>
   <div class="section-title">Skills</div>
-  <p class="section-intro">Bidang teknis yang saya kuasai dari kuliah, riset, dan pengalaman kerja.</p>
+  <p class="section-intro">Bidang teknis yang saya kuasai dari kuliah, riset, dan pengalaman kerja. Klik salah satu untuk lihat penerapannya.</p>
 </div>
 
 <div class="section" style="border-top:none; padding-top:10px;">
   <div class="skills-grid">
-    <div class="skill-card">
+    <div class="skill-card" data-skill-name="Embedded Systems"
+      data-story="Berawal dari mata kuliah instrumentasi & sistem tertanam, lalu diperdalam lewat proyek skripsi AQMS dan magang di PT SAS Aerosishan."
+      data-tools='[{"name":"Arduino","level":"Mahir"},{"name":"Sensor Integration","level":"Mahir"},{"name":"Firmware","level":"Menengah"}]'
+      data-related='[{"title":"Wearable AQMS + HAR &amp; DPM","url":"project-aqms.html"},{"title":"Moving Armor Target System","url":"project-armor.html"}]'>
       <div class="skill-icon">🔧</div>
       <div class="skill-name">Embedded Systems</div>
       <div class="skill-desc">Pemrograman mikrokontroler &amp; integrasi sensor untuk sistem tertanam</div>
       <div class="tag-wrap"><span class="tag">Arduino</span><span class="tag">Sensor Integration</span><span class="tag">Firmware</span></div>
     </div>
-    <div class="skill-card">
+    <div class="skill-card" data-skill-name="IoT &amp; Wireless Sensing"
+      data-story="Mulai dikenal saat riset di PUI-PT Intelligent Sensing-IoT, mendalami cara sensor saling terhubung dalam sistem monitoring real-time."
+      data-tools='[{"name":"Wireless Sensor Network","level":"Menengah"},{"name":"MQTT","level":"Dasar"}]'
+      data-related='[{"title":"Wearable AQMS + HAR &amp; DPM","url":"project-aqms.html"},{"title":"TrapGradien Air Filtration Monitor","url":"project-trapgradien.html"}]'>
       <div class="skill-icon">📡</div>
       <div class="skill-name">IoT &amp; Wireless Sensing</div>
       <div class="skill-desc">Perangkat IoT dan jaringan sensor untuk sistem monitoring</div>
       <div class="tag-wrap"><span class="tag">Wireless Sensor Network</span><span class="tag">MQTT</span></div>
     </div>
-    <div class="skill-card">
+    <div class="skill-card" data-skill-name="Instrumentation"
+      data-story="Terasah selama menjadi Head of Assistant di Laboratorium MERSI, membimbing praktikum sistem pengukuran & instrumentasi untuk ratusan mahasiswa."
+      data-tools='[{"name":"DAQ","level":"Mahir"},{"name":"Signal Conditioning","level":"Menengah"},{"name":"Kalibrasi","level":"Mahir"}]'
+      data-related='[{"title":"TrapGradien Air Filtration Monitor","url":"project-trapgradien.html"},{"title":"Head of Assistant — MERSI","url":"work-mersi.html"}]'>
       <div class="skill-icon">📊</div>
       <div class="skill-name">Instrumentation</div>
       <div class="skill-desc">Signal conditioning, data acquisition, dan kalibrasi sistem pengukuran</div>
       <div class="tag-wrap"><span class="tag">DAQ</span><span class="tag">Signal Conditioning</span><span class="tag">Kalibrasi</span></div>
     </div>
-    <div class="skill-card">
+    <div class="skill-card" data-skill-name="Data &amp; Dokumentasi"
+      data-story="Terbentuk dari kebiasaan menyusun dokumentasi teknis di PT SAS Aerosishan dan validasi data riset selama masa kuliah."
+      data-tools='[{"name":"Data Analysis","level":"Mahir"},{"name":"System Validation","level":"Menengah"},{"name":"Tech Docs","level":"Mahir"}]'
+      data-related='[{"title":"Wearable AQMS + HAR &amp; DPM","url":"project-aqms.html"},{"title":"TrapGradien Air Filtration Monitor","url":"project-trapgradien.html"},{"title":"Moving Armor Target System","url":"project-armor.html"}]'>
       <div class="skill-icon">🧾</div>
       <div class="skill-name">Data &amp; Dokumentasi</div>
       <div class="skill-desc">Analisis data, validasi sistem, dan dokumentasi teknis</div>
       <div class="tag-wrap"><span class="tag">Data Analysis</span><span class="tag">System Validation</span><span class="tag">Tech Docs</span></div>
     </div>
+  </div>
+</div>
+
+<div class="skill-modal-overlay" id="skillModalOverlay">
+  <div class="skill-modal">
+    <button class="skill-modal-close" id="skillModalClose">✕</button>
+    <div class="skill-modal-title" id="skillModalTitle"></div>
+    <div class="skill-modal-label">CERITA SINGKAT</div>
+    <div class="skill-modal-story" id="skillModalStory"></div>
+    <div class="skill-modal-label">LEVEL PENGUASAAN</div>
+    <div id="skillModalTools"></div>
+    <div class="skill-modal-label">DITERAPKAN DI</div>
+    <div id="skillModalList"></div>
   </div>
 </div>
 
@@ -394,6 +454,46 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
     dots.forEach(function(d,i){ d.addEventListener('click', function(){ idx=i; update(); }); });
     update();
   });
+
+  document.querySelectorAll('.skill-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      var related = JSON.parse(card.dataset.related || '[]');
+      var tools = JSON.parse(card.dataset.tools || '[]');
+      var story = card.dataset.story || '';
+      var overlay = document.getElementById('skillModalOverlay');
+      if(!overlay) return;
+      document.getElementById('skillModalTitle').textContent = card.dataset.skillName || '';
+      document.getElementById('skillModalStory').textContent = story;
+
+      var toolList = document.getElementById('skillModalTools');
+      toolList.innerHTML = '';
+      tools.forEach(function(t){
+        var row = document.createElement('div');
+        row.className = 'tool-level-row';
+        row.innerHTML = '<span class="t-name">' + t.name + '</span><span class="t-level">' + t.level + '</span>';
+        toolList.appendChild(row);
+      });
+
+      var list = document.getElementById('skillModalList');
+      list.innerHTML = '';
+      related.forEach(function(item){
+        var a = document.createElement('a');
+        a.className = 'skill-modal-link';
+        a.href = item.url;
+        a.innerHTML = '<span class="l-title">' + item.title + '</span><span class="l-arrow">→</span>';
+        list.appendChild(a);
+      });
+      overlay.classList.add('open');
+    });
+  });
+  var overlayEl = document.getElementById('skillModalOverlay');
+  if(overlayEl){
+    overlayEl.addEventListener('click', function(e){
+      if(e.target === overlayEl) overlayEl.classList.remove('open');
+    });
+    var closeBtn = document.getElementById('skillModalClose');
+    if(closeBtn) closeBtn.addEventListener('click', function(){ overlayEl.classList.remove('open'); });
+  }
 </script>
 </body>
 </html>
