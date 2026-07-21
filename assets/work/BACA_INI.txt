@@ -1,0 +1,25 @@
+CARA MENAMBAHKAN FOTO KE CAROUSEL WORK HISTORY
+=================================================
+Tiap halaman detail Work History punya 3 slot foto. Taruh file di sini
+dengan nama PERSIS:
+
+Head of Assistant (MERSI):
+  mersi-1.jpg, mersi-2.jpg, mersi-3.jpg
+
+Research Intern (PUI-PT IoT):
+  puiptiot-1.jpg, puiptiot-2.jpg, puiptiot-3.jpg
+
+Intern PT SAS Aerosishan:
+  sasaero-1.jpg, sasaero-2.jpg, sasaero-3.jpg
+
+Head of Oversight Commission:
+  oversight-1.jpg, oversight-2.jpg, oversight-3.jpg
+
+CAPTION: teks di bawah tiap foto sudah ada di file HTML masing-masing
+(cari kata "captions" di work-mersi.html dll), tinggal edit teksnya
+sesuai foto yang Anda taruh.
+
+Setelah taruh file:
+  git add .
+  git commit -m "Tambah foto carousel work history"
+  git push

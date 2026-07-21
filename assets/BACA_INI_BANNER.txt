@@ -1,10 +1,2 @@
-CARA MENGGANTI FOTO COVER (BANNER)
-=====================================
-File banner.jpg di folder ini sudah ilustrasi sirkuit yang dibuatkan Claude.
-Kalau mau ganti dengan foto lain, tinggal timpa file banner.jpg ini
-dengan foto baru (nama file harus tetap persis: banner.jpg)
-
-Setelah ganti:
-  git add .
-  git commit -m "Ganti foto cover"
-  git push
+File banner.jpg ini ilustrasi sirkuit yang dibuatkan Claude.
+Mau ganti? Timpa file ini dengan nama tetap: banner.jpg

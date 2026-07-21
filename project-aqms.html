@@ -141,8 +141,11 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .cta-btn.ghost:hover{border-color:var(--muted); background:transparent; color:var(--text);}
 
 /* WORK HISTORY PAGE */
-.exp-item{display:grid; grid-template-columns:150px 1fr; gap:22px; padding:24px 0; border-bottom:1px solid var(--grid-line);}
+.exp-item{display:grid; grid-template-columns:150px 1fr; gap:22px; padding:24px 0; border-bottom:1px solid var(--grid-line); text-decoration:none; color:inherit; transition:opacity .15s ease;}
 .exp-item:last-child{border-bottom:none;}
+.exp-item:hover{opacity:0.75;}
+.exp-item:hover .exp-more{color:var(--cyan);}
+.exp-more{font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:var(--muted); margin-top:10px; display:inline-block;}
 .exp-date{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--cyan);}
 .exp-role{font-weight:600; font-size:1.05rem; margin-bottom:3px;}
 .exp-org{color:var(--muted); font-size:0.88rem; margin-bottom:10px;}
@@ -200,6 +203,27 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .photo-placeholder .ph-icon{font-size:1.6rem; opacity:0.6;}
 .photo-placeholder .ph-text{font-size:0.72rem; line-height:1.5;}
 .photo-placeholder .ph-path{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--cyan); word-break:break-all;}
+
+/* PHOTO CAROUSEL (work detail pages) */
+.photo-carousel{margin:24px 0 30px;}
+.carousel-viewport{position:relative; overflow:hidden; border:1px solid var(--grid-line); background:var(--panel); aspect-ratio:16/9;}
+.carousel-track{display:flex; height:100%; transition:transform .35s ease;}
+.carousel-slide{flex:0 0 100%; height:100%; position:relative;}
+.carousel-slide img{width:100%; height:100%; object-fit:cover; display:block;}
+.carousel-btn{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:36px; height:36px; border-radius:50%;
+  background:rgba(20,15,10,0.5); border:1px solid var(--grid-line); color:var(--text);
+  display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.1rem;
+  z-index:3; transition:background .15s ease; line-height:1;
+}
+.carousel-btn:hover{background:rgba(20,15,10,0.75);}
+.carousel-btn.prev{left:10px;}
+.carousel-btn.next{right:10px;}
+.carousel-dots{display:flex; gap:8px; justify-content:center; margin-top:14px;}
+.carousel-dot{width:7px; height:7px; border-radius:50%; background:var(--grid-line); cursor:pointer; border:none; padding:0;}
+.carousel-dot.active{background:var(--cyan);}
+.carousel-caption{margin-top:12px; font-size:0.86rem; color:var(--muted); text-align:center; min-height:1.4em; font-family:'IBM Plex Mono', monospace;}
 
 /* CERTIFICATES PAGE */
 .cert-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:18px;}
@@ -366,5 +390,27 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
 </main>
 <footer>© 2026 RENDY RYAN RENALDI — DIBANGUN DENGAN GITHUB PAGES</footer>
 
+
+<script>
+  document.querySelectorAll('.photo-carousel').forEach(function(car){
+    var track = car.querySelector('.carousel-track');
+    var slides = car.querySelectorAll('.carousel-slide');
+    var dots = car.querySelectorAll('.carousel-dot');
+    var caption = car.querySelector('.carousel-caption');
+    var captions = JSON.parse(car.dataset.captions || '[]');
+    var idx = 0;
+    function update(){
+      track.style.transform = 'translateX(-' + (idx*100) + '%)';
+      dots.forEach(function(d,i){ d.classList.toggle('active', i===idx); });
+      caption.textContent = captions[idx] || '';
+    }
+    var prevBtn = car.querySelector('.carousel-btn.prev');
+    var nextBtn = car.querySelector('.carousel-btn.next');
+    if(prevBtn) prevBtn.addEventListener('click', function(){ idx = (idx-1+slides.length)%slides.length; update(); });
+    if(nextBtn) nextBtn.addEventListener('click', function(){ idx = (idx+1)%slides.length; update(); });
+    dots.forEach(function(d,i){ d.addEventListener('click', function(){ idx=i; update(); }); });
+    update();
+  });
+</script>
 </body>
 </html>
