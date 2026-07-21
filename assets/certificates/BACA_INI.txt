@@ -1,10 +1,8 @@
 SUDAH TERISI:
-- bahasa-1a.jpg, bahasa-1b.jpg (EPrT + tabel skor CEFR)
-- wirausaha-1a.jpg, wirausaha-1b.jpg (Sertifikat UMKM + foto produk)
-- pelatihan-1.jpg (Digital Learning)
-- pelatihan-2.jpg (Internship SAS Aero Sishan)
-- pelatihan-3.jpg (MBKM PUI-PT IS-IoT)
+- org-1a/b.jpg, org-2a/b.jpg (2 sertifikat HMTF + foto)
+- bahasa-1a/b.jpg (EPrT + tabel skor CEFR)
+- wirausaha-1a/b.jpg (Sertifikat UMKM + foto produk)
+- pelatihan-1/2/3.jpg (Digital Learning, Internship SAS Aero, MBKM PUI-PT)
 
 MASIH PLACEHOLDER:
-- org-1.jpg (Organisasi)
 - teach-1.jpg (Mengajar & Laboratorium)
