@@ -1,5 +1,10 @@
-bahasa-1.jpg sudah terisi (sertifikat EPrT asli Anda).
-Sisanya masih placeholder:
-org-1.jpg (Organisasi)
-teach-1.jpg (Mengajar & Laboratorium)
-wirausaha-1.jpg (Kewirausahaan)
+SUDAH TERISI:
+- bahasa-1a.jpg, bahasa-1b.jpg (EPrT + tabel skor CEFR)
+- wirausaha-1a.jpg, wirausaha-1b.jpg (Sertifikat UMKM + foto produk)
+- pelatihan-1.jpg (Digital Learning)
+- pelatihan-2.jpg (Internship SAS Aero Sishan)
+- pelatihan-3.jpg (MBKM PUI-PT IS-IoT)
+
+MASIH PLACEHOLDER:
+- org-1.jpg (Organisasi)
+- teach-1.jpg (Mengajar & Laboratorium)
