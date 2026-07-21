@@ -1,17 +1,10 @@
-CARA MENAMBAHKAN FOTO COVER (BANNER)
+CARA MENGGANTI FOTO COVER (BANNER)
 =====================================
-Taruh 1 file foto lebar (landscape, minimal 1200x400px) di folder assets/
-dengan nama PERSIS: banner.jpg
+File banner.jpg di folder ini sudah ilustrasi sirkuit yang dibuatkan Claude.
+Kalau mau ganti dengan foto lain, tinggal timpa file banner.jpg ini
+dengan foto baru (nama file harus tetap persis: banner.jpg)
 
-Rekomendasi tema foto (biar nyambung sama warna situs yang coklat hangat):
-- Macro/close-up circuit board (PCB) - warna keemasan/tembaga
-- Foto laboratorium/instrumentasi kerja Anda
-- Tekstur teknis lain yang gelap/warm-toned
-
-Kalau foto terlalu terang, di-edit dulu (turunkan brightness/kontras)
-biar teks di atasnya tetap gampang dibaca.
-
-Setelah taruh file:
+Setelah ganti:
   git add .
-  git commit -m "Tambah foto cover"
+  git commit -m "Ganti foto cover"
   git push
