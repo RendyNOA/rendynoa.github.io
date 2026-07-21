@@ -159,6 +159,7 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .skill-card{background:var(--panel); border:1px solid var(--grid-line); padding:26px 20px; text-align:center; transition:border-color .15s ease, transform .15s ease; box-shadow:0 6px 18px rgba(0,0,0,0.3); cursor:pointer;}
 .skill-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
 .skill-icon{font-size:2rem; margin-bottom:14px;}
+.skill-icon-img{width:44px; height:44px; margin:0 auto 14px; display:block;}
 .skill-name{font-weight:600; font-size:1.02rem; margin-bottom:8px;}
 .skill-desc{color:var(--muted); font-size:0.82rem; line-height:1.5; margin-bottom:14px;}
 .tag-wrap{display:flex; flex-wrap:wrap; gap:6px; justify-content:center;}
@@ -273,6 +274,7 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
   background:var(--cyan); opacity:0.55; border-radius:0 0 4px 4px;
 }
 .cert-folder-icon{font-size:2.6rem; margin-bottom:16px; opacity:0.9;}
+.cert-folder-icon-img{width:48px; height:48px; margin:0 auto 16px; display:block;}
 .cert-folder-name{font-weight:700; font-size:1.05rem; margin-bottom:6px;}
 .cert-folder-count{
   font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--muted);
@@ -449,7 +451,7 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
       data-story="Berawal dari mata kuliah instrumentasi & sistem tertanam, lalu diperdalam lewat proyek skripsi AQMS dan magang di PT SAS Aerosishan."
       data-tools='[{"name":"Arduino","level":"Mahir"},{"name":"Sensor Integration","level":"Mahir"},{"name":"Firmware","level":"Menengah"}]'
       data-related='[{"title":"Wearable AQMS + HAR &amp; DPM","url":"project-aqms.html"},{"title":"Moving Armor Target System","url":"project-armor.html"}]'>
-      <div class="skill-icon">🔧</div>
+      <img class="skill-icon-img" src="assets/icons/embedded.svg" alt="">
       <div class="skill-name">Embedded Systems</div>
       <div class="skill-desc">Pemrograman mikrokontroler &amp; integrasi sensor untuk sistem tertanam</div>
       <div class="tag-wrap"><span class="tag">Arduino</span><span class="tag">Sensor Integration</span><span class="tag">Firmware</span></div>
@@ -458,7 +460,7 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
       data-story="Mulai dikenal saat riset di PUI-PT Intelligent Sensing-IoT, mendalami cara sensor saling terhubung dalam sistem monitoring real-time."
       data-tools='[{"name":"Wireless Sensor Network","level":"Menengah"},{"name":"MQTT","level":"Dasar"}]'
       data-related='[{"title":"Wearable AQMS + HAR &amp; DPM","url":"project-aqms.html"},{"title":"TrapGradien Air Filtration Monitor","url":"project-trapgradien.html"}]'>
-      <div class="skill-icon">📡</div>
+      <img class="skill-icon-img" src="assets/icons/iot.svg" alt="">
       <div class="skill-name">IoT &amp; Wireless Sensing</div>
       <div class="skill-desc">Perangkat IoT dan jaringan sensor untuk sistem monitoring</div>
       <div class="tag-wrap"><span class="tag">Wireless Sensor Network</span><span class="tag">MQTT</span></div>
@@ -467,7 +469,7 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
       data-story="Terasah selama menjadi Head of Assistant di Laboratorium MERSI, membimbing praktikum sistem pengukuran & instrumentasi untuk ratusan mahasiswa."
       data-tools='[{"name":"DAQ","level":"Mahir"},{"name":"Signal Conditioning","level":"Menengah"},{"name":"Kalibrasi","level":"Mahir"}]'
       data-related='[{"title":"TrapGradien Air Filtration Monitor","url":"project-trapgradien.html"},{"title":"Head of Assistant — MERSI","url":"work-mersi.html"}]'>
-      <div class="skill-icon">📊</div>
+      <img class="skill-icon-img" src="assets/icons/instrumentation.svg" alt="">
       <div class="skill-name">Instrumentation</div>
       <div class="skill-desc">Signal conditioning, data acquisition, dan kalibrasi sistem pengukuran</div>
       <div class="tag-wrap"><span class="tag">DAQ</span><span class="tag">Signal Conditioning</span><span class="tag">Kalibrasi</span></div>
@@ -476,7 +478,7 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
       data-story="Terbentuk dari kebiasaan menyusun dokumentasi teknis di PT SAS Aerosishan dan validasi data riset selama masa kuliah."
       data-tools='[{"name":"Data Analysis","level":"Mahir"},{"name":"System Validation","level":"Menengah"},{"name":"Tech Docs","level":"Mahir"}]'
       data-related='[{"title":"Wearable AQMS + HAR &amp; DPM","url":"project-aqms.html"},{"title":"TrapGradien Air Filtration Monitor","url":"project-trapgradien.html"},{"title":"Moving Armor Target System","url":"project-armor.html"}]'>
-      <div class="skill-icon">🧾</div>
+      <img class="skill-icon-img" src="assets/icons/data.svg" alt="">
       <div class="skill-name">Data &amp; Dokumentasi</div>
       <div class="skill-desc">Analisis data, validasi sistem, dan dokumentasi teknis</div>
       <div class="tag-wrap"><span class="tag">Data Analysis</span><span class="tag">System Validation</span><span class="tag">Tech Docs</span></div>

@@ -159,6 +159,7 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .skill-card{background:var(--panel); border:1px solid var(--grid-line); padding:26px 20px; text-align:center; transition:border-color .15s ease, transform .15s ease; box-shadow:0 6px 18px rgba(0,0,0,0.3); cursor:pointer;}
 .skill-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
 .skill-icon{font-size:2rem; margin-bottom:14px;}
+.skill-icon-img{width:44px; height:44px; margin:0 auto 14px; display:block;}
 .skill-name{font-weight:600; font-size:1.02rem; margin-bottom:8px;}
 .skill-desc{color:var(--muted); font-size:0.82rem; line-height:1.5; margin-bottom:14px;}
 .tag-wrap{display:flex; flex-wrap:wrap; gap:6px; justify-content:center;}
@@ -273,6 +274,7 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
   background:var(--cyan); opacity:0.55; border-radius:0 0 4px 4px;
 }
 .cert-folder-icon{font-size:2.6rem; margin-bottom:16px; opacity:0.9;}
+.cert-folder-icon-img{width:48px; height:48px; margin:0 auto 16px; display:block;}
 .cert-folder-name{font-weight:700; font-size:1.05rem; margin-bottom:6px;}
 .cert-folder-count{
   font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--muted);
@@ -451,19 +453,19 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
   </div>
   <div class="folder-grid">
     <div class="cert-folder" data-folder-name="Organisasi" data-items='[{&quot;slug&quot;: &quot;org-1&quot;, &quot;title&quot;: &quot;Nama Sertifikat Organisasi&quot;, &quot;issuer&quot;: &quot;Nama Penerbit / Lembaga&quot;, &quot;date&quot;: &quot;2025&quot;}]'>
-  <div class="cert-folder-icon">🏛️</div>
+  <img class="cert-folder-icon-img" src="assets/icons/organisasi.svg" alt="">
   <div class="cert-folder-name">Organisasi</div>
   <div class="cert-folder-count">1 SERTIFIKAT</div>
 </div><div class="cert-folder" data-folder-name="Mengajar & Laboratorium" data-items='[{&quot;slug&quot;: &quot;teach-1&quot;, &quot;title&quot;: &quot;Nama Sertifikat Mengajar/Asisten Lab&quot;, &quot;issuer&quot;: &quot;Nama Penerbit / Lembaga&quot;, &quot;date&quot;: &quot;2025&quot;}]'>
-  <div class="cert-folder-icon">🔬</div>
+  <img class="cert-folder-icon-img" src="assets/icons/lab.svg" alt="">
   <div class="cert-folder-name">Mengajar & Laboratorium</div>
   <div class="cert-folder-count">1 SERTIFIKAT</div>
 </div><div class="cert-folder" data-folder-name="Kewirausahaan" data-items='[{&quot;slug&quot;: &quot;wirausaha-1&quot;, &quot;title&quot;: &quot;Nama Sertifikat Kewirausahaan&quot;, &quot;issuer&quot;: &quot;Nama Penerbit / Lembaga&quot;, &quot;date&quot;: &quot;2025&quot;}]'>
-  <div class="cert-folder-icon">💼</div>
+  <img class="cert-folder-icon-img" src="assets/icons/wirausaha.svg" alt="">
   <div class="cert-folder-name">Kewirausahaan</div>
   <div class="cert-folder-count">1 SERTIFIKAT</div>
 </div><div class="cert-folder" data-folder-name="Bahasa" data-items='[{&quot;slug&quot;: &quot;bahasa-1&quot;, &quot;title&quot;: &quot;EPrT (English Proficiency Test) \u2014 Skor 570&quot;, &quot;issuer&quot;: &quot;Telkom University Language Center&quot;, &quot;date&quot;: &quot;Jun 2026&quot;}]'>
-  <div class="cert-folder-icon">🗣️</div>
+  <img class="cert-folder-icon-img" src="assets/icons/bahasa.svg" alt="">
   <div class="cert-folder-name">Bahasa</div>
   <div class="cert-folder-count">1 SERTIFIKAT</div>
 </div>
