@@ -1,0 +1,17 @@
+CARA MENAMBAHKAN FOTO COVER (BANNER)
+=====================================
+Taruh 1 file foto lebar (landscape, minimal 1200x400px) di folder assets/
+dengan nama PERSIS: banner.jpg
+
+Rekomendasi tema foto (biar nyambung sama warna situs yang coklat hangat):
+- Macro/close-up circuit board (PCB) - warna keemasan/tembaga
+- Foto laboratorium/instrumentasi kerja Anda
+- Tekstur teknis lain yang gelap/warm-toned
+
+Kalau foto terlalu terang, di-edit dulu (turunkan brightness/kontras)
+biar teks di atasnya tetap gampang dibaca.
+
+Setelah taruh file:
+  git add .
+  git commit -m "Tambah foto cover"
+  git push
