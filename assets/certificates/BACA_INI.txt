@@ -1,2 +1,8 @@
-Taruh foto sertifikat di sini dengan nama:
-cert-1.jpg, cert-2.jpg, cert-3.jpg
+bahasa-1.jpg sudah terisi (sertifikat EPrT asli Anda).
+Sisanya masih placeholder:
+org-1.jpg (Organisasi)
+teach-1.jpg (Mengajar & Laboratorium)
+wirausaha-1.jpg (Kewirausahaan)
+
+Mau nambah sertifikat lain? Kirim PDF/foto-nya ke Claude,
+nanti otomatis dipasangkan.

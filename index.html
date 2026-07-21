@@ -260,7 +260,60 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .skill-modal-link .l-title{font-size:0.9rem; font-weight:600;}
 .skill-modal-link .l-arrow{color:var(--cyan); font-family:'IBM Plex Mono', monospace;}
 
-/* CERTIFICATES PAGE */
+/* CERTIFICATES PAGE - folder style */
+.folder-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:20px;}
+.cert-folder{
+  position:relative; background:var(--panel); border:1px solid var(--grid-line);
+  padding:32px 20px 24px; text-align:center; cursor:pointer; overflow:hidden;
+  transition:border-color .15s ease, transform .15s ease;
+}
+.cert-folder:hover{border-color:var(--cyan); transform:translateY(-4px);}
+.cert-folder::before{
+  content:""; position:absolute; top:0; left:20px; width:56px; height:6px;
+  background:var(--cyan); opacity:0.55; border-radius:0 0 4px 4px;
+}
+.cert-folder-icon{font-size:2.6rem; margin-bottom:16px; opacity:0.9;}
+.cert-folder-name{font-weight:700; font-size:1.05rem; margin-bottom:6px;}
+.cert-folder-count{
+  font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--muted);
+  letter-spacing:0.08em; text-transform:uppercase;
+}
+
+.cert-modal-overlay{
+  position:fixed; inset:0; z-index:90; background:rgba(10,7,4,0.65);
+  display:none; align-items:center; justify-content:center; padding:20px;
+}
+.cert-modal-overlay.open{display:flex;}
+.cert-modal{
+  background:var(--panel-raised); border:1px solid var(--grid-line);
+  max-width:520px; width:100%; max-height:80vh; padding:26px; position:relative;
+  box-shadow:0 20px 50px rgba(0,0,0,0.5); display:flex; flex-direction:column;
+}
+.cert-modal-close{
+  position:absolute; top:14px; right:14px; width:28px; height:28px;
+  border-radius:50%; border:1px solid var(--grid-line); background:transparent;
+  color:var(--muted); cursor:pointer; font-size:0.9rem; display:flex; align-items:center; justify-content:center;
+}
+.cert-modal-close:hover{color:var(--text); border-color:var(--cyan);}
+.cert-modal-title{font-weight:700; font-size:1.1rem; margin-bottom:16px; flex:0 0 auto;}
+.cert-modal-scroll{overflow-y:auto; flex:1 1 auto; margin:0 -6px; padding:0 6px;}
+.cert-modal-item{display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--grid-line);}
+.cert-modal-item:last-child{border-bottom:none;}
+.cert-modal-thumb{width:64px; height:64px; flex:0 0 auto; background:var(--panel); border:1px solid var(--grid-line); position:relative; overflow:hidden;}
+.cert-modal-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+.cert-modal-thumb .photo-placeholder{gap:2px;}
+.cert-modal-thumb .ph-icon{font-size:1.1rem;}
+.cert-modal-thumb .ph-text, .cert-modal-thumb .ph-path{display:none;}
+.cert-modal-info .m-title{font-weight:600; font-size:0.9rem; margin-bottom:3px;}
+.cert-modal-info .m-issuer{color:var(--muted); font-size:0.78rem; margin-bottom:4px;}
+.cert-modal-info .m-date{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--cyan);}
+
+.cert-category{margin-bottom:36px;}
+.cert-category:last-child{margin-bottom:0;}
+.cert-category-label{
+  font-size:0.74rem; letter-spacing:0.14em; color:var(--cyan); text-transform:uppercase;
+  margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--grid-line);
+}
 .cert-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:18px;}
 .cert-card{background:var(--panel); border:1px solid var(--grid-line); overflow:hidden; transition:border-color .15s ease, transform .15s ease; box-shadow:0 6px 18px rgba(0,0,0,0.3);}
 .cert-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
@@ -614,6 +667,41 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
     });
     var closeBtn = document.getElementById('skillModalClose');
     if(closeBtn) closeBtn.addEventListener('click', function(){ overlayEl.classList.remove('open'); });
+  }
+
+  document.querySelectorAll('.cert-folder').forEach(function(folder){
+    folder.addEventListener('click', function(){
+      var items = JSON.parse(folder.dataset.items || '[]');
+      var overlay = document.getElementById('certModalOverlay');
+      if(!overlay) return;
+      document.getElementById('certModalTitle').textContent = folder.dataset.folderName || '';
+      var list = document.getElementById('certModalScroll');
+      list.innerHTML = '';
+      items.forEach(function(item){
+        var row = document.createElement('div');
+        row.className = 'cert-modal-item';
+        row.innerHTML =
+          '<div class="cert-modal-thumb">' +
+            '<img src="assets/certificates/' + item.slug + '.jpg" alt="" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' +
+            '<div class="photo-placeholder"><div class="ph-icon">📄</div></div>' +
+          '</div>' +
+          '<div class="cert-modal-info">' +
+            '<div class="m-title">' + item.title + '</div>' +
+            '<div class="m-issuer">' + item.issuer + '</div>' +
+            '<div class="m-date">' + item.date + '</div>' +
+          '</div>';
+        list.appendChild(row);
+      });
+      overlay.classList.add('open');
+    });
+  });
+  var certOverlay = document.getElementById('certModalOverlay');
+  if(certOverlay){
+    certOverlay.addEventListener('click', function(e){
+      if(e.target === certOverlay) certOverlay.classList.remove('open');
+    });
+    var certClose = document.getElementById('certModalClose');
+    if(certClose) certClose.addEventListener('click', function(){ certOverlay.classList.remove('open'); });
   }
 </script>
 </body>
