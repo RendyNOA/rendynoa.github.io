@@ -211,6 +211,14 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .stat-mini{font-family:'IBM Plex Mono', monospace;}
 .stat-mini .sm-num{font-size:1.3rem; color:var(--cyan); font-weight:700;}
 .stat-mini .sm-label{font-size:0.68rem; color:var(--muted); letter-spacing:0.05em;}
+.chart-gallery{margin:28px 0;}
+.chart-figure{margin-bottom:24px;}
+.chart-figure:last-child{margin-bottom:0;}
+.chart-figure img{width:100%; height:auto; display:block; border:1px solid var(--grid-line); background:#fff;}
+.chart-figure figcaption{
+  font-family:'IBM Mono', monospace; font-size:0.78rem; color:var(--muted);
+  margin-top:8px; text-align:center; line-height:1.5;
+}
 .analysis-block{
   margin-top:36px; padding:26px; background:var(--panel);
   border:1px solid rgba(201,168,118,0.35); border-left:3px solid var(--cyan);
@@ -543,7 +551,47 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
   <div class="stat-mini"><div class="sm-num">0.9797</div><div class="sm-label">R² PM10 (KUADRATIK)</div></div>
   <div class="stat-mini"><div class="sm-num">&lt;0.7%</div><div class="sm-label">MAPE SUHU & KELEMBAPAN</div></div>
   <div class="stat-mini"><div class="sm-num">6</div><div class="sm-label">PARAMETER DIKALIBRASI</div></div>
-</div>
+</div><div class="chart-gallery"><figure class="chart-figure">
+    <img src="assets/projects/kalibrasi-diagram-sistem.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+      <div class="ph-icon">📊</div>
+      <div class="ph-text">Grafik belum ditambahkan.<br>Taruh file gambar di:</div>
+      <div class="ph-path">assets/projects/kalibrasi-diagram-sistem.jpg</div>
+    </div>
+    <figcaption>Diagram sistem kalibrasi: aliran udara bersih dan sumber polutan (partikulat/TVOC/CO2) menuju calibration chamber</figcaption>
+  </figure><figure class="chart-figure">
+    <img src="assets/projects/kalibrasi-ts-pm25.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+      <div class="ph-icon">📊</div>
+      <div class="ph-text">Grafik belum ditambahkan.<br>Taruh file gambar di:</div>
+      <div class="ph-path">assets/projects/kalibrasi-ts-pm25.jpg</div>
+    </div>
+    <figcaption>Time series pembacaan PM2.5 SEBELUM koreksi — 7 unit wearable (RAW) dibanding referensi OPC-N3</figcaption>
+  </figure><figure class="chart-figure">
+    <img src="assets/projects/kalibrasi-chart-3.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+      <div class="ph-icon">📊</div>
+      <div class="ph-text">Grafik belum ditambahkan.<br>Taruh file gambar di:</div>
+      <div class="ph-path">assets/projects/kalibrasi-chart-3.jpg</div>
+    </div>
+    <figcaption>Pembacaan PM2.5 SETELAH koreksi kalibrasi — ketujuh unit kini mengikuti pola referensi dengan jauh lebih konsisten</figcaption>
+  </figure><figure class="chart-figure">
+    <img src="assets/projects/kalibrasi-scatter.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+      <div class="ph-icon">📊</div>
+      <div class="ph-text">Grafik belum ditambahkan.<br>Taruh file gambar di:</div>
+      <div class="ph-path">assets/projects/kalibrasi-scatter.jpg</div>
+    </div>
+    <figcaption>Scatter plot PM2.5 terkoreksi vs referensi OPC-N3 — R²=0.9986, MAPE=7.23%, menunjukkan hubungan linear yang sangat kuat</figcaption>
+  </figure><figure class="chart-figure">
+    <img src="assets/projects/kalibrasi-rekap-slide.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+      <div class="ph-icon">📊</div>
+      <div class="ph-text">Grafik belum ditambahkan.<br>Taruh file gambar di:</div>
+      <div class="ph-path">assets/projects/kalibrasi-rekap-slide.jpg</div>
+    </div>
+    <figcaption>Rekapan hasil kalibrasi: heatmap MAPE seluruh unit & parameter, beserta model koreksi final yang dipilih untuk tiap parameter</figcaption>
+  </figure></div>
 
 <div class="other-projects">
   <div class="label">PROYEK LAINNYA</div>

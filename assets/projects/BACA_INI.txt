@@ -1,7 +1,1 @@
-Taruh foto proyek di sini dengan nama:
-aqms-1/2/3.jpg (perangkat wearable)
-kalibrasi-1/2/3.jpg (proses kalibrasi/chamber)
-har-1/2/3.jpg (pengujian HAR/aktivitas)
-motion-1/2/3.jpg (uji lapangan/statis-dinamis)
-trapgradien-1/2/3.jpg
-armor-1/2/3.jpg
+SUDAH TERISI (kalibrasi): kalibrasi-1.jpg (foto lab) + 5 chart hasil.
