@@ -1,8 +1,8 @@
-SUDAH TERISI:
-- org-1a/b.jpg, org-2a/b.jpg (2 sertifikat HMTF + foto)
-- bahasa-1a/b.jpg (EPrT + tabel skor CEFR)
-- wirausaha-1a/b.jpg (Sertifikat UMKM + foto produk)
-- pelatihan-1/2/3.jpg (Digital Learning, Internship SAS Aero, MBKM PUI-PT)
+SEMUA KATEGORI SUDAH TERISI SERTIFIKAT ASLI:
+- Organisasi: 2 sertifikat (HMTF)
+- Mengajar & Laboratorium: 4 sertifikat (asisten praktikum)
+- Kewirausahaan: 1 sertifikat (UMKM Semut Corner)
+- Bahasa: 1 sertifikat (EPrT)
+- Pelatihan & Magang: 3 sertifikat (Digital Learning, SAS Aero, PUI-PT IS-IoT)
 
-MASIH PLACEHOLDER:
-- teach-1.jpg (Mengajar & Laboratorium)
+Mau nambah lagi? Kirim ke Claude kapan saja.
