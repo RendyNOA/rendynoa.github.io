@@ -173,6 +173,9 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .project-card:nth-child(1) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(201,168,118,0.14));}
 .project-card:nth-child(2) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(185,142,92,0.14));}
 .project-card:nth-child(3) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(176,100,74,0.14));}
+.project-card:nth-child(4) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(150,160,120,0.14));}
+.project-card:nth-child(5) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(120,130,160,0.14));}
+.project-card:nth-child(6) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(160,120,150,0.14));}
 .project-body{padding:20px;}
 .project-title{font-weight:600; font-size:1rem; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;}
 .project-chevron{color:var(--cyan); font-family:'IBM Plex Mono', monospace; font-size:0.9rem;}
@@ -191,6 +194,32 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .detail-body p{color:var(--text); opacity:0.85; line-height:1.85; margin-bottom:16px; max-width:760px;}
 .other-projects{margin-top:50px; padding-top:30px; border-top:1px solid var(--grid-line);}
 .other-projects .label{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--muted); letter-spacing:0.1em; margin-bottom:14px;}
+
+.thesis-note{
+  margin:24px 0; padding:16px 18px; background:rgba(201,168,118,0.06);
+  border:1px solid rgba(201,168,118,0.25); font-size:0.85rem; color:var(--text); line-height:1.7;
+}
+.thesis-note b{color:var(--cyan);}
+.thesis-note .tn-links{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
+.thesis-note .tn-links a{
+  font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:var(--cyan);
+  text-decoration:none; border:1px solid rgba(201,168,118,0.35); padding:5px 12px;
+}
+.thesis-note .tn-links a:hover{background:rgba(201,168,118,0.1);}
+
+.stat-mini-row{display:flex; gap:28px; flex-wrap:wrap; margin:20px 0;}
+.stat-mini{font-family:'IBM Plex Mono', monospace;}
+.stat-mini .sm-num{font-size:1.3rem; color:var(--cyan); font-weight:700;}
+.stat-mini .sm-label{font-size:0.68rem; color:var(--muted); letter-spacing:0.05em;}
+.analysis-block{
+  margin-top:36px; padding:26px; background:var(--panel);
+  border:1px solid rgba(201,168,118,0.35); border-left:3px solid var(--cyan);
+}
+.analysis-item{margin-bottom:22px;}
+.analysis-item:last-child{margin-bottom:0;}
+.analysis-title{font-weight:700; font-size:0.98rem; margin-bottom:10px; color:var(--text);}
+.analysis-item p{color:var(--text); opacity:0.85; line-height:1.8; font-size:0.9rem; margin:0;}
+.analysis-item b{color:var(--cyan); font-weight:600;}
 
 /* PROJECT PHOTO GALLERY */
 .photo-gallery{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:14px; margin:24px 0 30px;}
@@ -459,7 +488,7 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
 <div class="page-header">
   <div class="section-eyebrow">KARYA</div>
   <div class="section-title">Featured Projects</div>
-  <p class="section-intro">Klik salah satu proyek untuk melihat halaman detailnya.</p>
+  <p class="section-intro">Klik salah satu proyek untuk melihat halaman detailnya. 3 proyek pertama berasal dari Tugas Akhir yang sama, dipecah untuk menonjolkan skill yang berbeda-beda.</p>
 </div>
 
 <div class="section" style="border-top:none; padding-top:10px;">
@@ -467,14 +496,41 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
     <a class="project-card" href="project-aqms.html">
       <div class="project-banner">🌫️</div>
       <div class="project-body">
-        <div class="project-title">Wearable AQMS + HAR &amp; DPM <span class="project-chevron">→</span></div>
-        <div class="project-summary">Skripsi: sistem wearable pemantau kualitas udara berbasis IoT.</div>
-        <div class="tag-row"><span class="tag-amber">IoT</span><span class="tag-amber">Wearable</span><span class="tag-amber">HAR</span></div>
+        <div class="project-title">Wearable AQMS (Perangkat) <span class="project-chevron">→</span></div>
+        <div class="project-summary">Skripsi: perangkat wearable pemantau kualitas udara berbasis IoT.</div>
+        <div class="tag-row"><span class="tag-amber">IoT</span><span class="tag-amber">Wearable</span><span class="tag-amber">Embedded</span></div>
+      </div>
+    </a>
+
+    <a class="project-card" href="project-kalibrasi.html">
+      <div class="project-banner">🧪</div>
+      <div class="project-body">
+        <div class="project-title">Kalibrasi Sensor Lingkungan <span class="project-chevron">→</span></div>
+        <div class="project-summary">Skripsi: kalibrasi 6 parameter sensor terhadap instrumen referensi.</div>
+        <div class="tag-row"><span class="tag-amber">Data Analysis</span><span class="tag-amber">Statistik</span></div>
+      </div>
+    </a>
+
+    <a class="project-card" href="project-har.html">
+      <div class="project-banner">🏃</div>
+      <div class="project-body">
+        <div class="project-title">Pengembangan Model HAR <span class="project-chevron">→</span></div>
+        <div class="project-summary">Skripsi: model klasifikasi aktivitas dari data IMU (96.33% akurasi).</div>
+        <div class="tag-row"><span class="tag-amber">Machine Learning</span><span class="tag-amber">Python</span></div>
+      </div>
+    </a>
+
+    <a class="project-card" href="project-motion-effect.html">
+      <div class="project-banner">📉</div>
+      <div class="project-body">
+        <div class="project-title">Pengaruh Gerakan terhadap Pengukuran Partikulat <span class="project-chevron">→</span></div>
+        <div class="project-summary">Skripsi: temuan utama — analisis deviasi PM2.5/PM10 akibat kondisi dinamis.</div>
+        <div class="tag-row"><span class="tag-amber">Data Analysis</span><span class="tag-amber">Statistik</span></div>
       </div>
     </a>
 
     <a class="project-card" href="project-trapgradien.html">
-      <div class="project-banner">🧪</div>
+      <div class="project-banner">💨</div>
       <div class="project-body">
         <div class="project-title">TrapGradien Air Filtration Monitor <span class="project-chevron">→</span></div>
         <div class="project-summary">Sistem sensor IoT untuk memantau performa filtrasi udara.</div>

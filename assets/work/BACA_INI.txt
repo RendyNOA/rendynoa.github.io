@@ -1,5 +1,2 @@
 Taruh foto carousel work history di sini dengan nama:
-mersi-1.jpg, mersi-2.jpg, mersi-3.jpg
-puiptiot-1.jpg, puiptiot-2.jpg, puiptiot-3.jpg
-sasaero-1.jpg, sasaero-2.jpg, sasaero-3.jpg
-oversight-1.jpg, oversight-2.jpg, oversight-3.jpg
+mersi-1/2/3.jpg, puiptiot-1/2/3.jpg, sasaero-1/2/3.jpg, oversight-1/2/3.jpg

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wearable AQMS + HAR & DPM — Rendy Ryan Renaldi</title>
+<title>Wearable AQMS (Perangkat) — Rendy Ryan Renaldi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -173,6 +173,9 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .project-card:nth-child(1) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(201,168,118,0.14));}
 .project-card:nth-child(2) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(185,142,92,0.14));}
 .project-card:nth-child(3) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(176,100,74,0.14));}
+.project-card:nth-child(4) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(150,160,120,0.14));}
+.project-card:nth-child(5) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(120,130,160,0.14));}
+.project-card:nth-child(6) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(160,120,150,0.14));}
 .project-body{padding:20px;}
 .project-title{font-weight:600; font-size:1rem; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;}
 .project-chevron{color:var(--cyan); font-family:'IBM Plex Mono', monospace; font-size:0.9rem;}
@@ -191,6 +194,32 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .detail-body p{color:var(--text); opacity:0.85; line-height:1.85; margin-bottom:16px; max-width:760px;}
 .other-projects{margin-top:50px; padding-top:30px; border-top:1px solid var(--grid-line);}
 .other-projects .label{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--muted); letter-spacing:0.1em; margin-bottom:14px;}
+
+.thesis-note{
+  margin:24px 0; padding:16px 18px; background:rgba(201,168,118,0.06);
+  border:1px solid rgba(201,168,118,0.25); font-size:0.85rem; color:var(--text); line-height:1.7;
+}
+.thesis-note b{color:var(--cyan);}
+.thesis-note .tn-links{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
+.thesis-note .tn-links a{
+  font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:var(--cyan);
+  text-decoration:none; border:1px solid rgba(201,168,118,0.35); padding:5px 12px;
+}
+.thesis-note .tn-links a:hover{background:rgba(201,168,118,0.1);}
+
+.stat-mini-row{display:flex; gap:28px; flex-wrap:wrap; margin:20px 0;}
+.stat-mini{font-family:'IBM Plex Mono', monospace;}
+.stat-mini .sm-num{font-size:1.3rem; color:var(--cyan); font-weight:700;}
+.stat-mini .sm-label{font-size:0.68rem; color:var(--muted); letter-spacing:0.05em;}
+.analysis-block{
+  margin-top:36px; padding:26px; background:var(--panel);
+  border:1px solid rgba(201,168,118,0.35); border-left:3px solid var(--cyan);
+}
+.analysis-item{margin-bottom:22px;}
+.analysis-item:last-child{margin-bottom:0;}
+.analysis-title{font-weight:700; font-size:0.98rem; margin-bottom:10px; color:var(--text);}
+.analysis-item p{color:var(--text); opacity:0.85; line-height:1.8; font-size:0.9rem; margin:0;}
+.analysis-item b{color:var(--cyan); font-weight:600;}
 
 /* PROJECT PHOTO GALLERY */
 .photo-gallery{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:14px; margin:24px 0 30px;}
@@ -459,14 +488,21 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
 <div class="page-header">
   <a class="back-link" href="projects.html">← Kembali ke Projects</a>
   <div class="detail-banner">🌫️</div>
-  <div class="section-title">Wearable AQMS + HAR & DPM</div>
+  <div class="section-title">Wearable AQMS (Perangkat)</div>
 </div>
 
 <div class="detail-meta">
   <div><div class="k">ROLE</div><div class="v">Peneliti Utama (Skripsi)</div></div>
   <div><div class="k">ORGANISASI</div><div class="v">Telkom University</div></div>
   <div><div class="k">DURASI</div><div class="v">Sep 2025 — Jul 2026 (Expected)</div></div>
-  <div><div class="k">TOOLS</div><div class="v">Mikrokontroler, Sensor Kualitas Udara, Python</div></div>
+  <div><div class="k">TOOLS</div><div class="v">ESP32, ESP8266, SPS30, ENS160, AHT21, Nicla Sense ME</div></div>
+</div>
+
+<div class="thesis-note">
+  <b>📖 Bagian dari Tugas Akhir yang sama:</b> "Pengembangan Wearable Air Quality Monitoring System
+  dengan Integrasi Human Activity Recognition untuk Analisis Pengaruh Gerakan terhadap Pengukuran
+  Partikulat" — halaman ini fokus ke bagian <b>Wearable AQMS (Perangkat)</b>. Bagian lain dari riset yang sama:
+  <div class="tn-links"><a href="project-kalibrasi.html">🧪 Kalibrasi Sensor Lingkungan</a><a href="project-har.html">🏃 Pengembangan Model HAR</a><a href="project-motion-effect.html">📉 Pengaruh Gerakan terhadap Pengukuran Partikulat</a></div>
 </div>
 
 <div class="section-eyebrow" style="margin-top:6px;">GALERI FOTO</div>
@@ -494,12 +530,14 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
     </div></div>
 
 <div class="detail-body">
-  <p>Proyek skripsi ini berfokus pada pengembangan Air Quality Monitoring System (AQMS) berbentuk wearable yang dapat dipakai pengguna sehari-hari untuk memantau paparan polusi udara secara personal dan real-time.</p>
-  <p>Sistem ini mengintegrasikan Human Activity Recognition (HAR) untuk mendeteksi aktivitas pengguna (diam, berjalan, berlari) dan Dynamic Power Management (DPM) yang menyesuaikan frekuensi sampling sensor berdasarkan aktivitas tersebut — sehingga baterai lebih hemat tanpa mengorbankan akurasi data saat dibutuhkan.</p>
-  <p>Tantangan utama proyek ini ada pada trade-off antara konsumsi daya dan resolusi data, serta validasi akurasi sensor portable dibanding alat ukur kualitas udara standar laboratorium.</p>
+  <p>Skripsi ini mengembangkan Wearable Air Quality Monitoring System (AQMS) — perangkat multi-parameter yang mengukur PM2.5, PM10, TVOC, eCO2, suhu, dan kelembapan, dipakai di area dada pengguna untuk memantau paparan polusi udara personal secara real-time.</p>
+  <p>Total 7 unit perangkat (Mobile-1 hingga Mobile-7) dibuat dalam 2 varian desain. Desain 1 (Mobile-1 & 2) memakai mikrokontroler ESP32 dan 2 baterai, disiapkan untuk sistem lebih kompleks termasuk integrasi Nicla Sense ME untuk data gerakan. Desain 2 (Mobile-3 hingga 7) memakai ESP8266 dan 1 baterai, difokuskan untuk akuisisi data kualitas udara dengan bentuk yang lebih ringkas.</p>
+  <p>Ketiga sensor utama (SPS30 untuk partikulat, ENS160 untuk gas, AHT21 untuk suhu/kelembapan) dipilih karena berbiaya rendah, sehingga cocok untuk pembuatan banyak unit wearable sekaligus — meski ini juga berarti dibutuhkan proses kalibrasi ekstra terhadap instrumen referensi (dibahas di halaman terpisah).</p>
   
-  <div class="tag-row"><span class="tag-amber">IoT</span><span class="tag-amber">Wearable</span><span class="tag-amber">HAR</span><span class="tag-amber">DPM</span><span class="tag-amber">Skripsi</span></div>
+  <div class="tag-row"><span class="tag-amber">IoT</span><span class="tag-amber">Wearable</span><span class="tag-amber">Embedded Systems</span><span class="tag-amber">Skripsi</span></div>
 </div>
+
+
 
 <div class="other-projects">
   <div class="label">PROYEK LAINNYA</div>
