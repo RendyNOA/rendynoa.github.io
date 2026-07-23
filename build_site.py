@@ -968,7 +968,7 @@ work_body = """
   <a class="exp-item" href="work-puiptiot.html">
     <div class="exp-date mono">SEP 2025 —<br>JAN 2026</div>
     <div>
-      <div class="exp-role">Research Intern</div>
+      <div class="exp-role">Hardware Engineer</div>
       <div class="exp-org">PUI-PT Intelligent Sensing-IoT, Telkom University</div>
       <div class="exp-desc"><ul>
         <li>Mengembangkan dan menguji sistem sensor berbasis IoT untuk monitoring performa sistem filtrasi udara TrapGradien.</li>
@@ -1871,6 +1871,15 @@ def work_detail(filename, role, org, duration, location, paragraphs, tags, other
         f.write(page_shell(f"{role} — Rendy Ryan Renaldi", "work.html", body))
 
 MERSI_CONTENT = """
+<div class="narrative-figure">
+  <img src="assets/work/mersi-logo.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-height:140px;">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:1/1; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Logo belum ditambahkan.</div>
+  </div>
+  <figcaption>Logo Laboratorium MERSI, Telkom University</figcaption>
+</div>
+
 <div class="narrative-section">
   <div class="narrative-heading">Tentang Laboratorium MERSI</div>
   <p>MERSI adalah laboratorium akademik Telkom University yang fokus pada pendidikan dan riset di bidang sistem pengukuran, sensor, instrumentasi, signal conditioning, dan data acquisition. Laboratorium ini memberikan pelatihan praktik dan kesempatan riset untuk mengembangkan kemampuan teknis dan analitis mahasiswa di bidang instrumentation engineering.</p>
@@ -1954,24 +1963,49 @@ work_detail(
     override_content=MERSI_CONTENT
 )
 
+PUIPTIOT_CONTENT = """
+<div class="narrative-figure">
+  <img src="assets/work/puiptiot-logo.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-height:160px;">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/6; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Logo belum ditambahkan.</div>
+  </div>
+  <figcaption>Pusat Unggulan IPTEK Perguruan Tinggi — Intelligent Sensing-IoT (IS-IoT), Telkom University</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Tentang PUI-PT Intelligent Sensing-IoT</div>
+  <p>PUI-PT Intelligent Sensing-IoT (IS-IoT) adalah pusat riset Telkom University yang berfokus pada Intelligent Sensing, Internet of Things (IoT), Wireless Sensor Networks (WSN), dan Artificial Intelligence (AI). Pusat riset ini mengembangkan teknologi sensing inovatif untuk solusi yang cerdas, terhubung, dan berkelanjutan melalui kolaborasi dengan akademisi dan industri.</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Peran Saya: Hardware Engineer</div>
+  <p>Selama menjadi Hardware Engineer di sini, saya bertanggung jawab mengembangkan subsistem sensor pengukuran untuk TrapGradien — air purifier cerdas berbasis AIoT. Pekerjaan saya mencakup perancangan PCB board sensor, integrasi dengan mikrokontroler, hingga memastikan data sensor tersalur real-time ke dashboard monitoring.</p>
+</div>
+
+<div class="thesis-note">
+  <b>🔗 Proyek yang saya kerjakan di sini:</b> TrapGradien Air Filtration Monitor — lihat detail lengkap desain PCB, arsitektur AIoT, dan hasil kerja saya di halaman proyek.
+  <div class="tn-links">
+    <a href="project-trapgradien.html">🧪 TrapGradien Air Filtration Monitor →</a>
+  </div>
+</div>
+"""
+
 work_detail(
     "work-puiptiot.html",
-    "Research Intern",
+    "Hardware Engineer",
     "PUI-PT Intelligent Sensing-IoT, Telkom University",
     "Sep 2025 — Jan 2026", "Bandung, Indonesia",
-    [
-        "PUI-PT Intelligent Sensing-IoT (IS-IoT) adalah pusat riset Telkom University yang berfokus pada Intelligent Sensing, Internet of Things (IoT), Wireless Sensor Networks (WSN), dan Artificial Intelligence (AI). Pusat riset ini mengembangkan teknologi sensing inovatif untuk solusi yang cerdas, terhubung, dan berkelanjutan melalui kolaborasi dengan akademisi dan industri.",
-        "Selama menjadi Research Intern, saya mengembangkan dan menguji sistem sensor berbasis IoT untuk memantau performa sistem filtrasi udara TrapGradien — mencakup instalasi sensor, pengumpulan data real-time, dan validasi hasil pengukuran terhadap parameter performa yang diharapkan tim riset.",
-        "Pengalaman ini memberi saya pemahaman langsung soal tantangan noise sensor di lingkungan nyata dan pentingnya kalibrasi berkala pada sistem IoT jangka panjang."
-    ],
-    ["Research", "IoT", "Wireless Sensing"],
+    [],
+    ["Hardware", "IoT", "PCB Design"],
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
      ("work-oversight.html","Head of the Oversight Commission")],
     "puiptiot",
     ["Instalasi sensor pada unit filtrasi TrapGradien",
      "Pengambilan data sensor secara real-time",
-     "Diskusi hasil riset bersama tim IS-IoT"]
+     "Diskusi hasil riset bersama tim IS-IoT"],
+    override_content=PUIPTIOT_CONTENT
 )
 
 work_detail(
