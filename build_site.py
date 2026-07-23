@@ -1108,7 +1108,7 @@ projects_body = """
     </a>
 
     <a class="project-card" href="project-motion-effect.html">
-      <div class="project-banner">📉</div>
+      <div class="project-banner" style="padding:0; background:linear-gradient(135deg, var(--panel-raised), rgba(150,160,120,0.14));"><img src="assets/projects/motion-icon.png" alt="" style="width:100%; height:100%; object-fit:contain; padding:8px; box-sizing:border-box;"></div>
       <div class="project-body">
         <div class="project-title">Pengaruh Gerakan terhadap Pengukuran Partikulat <span class="project-chevron">→</span></div>
         <div class="project-summary">Skripsi: temuan utama — analisis deviasi PM2.5/PM10 akibat kondisi dinamis.</div>
