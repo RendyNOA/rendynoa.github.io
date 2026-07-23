@@ -522,15 +522,15 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
 
 <div class="page-header">
   <a class="back-link" href="projects.html">← Kembali ke Projects</a>
-  <div class="detail-banner">🌫️</div>
+  
   <div class="section-title">Wearable AQMS (Perangkat)</div>
 </div>
 
 <div class="detail-meta">
   <div><div class="k">ROLE</div><div class="v">Peneliti Utama (Skripsi)</div></div>
   <div><div class="k">ORGANISASI</div><div class="v">Telkom University</div></div>
-  <div><div class="k">DURASI</div><div class="v">Sep 2025 — Jul 2026 (Expected)</div></div>
-  <div><div class="k">TOOLS</div><div class="v">ESP32, ESP8266, SPS30, ENS160, AHT21, Nicla Sense ME</div></div>
+  <div><div class="k">DURASI</div><div class="v">Feb 2026 — Mar 2026</div></div>
+  <div><div class="k">TOOLS</div><div class="v">ESP32, ESP8266, SPS30, ENS160, AHT21, Nicla Sense ME (Bosch IMU)</div></div>
 </div>
 
 <div class="thesis-note">
@@ -540,47 +540,88 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
   <div class="tn-links"><a href="project-kalibrasi.html">🧪 Kalibrasi Sensor & Pemrosesan Data</a><a href="project-har.html">🏃 Pengembangan Model HAR</a><a href="project-motion-effect.html">📉 Pengaruh Gerakan terhadap Pengukuran Partikulat</a></div>
 </div>
 
-<div class="section-eyebrow" style="margin-top:6px;">GALERI FOTO</div>
-<div class="photo-carousel" data-captions="[&quot;Dokumentasi Wearable AQMS (Perangkat) \u2014 foto 1&quot;, &quot;Dokumentasi Wearable AQMS (Perangkat) \u2014 foto 2&quot;, &quot;Dokumentasi Wearable AQMS (Perangkat) \u2014 foto 3&quot;]">
-  <div class="carousel-viewport">
-    <div class="carousel-track"><div class="carousel-slide">
-      <img src="assets/projects/aqms-1.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <div class="photo-placeholder">
-        <div class="ph-icon">🖼️</div>
-        <div class="ph-text">Foto belum ditambahkan.<br>Taruh file gambar di:</div>
-        <div class="ph-path">assets/projects/aqms-1.jpg</div>
-      </div>
-    </div><div class="carousel-slide">
-      <img src="assets/projects/aqms-2.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <div class="photo-placeholder">
-        <div class="ph-icon">🖼️</div>
-        <div class="ph-text">Foto belum ditambahkan.<br>Taruh file gambar di:</div>
-        <div class="ph-path">assets/projects/aqms-2.jpg</div>
-      </div>
-    </div><div class="carousel-slide">
-      <img src="assets/projects/aqms-3.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <div class="photo-placeholder">
-        <div class="ph-icon">🖼️</div>
-        <div class="ph-text">Foto belum ditambahkan.<br>Taruh file gambar di:</div>
-        <div class="ph-path">assets/projects/aqms-3.jpg</div>
-      </div>
-    </div></div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/aqms-wear.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:9/16; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Foto belum ditambahkan.</div>
+  </div>
+  <figcaption>Penggunaan Wearable AQMS secara ergonomis pada area dada</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Mengapa Membangun Wearable AQMS?</div>
+  <p>Sistem pemantau kualitas udara (AQMS) konvensional umumnya bersifat stasioner, sehingga memiliki keterbatasan dalam merekam variasi polusi berskala mikro. Resolusi spasial yang rendah ini menyebabkan eksposur polutan aktual yang dihirup individu saat beraktivitas sering kali tidak terdeteksi. Untuk menjawab tantangan tersebut, dikembangkanlah sistem AQMS berbasis wearable yang dirancang ergonomis untuk ditempatkan pada area dada pengguna — posisi ideal yang paling merepresentasikan eksposur udara pernapasan sekaligus mampu menangkap getaran mekanis tubuh saat bergerak.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/aqms-wiring.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/10; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Foto belum ditambahkan.</div>
+  </div>
+  <figcaption>Diagram wiring integrasi mikrokontroler dengan multi-sensor dan sistem daya</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Integrasi Hardware & Arsitektur IoT</div>
+  <p>Perangkat ini bukanlah sekadar pembaca sensor biasa, melainkan sistem IoT terintegrasi yang mengakuisisi data multivariabel secara serentak. Otak komputasi sentral menggunakan mikrokontroler Wemos (ESP32/ESP8266) yang dihubungkan dengan skema wiring terpadu ke berbagai komponen:</p>
+  <ul class="narrative-list">
+    <li><b>SPS30:</b> Mengukur partikulat PM2.5 dan PM10 secara presisi.</li>
+    <li><b>ENS160 & AHT2x:</b> Mengukur gas volatil (TVOC), estimasi CO2, suhu, dan kelembapan lingkungan.</li>
+    <li><b>Bosch IMU (Nicla Sense ME):</b> Mengakuisisi data akselerometer dan giroskop untuk deteksi pola gerakan tubuh pengguna.</li>
+    <li><b>Power Management:</b> Menggunakan baterai Li-Po 3.7V 2000mAh yang dilengkapi modul charger/boost terintegrasi untuk menyuplai daya sistem secara mandiri (portabel).</li>
+  </ul>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/aqms-device.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:3/4; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Foto belum ditambahkan.</div>
+  </div>
+  <figcaption>Form-factor perangkat Wearable AQMS yang ringkas dan portabel</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Fabrikasi Perangkat & Edge Computing</div>
+  <p>Dari segi desain fisik, seluruh komponen dirakit dan difabrikasi ke dalam casing (form-factor) berukuran saku yang kokoh dan ringan. Ukurannya yang compact memastikan aliran udara tetap optimal masuk ke inlet sensor tanpa membebani pergerakan pengguna.</p>
+  <p style="margin-top:16px;">Salah satu inovasi engineering pada sistem ini adalah efisiensi transmisi data. Alih-alih mengirimkan ratusan data mentah IMU per detik yang menguras baterai, perangkat melakukan edge computing (komputasi lokal) untuk menghitung Motion Index secara real-time. Sistem hanya mengekstraksi dan mengirimkan nilai ringkasan pergerakan bersamaan dengan data kualitas udara, menghemat bandwidth komunikasi secara signifikan.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/aqms-dashboard.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/6; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Foto belum ditambahkan.</div>
+  </div>
+  <figcaption>Dashboard pemantauan kualitas udara Cloud Gradien secara real-time</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Pemantauan Data Real-Time (IoT Dashboard)</div>
+  <p>Data yang berhasil diakuisisi oleh perangkat kemudian ditransmisikan menuju antarmuka cloud (Cloud Gradien) untuk pemantauan visual. Dashboard ini menampilkan seluruh metrik krusial secara real-time — mulai dari Air Quality Index (AQI), tingkat PM2.5, TVOC, hingga status suhu, kelembapan, dan persentase sisa baterai (Battery Criticality).</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Kesimpulan & Dampak Proyek</div>
+  <p>Proyek ini membuktikan keberhasilan pembangunan arsitektur IoT end-to-end — mulai dari perancangan hardware, skema kelistrikan (power management), transmisi cloud, hingga visualisasi antarmuka. Dengan memindahkan beban komputasi IMU langsung ke dalam perangkat (edge computing), Wearable AQMS ini mampu beroperasi secara efisien, portabel, dan stabil saat digunakan oleh pengguna di lapangan, sehingga dapat melakukan pengukuran paparan polusi udara yang lebih personal.</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Dokumentasi</div>
+</div>
+<div class="photo-carousel" data-captions="[&quot;Proses soldering dan perakitan komponen elektronik perangkat&quot;, &quot;Dokumentasi pengguna yang telah memakai Wearable AQMS saat pengujian lapangan&quot;]">
+  <div class="carousel-viewport" style="aspect-ratio:16/9;">
+    <div class="carousel-track"><div class="carousel-slide"><img src="assets/projects/aqms-solder.jpg" alt="" style="object-fit:contain;"></div><div class="carousel-slide"><img src="assets/projects/aqms-users.jpg" alt="" style="object-fit:contain;"></div></div>
     <button class="carousel-btn prev" aria-label="Sebelumnya">‹</button>
     <button class="carousel-btn next" aria-label="Selanjutnya">›</button>
   </div>
-  <div class="carousel-dots"><button class="carousel-dot active"></button><button class="carousel-dot"></button><button class="carousel-dot"></button></div>
+  <div class="carousel-dots"><button class="carousel-dot active"></button><button class="carousel-dot"></button></div>
   <div class="carousel-caption"></div>
 </div>
-
-<div class="detail-body">
-  <p>Skripsi ini mengembangkan Wearable Air Quality Monitoring System (AQMS) — perangkat multi-parameter yang mengukur PM2.5, PM10, TVOC, eCO2, suhu, dan kelembapan, dipakai di area dada pengguna untuk memantau paparan polusi udara personal secara real-time.</p>
-  <p>Total 7 unit perangkat (Mobile-1 hingga Mobile-7) dibuat dalam 2 varian desain. Desain 1 (Mobile-1 & 2) memakai mikrokontroler ESP32 dan 2 baterai, disiapkan untuk sistem lebih kompleks termasuk integrasi Nicla Sense ME untuk data gerakan. Desain 2 (Mobile-3 hingga 7) memakai ESP8266 dan 1 baterai, difokuskan untuk akuisisi data kualitas udara dengan bentuk yang lebih ringkas.</p>
-  <p>Ketiga sensor utama (SPS30 untuk partikulat, ENS160 untuk gas, AHT21 untuk suhu/kelembapan) dipilih karena berbiaya rendah, sehingga cocok untuk pembuatan banyak unit wearable sekaligus — meski ini juga berarti dibutuhkan proses kalibrasi ekstra terhadap instrumen referensi (dibahas di halaman terpisah).</p>
-  
-  <div class="tag-row"><span class="tag-amber">IoT</span><span class="tag-amber">Wearable</span><span class="tag-amber">Embedded Systems</span><span class="tag-amber">Skripsi</span></div>
-</div>
-
-
+<div class="tag-row" style="margin-top:20px;"><span class="tag-amber">IoT</span><span class="tag-amber">Wearable</span><span class="tag-amber">Embedded Systems</span><span class="tag-amber">Skripsi</span></div>
 
 <div class="other-projects">
   <div class="label">PROYEK LAINNYA</div>
