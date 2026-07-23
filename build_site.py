@@ -1831,12 +1831,23 @@ project_detail(
 )
 
 # ==================== WORK DETAIL PAGES ====================
-def work_detail(filename, role, org, duration, location, paragraphs, tags, other, slug, captions):
+def work_detail(filename, role, org, duration, location, paragraphs, tags, other, slug, captions, override_content=None):
     others_html = ""
     for href, otitle in other:
         others_html += f'<a class="project-card" href="{href}" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:0.88rem; font-weight:600;">{otitle}</span></div></a>\n    '
-    paras_html = "".join(f"<p>{p}</p>\n  " for p in paragraphs)
     tags_html = "".join(f'<span class="tag-amber">{t}</span>' for t in tags)
+    if override_content is not None:
+        main_content = f"""{override_content}
+<div class="tag-row" style="margin-top:20px;">{tags_html}</div>"""
+    else:
+        paras_html = "".join(f"<p>{p}</p>\n  " for p in paragraphs)
+        main_content = f"""<div class="section-eyebrow" style="margin-top:6px;">GALERI FOTO</div>
+{photo_carousel("work", slug, captions)}
+
+<div class="detail-body">
+  {paras_html}
+  <div class="tag-row">{tags_html}</div>
+</div>"""
     body = f"""
 <div class="page-header">
   <a class="back-link" href="work.html">← Kembali ke Work History</a>
@@ -1849,13 +1860,7 @@ def work_detail(filename, role, org, duration, location, paragraphs, tags, other
   <div><div class="k">DURASI</div><div class="v">{duration}</div></div>
 </div>
 
-<div class="section-eyebrow" style="margin-top:6px;">GALERI FOTO</div>
-{photo_carousel("work", slug, captions)}
-
-<div class="detail-body">
-  {paras_html}
-  <div class="tag-row">{tags_html}</div>
-</div>
+{main_content}
 
 <div class="other-projects">
   <div class="label">PENGALAMAN LAINNYA</div>
@@ -1865,16 +1870,79 @@ def work_detail(filename, role, org, duration, location, paragraphs, tags, other
     with open(f"{OUT}/{filename}","w") as f:
         f.write(page_shell(f"{role} — Rendy Ryan Renaldi", "work.html", body))
 
+MERSI_CONTENT = """
+<div class="narrative-section">
+  <div class="narrative-heading">Tentang Laboratorium MERSI</div>
+  <p>MERSI adalah laboratorium akademik Telkom University yang fokus pada pendidikan dan riset di bidang sistem pengukuran, sensor, instrumentasi, signal conditioning, dan data acquisition. Laboratorium ini memberikan pelatihan praktik dan kesempatan riset untuk mengembangkan kemampuan teknis dan analitis mahasiswa di bidang instrumentation engineering.</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Peran Saya: Koordinator Asisten</div>
+  <p>Sebagai Koordinator Asisten, saya memimpin dan mengoordinasikan tim yang terdiri dari <b>11 asisten laboratorium</b>, mulai dari pembagian tugas per modul, penjadwalan sesi praktikum, hingga memastikan setiap asisten siap membimbing praktikan sesuai standar yang ditetapkan lab.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/work/mersi-asisten.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:4/3; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Foto belum ditambahkan.</div>
+  </div>
+  <figcaption>Tim asisten Laboratorium MERSI</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Cakupan Praktikum: 2 Mata Kuliah, 95 Praktikan per Kelas</div>
+  <p>Saya mengoordinasikan dua mata kuliah praktikum sekaligus — <b>Sistem Pengukuran</b> dan <b>Sistem Instrumentasi</b> — masing-masing diikuti oleh <b>95 mahasiswa praktikan</b> per mata kuliah.</p>
+  <p style="margin-top:16px;">Modul praktikum <b>Sistem Pengukuran</b> mencakup:</p>
+  <ul class="narrative-list">
+    <li>Modul 1 — Sistem Pengukuran dan Analisis Data</li>
+    <li>Modul 2 — Sensor Posisi</li>
+    <li>Modul 3 — Sensor Sudut</li>
+    <li>Modul 4 — Sensor Suhu</li>
+    <li>Modul 5 — Sensor Aliran</li>
+    <li>Modul 6 — Sensor Cahaya</li>
+  </ul>
+  <p style="margin-top:16px;">Modul praktikum <b>Sistem Instrumentasi</b> mencakup:</p>
+  <ul class="narrative-list">
+    <li>Modul 1 — Pengkondisian Sinyal</li>
+    <li>Modul 2 — Voltage to Current Converter</li>
+    <li>Modul 3 — Analog to Digital Converter</li>
+    <li>Modul 4 — Digital to Analog Converter</li>
+    <li>Modul 5 — Sensor dan Aktuator</li>
+    <li>Modul 6 — Pengenalan Arduino Uno</li>
+  </ul>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/work/mersi-modul.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Foto belum ditambahkan.</div>
+  </div>
+  <figcaption>Kegiatan running modul praktikum</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Training of Trainers (ToT) & Evaluasi</div>
+  <p>Sebelum setiap sesi praktikum berjalan, saya memimpin <b>Training of Trainers (ToT)</b> untuk memastikan seluruh asisten memahami materi dan teknis modul secara seragam. Setelah praktikum selesai, saya juga memimpin sesi <b>evaluasi</b> untuk menilai kualitas penyampaian materi dan mengumpulkan masukan perbaikan untuk sesi berikutnya.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/work/mersi-praktikum.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Foto belum ditambahkan.</div>
+  </div>
+  <figcaption>Kondisi ketika praktikum berlangsung</figcaption>
+</div>
+"""
+
 work_detail(
     "work-mersi.html",
     "Head of Assistant",
     "Measurement and Instrumentation Systems Laboratory (MERSI), Telkom University",
     "Sep 2025 — Jun 2026", "Bandung, Indonesia",
-    [
-        "MERSI adalah laboratorium akademik Telkom University yang fokus pada pendidikan dan riset di bidang sistem pengukuran, sensor, instrumentasi, signal conditioning, dan data acquisition. Laboratorium ini memberikan pelatihan praktik dan kesempatan riset untuk mengembangkan kemampuan teknis dan analitis mahasiswa di bidang instrumentation engineering.",
-        "Sebagai Head of Assistant, saya memimpin dan mengoordinasikan tim yang terdiri dari 11 asisten laboratorium, memastikan operasional setiap sesi praktikum berjalan efektif dan konsisten.",
-        "Tanggung jawab saya juga mencakup pengawasan sesi laboratorium untuk lebih dari 100 mahasiswa S1 di mata kuliah Measurement and Instrumentation Systems, mulai dari perancangan jadwal praktikum, koordinasi penugasan asisten, hingga pemantauan kualitas setiap sesi praktik yang berjalan."
-    ],
+    [],
     ["Leadership", "Instrumentation", "Teaching Assistant"],
     [("work-puiptiot.html","Research Intern — PUI-PT Intelligent Sensing-IoT"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
@@ -1882,7 +1950,8 @@ work_detail(
     "mersi",
     ["Sesi pendampingan praktikum di Laboratorium MERSI",
      "Briefing dan koordinasi tim asisten laboratorium",
-     "Alat ukur instrumentasi yang digunakan mahasiswa"]
+     "Alat ukur instrumentasi yang digunakan mahasiswa"],
+    override_content=MERSI_CONTENT
 )
 
 work_detail(
