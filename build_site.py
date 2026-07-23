@@ -1589,6 +1589,11 @@ project_detail(
 
 # ---- 4. ANALISIS PENGARUH GERAKAN TERHADAP PENGUKURAN PARTIKULAT ----
 MOTION_CONTENT = """
+<div class="narrative-section">
+  <div class="narrative-heading">Latar Belakang Eksperimen: Mengapa Gerakan Berpengaruh?</div>
+  <p>Sistem Wearable AQMS dirancang untuk dipakai di tubuh pengguna, yang berarti perangkat akan terus bergerak seiring aktivitas harian. Pergerakan ini memicu perubahan orientasi, getaran mekanis, dan turbulensi aliran udara di sekitar inlet sensor partikulat (SPS30) yang mengandalkan prinsip hamburan cahaya laser. Eksperimen ini dirancang untuk menjawab satu pertanyaan kritis secara data: <b>"Apakah guncangan dari tubuh pengguna mendistorsi pembacaan tingkat polusi (PM<sub>2.5</sub> dan PM<sub>10</sub>), dan seberapa besar deviasinya?"</b></p>
+</div>
+
 <div class="narrative-figure">
   <img src="assets/projects/motion-diagram.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
@@ -1596,11 +1601,6 @@ MOTION_CONTENT = """
     <div class="ph-text">Gambar belum ditambahkan.</div>
   </div>
   <figcaption>Ilustrasi metodologi A/B Testing: Perangkat dinamis pada pengguna vs 3 perangkat statis sebagai kontrol lingkungan</figcaption>
-</div>
-
-<div class="narrative-section">
-  <div class="narrative-heading">Latar Belakang Eksperimen: Mengapa Gerakan Berpengaruh?</div>
-  <p>Sistem Wearable AQMS dirancang untuk dipakai di tubuh pengguna, yang berarti perangkat akan terus bergerak seiring aktivitas harian. Pergerakan ini memicu perubahan orientasi, getaran mekanis, dan turbulensi aliran udara di sekitar inlet sensor partikulat (SPS30) yang mengandalkan prinsip hamburan cahaya laser. Eksperimen ini dirancang untuk menjawab satu pertanyaan kritis secara data: <b>"Apakah guncangan dari tubuh pengguna mendistorsi pembacaan tingkat polusi (PM<sub>2.5</sub> dan PM<sub>10</sub>), dan seberapa besar deviasinya?"</b></p>
 </div>
 
 <div class="narrative-section">
@@ -1613,6 +1613,12 @@ MOTION_CONTENT = """
   <p style="margin-top:16px;">Pengujian dilakukan melalui tiga skenario berjenjang: (1) Chamber tertutup, (2) Luar Ruangan (terkontrol), dan (3) Uji Lapangan Nyata yang melibatkan aktivitas Duduk, Berjalan, Berlari, dan Berkendara (Beam).</p>
 </div>
 
+<div class="narrative-section">
+  <div class="narrative-heading">Analisis Data: Koreksi Baseline (Baseline Correction)</div>
+  <p>Dalam analisis sensor berbiaya rendah, membandingkan selisih nilai secara mentah (ΔPM = PM<sub>dinamis</sub> − PM<sub>statis</sub>) bisa menyesatkan akibat bias bawaan antar-unit sensor yang tersisa pasca-kalibrasi.</p>
+  <p style="margin-top:16px;">Sebagai analis data, anomali ini diatasi dengan menerapkan Koreksi Baseline (E = ΔPM − B). Sebelum dan sesudah pengujian, seluruh perangkat didiamkan bersama (kolokasi) untuk mencari selisih dasarnya (B). Hanya dengan memotong selisih kotor (ΔPM) dengan baseline ini, efek murni dari pergerakan dapat diekstraksi secara presisi.</p>
+</div>
+
 <div class="narrative-figure">
   <img src="assets/projects/motion-formula.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:1/1; display:none;">
@@ -1623,9 +1629,14 @@ MOTION_CONTENT = """
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Analisis Data: Koreksi Baseline (Baseline Correction)</div>
-  <p>Dalam analisis sensor berbiaya rendah, membandingkan selisih nilai secara mentah (ΔPM = PM<sub>dinamis</sub> − PM<sub>statis</sub>) bisa menyesatkan akibat bias bawaan antar-unit sensor yang tersisa pasca-kalibrasi.</p>
-  <p style="margin-top:16px;">Sebagai analis data, anomali ini diatasi dengan menerapkan Koreksi Baseline (E = ΔPM − B). Sebelum dan sesudah pengujian, seluruh perangkat didiamkan bersama (kolokasi) untuk mencari selisih dasarnya (B). Hanya dengan memotong selisih kotor (ΔPM) dengan baseline ini, efek murni dari pergerakan dapat diekstraksi secara presisi.</p>
+  <div class="narrative-heading">Hasil Analisis & Korelasi Metrik</div>
+  <p>Hasil komputasi data pasca-koreksi menunjukkan pola yang sangat menarik: kondisi dinamis (pergerakan) secara konsisten cenderung membuat perangkat membaca konsentrasi partikulat lebih rendah (deviasi negatif) dibandingkan kontrol statis.</p>
+  <p style="margin-top:16px;">Lebih lanjut, dilakukan analisis korelasi linear (Pearson's r) antara intensitas gerakan (diwakili metrik Mean Motion Index dari algoritma HAR) terhadap besaran deviasi absolut sensor |E| dalam µg/m³:</p>
+  <ul class="narrative-list">
+    <li><b>Skenario Chamber:</b> Ditemukan korelasi positif yang kuat (r = 0.863 untuk PM<sub>2.5</sub> dan r = 0.580 untuk PM<sub>10</sub>) di seluruh skema percobaan P1–P4.</li>
+    <li><b>Skenario Lapangan:</b> Korelasi positif ini tervalidasi semakin kuat seiring bertambahnya variasi aktivitas — dari r = 0.804 (PM<sub>2.5</sub>) pada Lapangan 1, hingga menguat tajam menjadi r = 0.992 (PM<sub>2.5</sub>) pada Lapangan 2. Semakin ekstrem guncangannya (seperti aktivitas Berlari), semakin besar pula penyimpangan pembacaan alat.</li>
+    <li><b>Deviasi maksimum</b> yang tercatat saat berlari mencapai rentang ~1 hingga nyaris 3 µg/m³ — angka yang cukup signifikan secara statistik meskipun masih berada di dalam margin toleransi error sensor.</li>
+  </ul>
 </div>
 
 <div class="narrative-figure">
@@ -1635,17 +1646,6 @@ MOTION_CONTENT = """
     <img src="assets/projects/motion-scatter-lapangan2.png" alt="" onerror="this.style.display='none';" style="max-width:100%; width:320px; height:auto; border:1px solid var(--grid-line); background:#fff; object-fit:contain;">
   </div>
   <figcaption>Scatter plot korelasi antara Mean Motion Index dengan rata-rata deviasi absolut |E| — Uji Chamber dikelompokkan per skema percobaan P1–P4 (kiri), Uji Lapangan 1 (tengah) dan Uji Lapangan 2 (kanan) dikelompokkan per aktivitas (Jalan, Lari, Beam)</figcaption>
-</div>
-
-<div class="narrative-section">
-  <div class="narrative-heading">Hasil Analisis & Korelasi Metrik</div>
-  <p>Hasil komputasi data pasca-koreksi menunjukkan pola yang sangat menarik: kondisi dinamis (pergerakan) secara konsisten cenderung membuat perangkat membaca konsentrasi partikulat lebih rendah (deviasi negatif) dibandingkan kontrol statis.</p>
-  <p style="margin-top:16px;">Lebih lanjut, dilakukan analisis korelasi linear (Pearson's r) antara intensitas gerakan (diwakili metrik Mean Motion Index dari algoritma HAR, sumbu-X pada ketiga grafik di atas) terhadap besaran deviasi absolut sensor |E| dalam µg/m³ (sumbu-Y):</p>
-  <ul class="narrative-list">
-    <li><b>Skenario Chamber:</b> Ditemukan korelasi positif yang kuat (r = 0.863 untuk PM<sub>2.5</sub> dan r = 0.580 untuk PM<sub>10</sub>) di seluruh skema percobaan P1–P4.</li>
-    <li><b>Skenario Lapangan:</b> Korelasi positif ini tervalidasi semakin kuat seiring bertambahnya variasi aktivitas — dari r = 0.804 (PM<sub>2.5</sub>) pada Lapangan 1, hingga menguat tajam menjadi r = 0.992 (PM<sub>2.5</sub>) pada Lapangan 2. Semakin ekstrem guncangannya (seperti aktivitas Berlari), semakin besar pula penyimpangan pembacaan alat.</li>
-    <li><b>Deviasi maksimum</b> yang tercatat saat berlari mencapai rentang ~1 hingga nyaris 3 µg/m³ — angka yang cukup signifikan secara statistik meskipun masih berada di dalam margin toleransi error sensor.</li>
-  </ul>
 </div>
 
 <div class="stat-mini-row">
