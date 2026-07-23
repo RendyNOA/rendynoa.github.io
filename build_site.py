@@ -1953,7 +1953,7 @@ work_detail(
     "Sep 2025 — Jun 2026", "Bandung, Indonesia",
     [],
     ["Leadership", "Instrumentation", "Teaching Assistant"],
-    [("work-puiptiot.html","Research Intern — PUI-PT Intelligent Sensing-IoT"),
+    [("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
      ("work-oversight.html","Head of the Oversight Commission")],
     "mersi",
@@ -2008,24 +2008,49 @@ work_detail(
     override_content=PUIPTIOT_CONTENT
 )
 
+SASAERO_CONTENT = """
+<div class="narrative-figure">
+  <img src="assets/work/sasaero-banner.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/5; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Banner belum ditambahkan.</div>
+  </div>
+  <figcaption>PT SAS Aero Sishan — Aerospace & Defense Systems Engineering</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Tentang PT SAS Aero Sishan</div>
+  <p>PT SAS Aero Sishan adalah perusahaan rekayasa pertahanan dan kedirgantaraan berbasis di Bandung, yang fokus pada pengembangan sistem pertahanan canggih, teknologi aerospace, otomasi, fabrikasi, precision machining, dan solusi terkait unmanned aerial vehicle.</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Peran Saya: Intern — System Division</div>
+  <p>Selama magang di divisi System, saya berkesempatan terlibat dalam lingkungan engineering profesional yang menekankan inovasi, presisi teknis, dan pengembangan teknologi pertahanan nasional. Kontribusi utama saya adalah mengerjakan proyek Moving Armor Target System (MATS) — mulai dari dukungan arsitektur sistem, desain casing prototipe, hingga integrasi hardware dan firmware.</p>
+</div>
+
+<div class="thesis-note">
+  <b>🔗 Proyek yang saya kerjakan di sini:</b> Moving Armor Target System — lihat detail lengkap desain casing, firmware, dan hasil uji lapangan.
+  <div class="tn-links">
+    <a href="project-armor.html">🛡️ Moving Armor Target System →</a>
+  </div>
+</div>
+"""
+
 work_detail(
     "work-sasaero.html",
     "Intern — System Division",
     "PT SAS Aerosishan",
     "Jun 2025 — Agu 2025", "Bandung, Indonesia",
-    [
-        "PT SAS Aerosishan adalah perusahaan rekayasa pertahanan dan kedirgantaraan berbasis di Bandung, yang fokus pada pengembangan sistem pertahanan canggih, teknologi aerospace, otomasi, fabrikasi, precision machining, dan solusi terkait unmanned aerial vehicle.",
-        "Selama magang di divisi System, saya berkesempatan terlibat dalam lingkungan engineering profesional yang menekankan inovasi, presisi teknis, dan pengembangan teknologi pertahanan nasional.",
-        "Kontribusi utama saya adalah membantu tim engineering dalam dokumentasi teknis, dukungan proyek, dan aktivitas pengembangan sistem pada proyek Moving Armor Target System — memastikan setiap tahap pengembangan terdokumentasi dengan presisi tinggi sesuai standar industri pertahanan."
-    ],
-    ["Defense Tech", "System Development", "Dokumentasi Teknis"],
+    [],
+    ["Defense Tech", "System Development", "Prototyping"],
     [("work-mersi.html","Head of Assistant — MERSI"),
-     ("work-puiptiot.html","Research Intern — PUI-PT Intelligent Sensing-IoT"),
+     ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
      ("work-oversight.html","Head of the Oversight Commission")],
     "sasaero",
     ["Suasana kerja di divisi System",
      "Dokumentasi teknis proyek Moving Armor Target System",
-     "Lingkungan kerja PT SAS Aerosishan"]
+     "Lingkungan kerja PT SAS Aerosishan"],
+    override_content=SASAERO_CONTENT
 )
 
 work_detail(
@@ -2040,7 +2065,7 @@ work_detail(
     ],
     ["Leadership", "Governance", "Organisasi"],
     [("work-mersi.html","Head of Assistant — MERSI"),
-     ("work-puiptiot.html","Research Intern — PUI-PT Intelligent Sensing-IoT"),
+     ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan")],
     "oversight",
     ["Rapat komisi pengawasan MPM",
