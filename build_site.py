@@ -1117,7 +1117,7 @@ projects_body = """
     </a>
 
     <a class="project-card" href="project-trapgradien.html">
-      <div class="project-banner">💨</div>
+      <div class="project-banner" style="padding:0; background:#fff;"><img src="assets/projects/trapgradien-icon.png" alt="" style="width:100%; height:100%; object-fit:contain; padding:12px; box-sizing:border-box;"></div>
       <div class="project-body">
         <div class="project-title">TrapGradien Air Filtration Monitor <span class="project-chevron">→</span></div>
         <div class="project-summary">Sistem sensor IoT untuk memantau performa filtrasi udara.</div>
@@ -1126,7 +1126,7 @@ projects_body = """
     </a>
 
     <a class="project-card" href="project-armor.html">
-      <div class="project-banner">🛡️</div>
+      <div class="project-banner" style="padding:0;"><img src="assets/projects/armor-icon.jpg" alt="" style="width:100%; height:100%; object-fit:cover;"></div>
       <div class="project-body">
         <div class="project-title">Moving Armor Target System <span class="project-chevron">→</span></div>
         <div class="project-summary">Dukungan teknis untuk proyek sistem pertahanan di PT SAS Aerosishan.</div>
@@ -1675,36 +1675,159 @@ project_detail(
     thesis_note=thesis_note("Pengaruh Gerakan terhadap Pengukuran Partikulat", thesis_note_links("project-motion-effect.html"))
 )
 
+TRAPGRADIEN_CONTENT = """
+<div class="narrative-section">
+  <div class="narrative-heading">Tentang TrapGradien: Air Purifier Cerdas Berbasis AIoT</div>
+  <p>TrapGradien adalah sistem purifikasi udara cerdas yang mengombinasikan teknologi presipitator elektrostatik dengan pemantauan berbasis Artificial Intelligent-Internet of Things (AIoT). Prinsip kerjanya memanfaatkan ion positif dan negatif untuk memuati partikel polutan di udara, lalu menjebaknya dalam kolektor debu sebelum dilepaskan kembali sebagai udara bersih — dilengkapi mekanisme auto-clean pada kolektornya.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/trapgradien-design.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:4/3; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Gambar belum ditambahkan.</div>
+  </div>
+  <figcaption>Rancangan TrapGradien, mekanisme pemurnian udara, serta implementasi pemantauan kualitas udara dengan AIoT</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Peran Saya: Subsistem Sensor Pengukuran</div>
+  <p>Dalam proyek ini, saya berperan sebagai Hardware Engineer yang bertanggung jawab pada subsistem sensor pengukuran — bagian yang bertugas membaca kondisi udara secara real-time baik di sisi upstream (sebelum dimurnikan) maupun downstream (setelah dimurnikan). Parameter yang dipantau mencakup PM (partikulat), suhu (T), kelembapan (RH), VOC, dan CO2, yang datanya kemudian diproses oleh mikrokontroler sebagai dasar sistem AIoT.</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Desain Board Sensor</div>
+  <p>Saya merancang PCB khusus untuk mengintegrasikan 4 unit sensor ke dalam satu board yang terhubung ke mikrokontroler D1 mini (ESP8266). Desain ini dibuat menggunakan KiCad, mencakup pengaturan jalur sinyal, antarmuka komunikasi antar-sensor, serta penempatan antena untuk konektivitas WiFi.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/trapgradien-pcb.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/10; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Gambar belum ditambahkan.</div>
+  </div>
+  <figcaption>Layout PCB board sensor TrapGradien (KiCad) — integrasi 4 sensor dengan mikrokontroler D1 mini</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Arsitektur AIoT: Dari Sensor ke Dashboard</div>
+  <p>Data yang terbaca dari board sensor dikirim melalui WiFi ke router/modem, diteruskan ke cloud server via HTTP, lalu ditampilkan pada antarmuka pengguna (aplikasi/dashboard) yang bisa diakses secara real-time.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/trapgradien-dashboard.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Gambar belum ditambahkan.</div>
+  </div>
+  <figcaption>Dashboard monitoring TrapGradien secara real-time — Lab P320</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Metodologi Pengembangan: Diagram-V 2 Tahun</div>
+  <p>Pengembangan TrapGradien mengikuti kerangka Diagram-V selama dua tahun penelitian. Tahun pertama (2025) difokuskan pada rancang-bangun dan validasi di lingkungan laboratorium — mulai dari kebutuhan sistem, desain, pembangunan sub-sistem, hingga integrasi (mencapai TKT 4). Tahun kedua (2026) berfokus pada validasi dan demonstrasi sistem di lingkungan yang relevan, hingga mencapai TKT 6.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/trapgradien-vdiagram.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Gambar belum ditambahkan.</div>
+  </div>
+  <figcaption>Diagram alir (diagram V) penelitian dan pengembangan TrapGradien selama 2 tahun</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Kesimpulan</div>
+  <p>Subsistem sensor pengukuran yang saya kembangkan berhasil dijalankan dan terintegrasi penuh ke dalam sistem TrapGradien — mulai dari pembacaan sensor di board, pengiriman data melalui WiFi, hingga tampil secara real-time di dashboard monitoring.</p>
+</div>
+"""
+
 project_detail(
     "project-trapgradien.html", "🧪",
     "TrapGradien Air Filtration Monitor",
-    "Research Intern", "PUI-PT Intelligent Sensing-IoT, Telkom University", "Sep 2025 — Jan 2026",
-    "Sensor IoT, Data Logging, Python",
-    [
-        "Selama menjadi Research Intern di PUI-PT Intelligent Sensing-IoT, saya terlibat dalam pengembangan dan pengujian sistem sensor berbasis IoT untuk memantau performa sistem filtrasi udara bernama TrapGradien.",
-        "Pekerjaan mencakup instalasi sensor pada unit filtrasi, pengumpulan data secara real-time, serta validasi hasil pengukuran terhadap parameter performa filtrasi yang diharapkan oleh tim riset.",
-        "Proyek ini memberi saya pengalaman langsung dalam menghadapi noise sensor di lingkungan riil dan pentingnya kalibrasi berkala pada sistem IoT jangka panjang."
-    ],
-    ["IoT","Sensor Testing","Air Filtration"],
+    "Hardware Engineer", "PUI-PT Intelligent Sensing-IoT, Telkom University", "Sep 2025 — Jan 2026",
+    "KiCad, ESP8266 (D1 mini), Sensor IoT (PM/RH/T/VOC/CO2), AIoT Dashboard",
+    [],
+    ["IoT","Hardware","PCB Design","Air Filtration"],
     [("project-aqms.html","🌫️","Wearable AQMS (Perangkat)"),
      ("project-armor.html","🛡️","Moving Armor Target System")],
-    "trapgradien"
+    "trapgradien",
+    override_content=TRAPGRADIEN_CONTENT,
+    show_banner=False
 )
+
+ARMOR_CONTENT = """
+<div class="narrative-section">
+  <div class="narrative-heading">Tentang Moving Armor Target System</div>
+  <p>Moving Armor Target System adalah proyek kolaborasi antara Telkom University dan PT SAS Aerosishan (SAS Defense) — sebuah target bergerak berbasis robot beroda rantai (tracked vehicle) yang dirancang untuk kebutuhan latihan tembak militer, mensimulasikan sasaran dinamis di lapangan tembak.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/armor-icon.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Gambar belum ditambahkan.</div>
+  </div>
+  <figcaption>Moving Armor Target System hasil pengembangan bersama Telkom University & SAS Defense, diuji di lapangan tembak Cipatat</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Peran Saya: Kontribusi pada Arsitektur Sistem</div>
+  <p>Sebagai Intern di divisi System, saya berkontribusi dalam pengembangan arsitektur sistem tingkat tinggi (system-level architecture) untuk proyek ini — memastikan setiap komponen hardware dan software yang dirancang tim saling terintegrasi dengan baik.</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Desain Casing Prototipe</div>
+  <p>Saya merancang casing prototipe untuk implementasi hardware menggunakan Autodesk Inventor dan SOLIDWORKS, dengan mempertimbangkan kelayakan fungsional (agar komponen elektronik terlindungi dan mudah diakses) sekaligus kelayakan struktural (agar tahan terhadap kondisi lapangan).</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/armor-prototype.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:4/3; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Gambar belum ditambahkan.</div>
+  </div>
+  <figcaption>Prototipe robot Moving Armor Target System yang dikembangkan</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Dukungan Firmware & Antarmuka</div>
+  <p>Selain hardware, saya turut membantu dalam pengembangan firmware serta konfigurasi tampilan antarmuka (interface display) sistem — bekerja sama dengan tim engineering untuk mengintegrasikan komponen hardware dan embedded system menjadi satu kesatuan yang berfungsi.</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Uji Coba Lapangan</div>
+  <p>Sistem ini diuji langsung di lapangan tembak, disaksikan oleh pihak TNI dan tim terkait untuk memvalidasi performa target bergerak dalam skenario latihan nyata.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/armor-test.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:4/3; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Gambar belum ditambahkan.</div>
+  </div>
+  <figcaption>Uji coba sistem di lapangan tembak, disaksikan oleh pihak TNI dan tim terkait</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Kesimpulan</div>
+  <p>Moving Armor Target System berhasil dijalankan dan didemonstrasikan langsung di lapangan tembak — membuktikan keberhasilan kolaborasi lintas tim dalam mengintegrasikan desain mekanik, hardware, firmware, dan sistem kendali menjadi satu robot target yang berfungsi penuh.</p>
+</div>
+"""
 
 project_detail(
     "project-armor.html", "🛡️",
     "Moving Armor Target System",
     "Intern — System Division", "PT SAS Aerosishan, Bandung", "Jun 2025 — Agu 2025",
-    "Dokumentasi Teknis, System Development",
-    [
-        "PT SAS Aerosishan adalah perusahaan rekayasa pertahanan dan kedirgantaraan di Bandung yang berfokus pada pengembangan sistem pertahanan canggih, teknologi aerospace, dan solusi terkait unmanned aerial vehicle.",
-        "Pada proyek Moving Armor Target System, saya membantu tim engineering dalam penyusunan dokumentasi teknis, dukungan proyek, serta aktivitas pengembangan sistem — memastikan setiap tahapan pengembangan terdokumentasi dengan presisi tinggi sesuai standar industri pertahanan.",
-        "Pengalaman ini mengasah kemampuan saya dalam bekerja di lingkungan yang menuntut ketelitian teknis tinggi dan komunikasi lintas divisi yang jelas."
-    ],
-    ["Defense Tech","System Dev","Dokumentasi"],
+    "Autodesk Inventor, SOLIDWORKS, Firmware Development, System Architecture",
+    [],
+    ["Defense Tech","System Dev","Prototyping"],
     [("project-aqms.html","🌫️","Wearable AQMS (Perangkat)"),
      ("project-trapgradien.html","🧪","TrapGradien Air Filtration Monitor")],
-    "armor"
+    "armor",
+    override_content=ARMOR_CONTENT,
+    show_banner=False
 )
 
 # ==================== WORK DETAIL PAGES ====================
