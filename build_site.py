@@ -1856,6 +1856,7 @@ CERT_CATEGORIES = [
         ("Digital Learning — Study Group", "MBC Lab, Telkom University", "Mei–Jun 2024", ["pelatihan-1"]),
         ("Certificate of Internship", "PT SAS Aero Sishan", "Jun–Agu 2025", ["pelatihan-2"]),
         ("Program MBKM — Intelligent Sensing-IoT", "PUI-PT Intelligent Sensing-IoT, Telkom University", "Sep–Des 2025", ["pelatihan-3"]),
+        ("Terminal / CMD untuk Development", "CODEPOLITAN", "Apr 2024", ["pelatihan-4"]),
     ]),
 ]
 
