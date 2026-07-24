@@ -104,6 +104,15 @@ ICONS = {
 <path d="M31,14 L42,24 L31,34" {_C}/>
 <line x1="27" y1="11" x2="21" y2="37" {_C}/>
 </svg>''',
+"leadership": f'''<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<circle cx="24" cy="10" r="6" {_C}/>
+<circle cx="9" cy="35" r="5" {_C}/>
+<circle cx="39" cy="35" r="5" {_C}/>
+<line x1="24" y1="16" x2="10" y2="30" {_C}/>
+<line x1="24" y1="16" x2="38" y2="30" {_C}/>
+<line x1="24" y1="16" x2="24" y2="30" {_C}/>
+<line x1="10" y1="30" x2="38" y2="30" {_C}/>
+</svg>''',
 }
 
 def write_icons():
@@ -1014,13 +1023,14 @@ work_body = """
   <a class="exp-item" href="work-oversight.html">
     <div class="exp-date mono">AUG 2025 —<br>JAN 2026</div>
     <div>
-      <div class="exp-role">Head of the Oversight Commission</div>
-      <div class="exp-org">Engineering Physics Representative Council, Telkom University</div>
+      <div class="exp-role">Leader of Commission II</div>
+      <div class="exp-org">Student Representative Council (MPM), Telkom University</div>
       <div class="exp-desc"><ul>
-        <li>Memimpin komisi pengawasan dalam evaluasi kinerja organisasi eksekutif mahasiswa.</li>
+        <li>Led a team of 2 to oversee HMTF's governance and performance across 5 departments, 3 bureaus, 2 BSO, and the core executive board.</li>
       </ul></div>
       <div class="exp-highlight-row">
-        <div class="exp-highlight"><div class="h-num">1</div><div class="h-label">Komisi Dipimpin</div></div>
+        <div class="exp-highlight"><div class="h-num">11</div><div class="h-label">Bodies Supervised</div></div>
+        <div class="exp-highlight"><div class="h-num">2</div><div class="h-label">Team Members Led</div></div>
       </div>
       <span class="exp-more">Baca detail lengkap →</span>
     </div>
@@ -1119,6 +1129,15 @@ skills_body = """
       <div class="skill-name">Pemrograman C</div>
       <div class="skill-desc">Algoritma dasar hingga pengembangan program berbasis struct & file handling</div>
       <div class="tag-wrap"><span class="tag">C Programming</span><span class="tag">Struct</span><span class="tag">File Handling</span></div>
+    </div>
+    <div class="skill-card" data-skill-name="Leadership &amp; Organizational Management"
+      data-story="Terbentuk lewat dua peran kepemimpinan berbeda: memimpin Komisi II di MPM yang mengawasi tata kelola HMTF, dan sebagai Koordinator Asisten di Laboratorium MERSI yang memimpin 11 asisten."
+      data-tools='[{"name":"Team Leadership","level":"Mahir"},{"name":"Organizational Governance","level":"Mahir"},{"name":"Strategic Evaluation","level":"Menengah"}]'
+      data-related='[{"title":"Leader of Commission II — MPM","url":"work-oversight.html"},{"title":"Head of Assistant — MERSI","url":"work-mersi.html"}]'>
+      <img class="skill-icon-img" src="assets/icons/leadership.svg" alt="">
+      <div class="skill-name">Leadership &amp; Organizational Management</div>
+      <div class="skill-desc">Memimpin tim, mengawasi tata kelola organisasi, dan evaluasi kinerja strategis</div>
+      <div class="tag-wrap"><span class="tag">Team Leadership</span><span class="tag">Governance</span><span class="tag">Evaluation</span></div>
     </div>
   </div>
 </div>
@@ -2101,7 +2120,7 @@ work_detail(
     ["Leadership", "Instrumentation", "Teaching Assistant"],
     [("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
-     ("work-oversight.html","Head of the Oversight Commission"),
+     ("work-oversight.html","Leader of Commission II"),
      ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory"),
      ("work-daskom.html","Practicum Assistant — Basic Computing Laboratory")],
     "mersi",
@@ -2148,7 +2167,7 @@ work_detail(
     ["Hardware", "IoT", "PCB Design"],
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
-     ("work-oversight.html","Head of the Oversight Commission"),
+     ("work-oversight.html","Leader of Commission II"),
      ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory"),
      ("work-daskom.html","Practicum Assistant — Basic Computing Laboratory")],
     "puiptiot",
@@ -2195,7 +2214,7 @@ work_detail(
     ["Defense Tech", "System Development", "Prototyping"],
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
-     ("work-oversight.html","Head of the Oversight Commission"),
+     ("work-oversight.html","Leader of Commission II"),
      ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory"),
      ("work-daskom.html","Practicum Assistant — Basic Computing Laboratory")],
     "sasaero",
@@ -2205,17 +2224,68 @@ work_detail(
     override_content=SASAERO_CONTENT
 )
 
+OVERSIGHT_CONTENT = """
+<div class="narrative-figure">
+  <img src="assets/work/mpm-logo.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-height:160px;">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:1/1; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Logo not added yet.</div>
+  </div>
+  <figcaption>Majelis Perwakilan Mahasiswa (Student Representative Council), HMTF Telkom University</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">About the Student Representative Council (MPM)</div>
+  <p>The Student Representative Council (MPM) is the legislative body of Himpunan Mahasiswa Teknik Fisika (HMTF) at Telkom University, responsible for representing students, overseeing student organizations, evaluating organizational performance, and upholding transparent and accountable student governance.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/work/oversight-profile.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:3/4; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Photo not added yet.</div>
+  </div>
+  <figcaption>Rendy Ryan Renaldi — Leader of Commission II, MPM Unitel 2025/2026</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">My Role: Leader of Commission II</div>
+  <p>I served as Leader of Commission II under the Student Representative Council (MPM), leading a team of 2 members to oversee the governance and performance of HMTF.</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Scope of Supervision</div>
+  <p>Commission II's oversight covered the full structure of HMTF's organization:</p>
+  <ul class="narrative-list">
+    <li><b>5 departments</b></li>
+    <li><b>3 bureaus</b></li>
+    <li><b>2 semi-autonomous bodies (BSO)</b></li>
+    <li><b>The core executive board</b></li>
+  </ul>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/work/oversight-council.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:3/4; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Photo not added yet.</div>
+  </div>
+  <figcaption>Full team of the Student Representative Council (MPM), School of Electrical Engineering, Telkom University</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Periodic Evaluation & Strategic Recommendations</div>
+  <p>I conducted periodic evaluations, ensured accountability, and provided strategic recommendations to improve organizational effectiveness and compliance across all supervised bodies.</p>
+</div>
+"""
+
 work_detail(
     "work-oversight.html",
-    "Head of the Oversight Commission",
-    "Engineering Physics Representative Council (MPM), Telkom University",
+    "Leader of Commission II",
+    "Student Representative Council (MPM), Telkom University",
     "Aug 2025 — Jan 2026", "Bandung, Indonesia",
-    [
-        "Student Representative Council (MPM) adalah badan legislatif mahasiswa di Telkom University, bertanggung jawab mewakili mahasiswa, mengawasi organisasi mahasiswa, mengevaluasi kinerja organisasi, dan mendukung tata kelola mahasiswa yang transparan dan akuntabel.",
-        "Sebagai Head of the Oversight Commission, saya memimpin komisi pengawasan dalam mengevaluasi kinerja organisasi eksekutif mahasiswa, serta mengoordinasikan anggota komisi untuk melakukan monitoring organisasi dan peninjauan kinerja secara berkala.",
-        "Peran ini mengasah kemampuan saya dalam kepemimpinan, tata kelola organisasi, dan komunikasi lintas divisi — di luar konteks teknis, tapi tetap relevan sebagai bekal kerja tim di lingkungan profesional."
-    ],
-    ["Leadership", "Governance", "Organisasi"],
+    [],
+    ["Leadership", "Governance", "Organizational Oversight"],
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
@@ -2224,7 +2294,8 @@ work_detail(
     "oversight",
     ["Rapat komisi pengawasan MPM",
      "Evaluasi kinerja organisasi mahasiswa",
-     "Kegiatan Engineering Physics Representative Council"]
+     "Kegiatan Engineering Physics Representative Council"],
+    override_content=OVERSIGHT_CONTENT
 )
 
 PRAKTIKUM_CONTENT = """
@@ -2307,7 +2378,7 @@ work_detail(
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
-     ("work-oversight.html","Head of the Oversight Commission"),
+     ("work-oversight.html","Leader of Commission II"),
      ("work-daskom.html","Practicum Assistant — Basic Computing Laboratory")],
     "praktikum",
     ["Dokumentasi setelah kegiatan praktikum",
@@ -2391,7 +2462,7 @@ work_detail(
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
-     ("work-oversight.html","Head of the Oversight Commission"),
+     ("work-oversight.html","Leader of Commission II"),
      ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory")],
     "daskom",
     ["Foto bersama praktikan",
