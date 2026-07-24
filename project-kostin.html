@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Practicum Assistant — Rendy Ryan Renaldi</title>
+<title>Kost-In: Sistem Manajemen Sewa Kos — Rendy Ryan Renaldi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -513,9 +513,9 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
   </a>
   <nav>
       <a class="" href="index.html">HOME</a>
-      <a class="active" href="work.html">WORK HISTORY</a>
+      <a class="" href="work.html">WORK HISTORY</a>
       <a class="" href="skills.html">SKILLS</a>
-      <a class="" href="projects.html">PROJECTS</a>
+      <a class="active" href="projects.html">PROJECTS</a>
       <a class="" href="certificates.html">CERTIFICATES</a>
       
   </nav>
@@ -525,94 +525,72 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
 <main>
 
 <div class="page-header">
-  <a class="back-link" href="work.html">← Kembali ke Work History</a>
-  <div class="section-title">Practicum Assistant</div>
+  <a class="back-link" href="projects.html">← Kembali ke Projects</a>
+  
+  <div class="section-title">Kost-In: Sistem Manajemen Sewa Kos</div>
 </div>
 
 <div class="detail-meta">
-  <div><div class="k">ORGANISASI</div><div class="v">Instrumentation System Laboratory, Telkom University</div></div>
-  <div><div class="k">LOKASI</div><div class="v">Bandung, Indonesia</div></div>
-  <div><div class="k">DURASI</div><div class="v">Jun 2024 — Jul 2025</div></div>
+  <div><div class="k">ROLE</div><div class="v">Pengembang (Proyek Rekrutmen)</div></div>
+  <div><div class="k">ORGANISASI</div><div class="v">Basic Computing Laboratory, Telkom University</div></div>
+  <div><div class="k">DURASI</div><div class="v">Apr 2023</div></div>
+  <div><div class="k">TOOLS</div><div class="v">C, Struct, File Handling</div></div>
 </div>
 
 
+
+
 <div class="narrative-figure">
-  <img src="assets/work/lab-sismen-logo.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-height:140px;">
-  <div class="photo-placeholder" style="position:relative; aspect-ratio:1/1; display:none;">
+  <img src="assets/projects/kostin-logo.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-height:200px; background:#fff;">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
     <div class="ph-icon">🖼️</div>
     <div class="ph-text">Logo belum ditambahkan.</div>
   </div>
-  <figcaption>Logo Instrumentation System Laboratory (Lab Sismen), Telkom University</figcaption>
+  <figcaption>Kost-In — Sistem Manajemen Sewa Kos</figcaption>
+</div>
+<div class="narrative-section">
+  <div class="narrative-heading">Latar Belakang: Proyek Rekrutmen Asisten</div>
+  <p>Kost-In adalah program manajemen sewa kos berbasis C yang saya buat sebagai bagian dari proses rekrutmen menjadi Asisten Praktikum di Basic Computing Laboratory (Daskom). Program ini mensimulasikan sistem pengelolaan kos dari dua sisi sekaligus: pemilik kos (admin) dan penyewa (user), lengkap dengan alur pemesanan hingga pembayaran.</p>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Tentang Instrumentation System Laboratory</div>
-  <p>Instrumentation System Laboratory adalah laboratorium di Telkom University tempat praktikum-praktikum dasar kelistrikan dan elektronika diselenggarakan untuk mahasiswa Teknik Fisika dan program studi terkait.</p>
+  <div class="narrative-heading">Fitur Sisi Admin: Manajemen Kos</div>
+  <p>Sebagai admin (pemilik kos), pengguna dapat:</p>
+  <ul class="narrative-list">
+    <li><b>Melihat Akun Terdaftar</b> — memantau seluruh user yang sudah mendaftar di sistem.</li>
+    <li><b>List Pemesanan Kamar</b> — melihat daftar kamar yang sudah dipesan beserta status ketersediaannya.</li>
+    <li><b>Atur Waktu Reminder Pembayaran</b> — mengatur pengingat jatuh tempo pembayaran sewa.</li>
+    <li><b>Input Harga</b> — menentukan harga sewa untuk tiap tipe kamar.</li>
+  </ul>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Peran Saya: Asisten Divisi Praktikum</div>
-  <p>Sebagai Asisten Divisi Praktikum, saya bertanggung jawab menyiapkan seluruh materi pendukung kegiatan praktikum — mulai dari menyusun <b>Modul</b>, <b>Jurnal</b>, <b>Tugas Pendahuluan</b>, hingga <b>Technical Report</b> untuk setiap sesi praktikum yang berjalan.</p>
-</div>
-
-<div class="narrative-figure">
-  <img src="assets/work/praktikum-tim.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
-    <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Foto belum ditambahkan.</div>
-  </div>
-  <figcaption>Tim keseluruhan asisten praktikum</figcaption>
+  <div class="narrative-heading">Fitur Sisi User: Pencarian & Pemesanan Kamar</div>
+  <p>Sebagai user (penyewa), pengguna dapat mendaftar (register) atau masuk (login), lalu:</p>
+  <ul class="narrative-list">
+    <li><b>Memilih tipe kamar</b> — Premium atau Biasa, dengan opsi langganan laundry.</li>
+    <li><b>Memilih tipe kos</b> — Kost Campur, Kost Laki-laki, atau Kost Perempuan.</li>
+    <li><b>Mengecek total biaya</b> dan memilih opsi pembayaran — BCA, BRI, atau QRIS.</li>
+    <li><b>Memberi ulasan</b> setelah menyewa, yang bisa dilihat oleh calon penyewa lain sebelum memesan.</li>
+  </ul>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Cakupan Praktikum: 190 Praktikan</div>
-  <p>Saya mengajar tiga praktikum sekaligus — <b>Rangkaian Listrik</b>, <b>Elektronika Dasar</b>, dan <b>Elektronika Digital</b> — dengan total keseluruhan <b>190 mahasiswa praktikan</b> yang saya bimbing selama masa kontrak 1 tahun 2 bulan (Jun 2024 – Jul 2025).</p>
-</div>
-
-<div class="narrative-figure">
-  <img src="assets/work/praktikum-kegiatan.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
-    <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Foto belum ditambahkan.</div>
-  </div>
-  <figcaption>Dokumentasi setelah kegiatan praktikum</figcaption>
-</div>
-
-<div class="narrative-section">
-  <div class="narrative-heading">Training of Trainers (ToT)</div>
-  <p>Sebelum setiap sesi praktikum dimulai, saya turut ambil bagian dalam Training of Trainers (ToT) — sesi latihan pembelajaran bagi para asisten agar penyampaian materi ke praktikan konsisten dan berkualitas.</p>
-</div>
-
-<div class="narrative-figure">
-  <img src="assets/work/praktikum-tot.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-  <div class="photo-placeholder" style="position:relative; aspect-ratio:4/3; display:none;">
-    <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Foto belum ditambahkan.</div>
-  </div>
-  <figcaption>Kegiatan Training of Trainers (ToT) sebelum praktikum dimulai</figcaption>
+  <div class="narrative-heading">Teknologi & Implementasi</div>
+  <p>Program ini dibangun sepenuhnya dengan bahasa C, memanfaatkan <b>struct</b> untuk menyimpan data akun dan kamar, serta <b>file handling</b> untuk menyimpan data secara persisten antar sesi. Seluruh alur interaksi dirancang berbasis menu (menu-driven console interface) dengan sistem login berlapis untuk admin dan user.</p>
 </div>
 
 <div class="narrative-section">
   <div class="narrative-heading">Kesimpulan</div>
-  <p>Selama masa kontrak, saya berhasil turut menyelesaikan seluruh rangkaian praktikum untuk angkatan 2023 hingga tuntas — memastikan seluruh 190 praktikan mendapatkan bimbingan yang konsisten mulai dari modul pertama, tugas pendahuluan, jurnal praktikum, hingga penyusunan technical report di akhir sesi.</p>
+  <p>Kost-In berhasil menunjukkan pemahaman saya terhadap konsep pemrograman C secara menyeluruh — mulai dari struct, file handling, hingga perancangan alur logika program yang kompleks dengan banyak peran dan skenario pengguna. Proyek ini menjadi salah satu portofolio kunci yang mengantarkan saya diterima sebagai Asisten Praktikum di Basic Computing Laboratory.</p>
 </div>
 
-<div class="thesis-note">
-  <b>📄 Sertifikat terkait:</b> Asisten Praktikum Rangkaian Listrik & Asisten Praktikum Elektronika — lihat di halaman Certificates, kategori "Mengajar & Laboratorium".
-  <div class="tn-links">
-    <a href="certificates.html">📜 Lihat Sertifikat →</a>
-  </div>
-</div>
-
-<div class="tag-row" style="margin-top:20px;"><span class="tag-amber">Teaching</span><span class="tag-amber">Electronics</span><span class="tag-amber">Practicum Division</span></div>
+<div class="tag-row" style="margin-top:20px;"><span class="tag-amber">C Programming</span><span class="tag-amber">Struct</span><span class="tag-amber">File Handling</span><span class="tag-amber">Console App</span></div>
 
 <div class="other-projects">
-  <div class="label">PENGALAMAN LAINNYA</div>
-  <a class="project-card" href="work-mersi.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:0.88rem; font-weight:600;">Head of Assistant — MERSI</span></div></a>
-    <a class="project-card" href="work-puiptiot.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:0.88rem; font-weight:600;">Hardware Engineer — PUI-PT Intelligent Sensing-IoT</span></div></a>
-    <a class="project-card" href="work-sasaero.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:0.88rem; font-weight:600;">Intern — PT SAS Aerosishan</span></div></a>
-    <a class="project-card" href="work-oversight.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:0.88rem; font-weight:600;">Head of the Oversight Commission</span></div></a>
-    <a class="project-card" href="work-daskom.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:0.88rem; font-weight:600;">Practicum Assistant — Basic Computing Laboratory</span></div></a>
+  <div class="label">PROYEK LAINNYA</div>
+  <a class="project-card" href="work-daskom.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">💻</span><span style="font-size:0.88rem; font-weight:600;">Practicum Assistant — Basic Computing Laboratory</span></div></a>
+    <a class="project-card" href="project-trapgradien.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🧪</span><span style="font-size:0.88rem; font-weight:600;">TrapGradien Air Filtration Monitor</span></div></a>
     
 </div>
 

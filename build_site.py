@@ -99,6 +99,11 @@ ICONS = {
 <circle cx="98" cy="38" r="11" fill="none" stroke="{ICON_STROKE}" stroke-width="2"/>
 <path d="M92,38 L96,43 L105,32" fill="none" stroke="{ICON_STROKE}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>''',
+"code": f'''<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M17,14 L6,24 L17,34" {_C}/>
+<path d="M31,14 L42,24 L31,34" {_C}/>
+<line x1="27" y1="11" x2="21" y2="37" {_C}/>
+</svg>''',
 }
 
 def write_icons():
@@ -867,7 +872,7 @@ index_body = f"""
   </p>
   <div class="stat-row">
     <div class="stat"><div class="stat-num">3.30</div><div class="stat-label mono">IPK / 4.00</div></div>
-    <div class="stat"><div class="stat-num">5</div><div class="stat-label mono">PENGALAMAN KERJA</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label mono">PENGALAMAN KERJA</div></div>
     <div class="stat"><div class="stat-num">11</div><div class="stat-label mono">ASISTEN DIBIMBING</div></div>
     <div class="stat"><div class="stat-num">2026</div><div class="stat-label mono">EXPECTED GRADUATE</div></div>
   </div>
@@ -1037,6 +1042,24 @@ work_body = """
       <span class="exp-more">Baca detail lengkap →</span>
     </div>
   </a>
+
+  <a class="exp-item" href="work-daskom.html">
+    <div class="exp-date mono">JUN 2023 —<br>JUN 2024</div>
+    <div>
+      <div class="exp-role">Practicum Assistant</div>
+      <div class="exp-org">Basic Computing Laboratory, Telkom University</div>
+      <div class="exp-desc"><ul>
+        <li>Mengajar algoritma dan pemrograman C dasar melalui 11 modul praktikum, bekerja sama dengan 92 asisten lain.</li>
+        <li>Tergabung dalam divisi Rules & Discipline Committee yang memimpin jalannya shift praktikum.</li>
+      </ul></div>
+      <div class="exp-highlight-row">
+        <div class="exp-highlight"><div class="h-num">240</div><div class="h-label">Praktikan Diajar</div></div>
+        <div class="exp-highlight"><div class="h-num">92</div><div class="h-label">Rekan Asisten</div></div>
+        <div class="exp-highlight"><div class="h-num">11</div><div class="h-label">Modul Diajarkan</div></div>
+      </div>
+      <span class="exp-more">Baca detail lengkap →</span>
+    </div>
+  </a>
 </div>
 """
 with open(f"{OUT}/work.html","w") as f:
@@ -1087,6 +1110,15 @@ skills_body = """
       <div class="skill-name">Data &amp; Dokumentasi</div>
       <div class="skill-desc">Analisis data, validasi sistem, dan dokumentasi teknis</div>
       <div class="tag-wrap"><span class="tag">Data Analysis</span><span class="tag">System Validation</span><span class="tag">Tech Docs</span></div>
+    </div>
+    <div class="skill-card" data-skill-name="Pemrograman C"
+      data-story="Terasah sejak menjadi Asisten Praktikum di Basic Computing Laboratory (Daskom), mengajarkan algoritma & pemrograman C dasar ke ratusan praktikan, lalu diterapkan langsung lewat pengembangan program Kost-In."
+      data-tools='[{"name":"C Programming","level":"Mahir"},{"name":"Struct & File Handling","level":"Mahir"},{"name":"Algoritma & Struktur Data","level":"Mahir"}]'
+      data-related='[{"title":"Practicum Assistant — Basic Computing Laboratory","url":"work-daskom.html"},{"title":"Kost-In: Room Rental Management System","url":"project-kostin.html"}]'>
+      <img class="skill-icon-img" src="assets/icons/code.svg" alt="">
+      <div class="skill-name">Pemrograman C</div>
+      <div class="skill-desc">Algoritma dasar hingga pengembangan program berbasis struct & file handling</div>
+      <div class="tag-wrap"><span class="tag">C Programming</span><span class="tag">Struct</span><span class="tag">File Handling</span></div>
     </div>
   </div>
 </div>
@@ -1168,6 +1200,15 @@ projects_body = """
         <div class="project-title">Moving Armor Target System <span class="project-chevron">→</span></div>
         <div class="project-summary">Dukungan teknis untuk proyek sistem pertahanan di PT SAS Aerosishan.</div>
         <div class="tag-row"><span class="tag-amber">Defense Tech</span><span class="tag-amber">System Dev</span></div>
+      </div>
+    </a>
+
+    <a class="project-card" href="project-kostin.html">
+      <div class="project-banner" style="padding:0; background:#fff;"><img src="assets/projects/kostin-logo.png" alt="" style="width:100%; height:100%; object-fit:contain; padding:14px; box-sizing:border-box;"></div>
+      <div class="project-body">
+        <div class="project-title">Kost-In: Sistem Manajemen Sewa Kos <span class="project-chevron">→</span></div>
+        <div class="project-summary">Program C untuk manajemen kos — dari sisi admin (pemilik kos) maupun user (penyewa).</div>
+        <div class="tag-row"><span class="tag-amber">C Programming</span><span class="tag-amber">Struct</span></div>
       </div>
     </a>
   </div>
@@ -1867,6 +1908,67 @@ project_detail(
     show_banner=False
 )
 
+KOSTIN_CONTENT = """
+<div class="narrative-figure">
+  <img src="assets/projects/kostin-logo.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-height:200px; background:#fff;">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Logo belum ditambahkan.</div>
+  </div>
+  <figcaption>Kost-In — Sistem Manajemen Sewa Kos</figcaption>
+</div>
+<div class="narrative-section">
+  <div class="narrative-heading">Latar Belakang: Proyek Rekrutmen Asisten</div>
+  <p>Kost-In adalah program manajemen sewa kos berbasis C yang saya buat sebagai bagian dari proses rekrutmen menjadi Asisten Praktikum di Basic Computing Laboratory (Daskom). Program ini mensimulasikan sistem pengelolaan kos dari dua sisi sekaligus: pemilik kos (admin) dan penyewa (user), lengkap dengan alur pemesanan hingga pembayaran.</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Fitur Sisi Admin: Manajemen Kos</div>
+  <p>Sebagai admin (pemilik kos), pengguna dapat:</p>
+  <ul class="narrative-list">
+    <li><b>Melihat Akun Terdaftar</b> — memantau seluruh user yang sudah mendaftar di sistem.</li>
+    <li><b>List Pemesanan Kamar</b> — melihat daftar kamar yang sudah dipesan beserta status ketersediaannya.</li>
+    <li><b>Atur Waktu Reminder Pembayaran</b> — mengatur pengingat jatuh tempo pembayaran sewa.</li>
+    <li><b>Input Harga</b> — menentukan harga sewa untuk tiap tipe kamar.</li>
+  </ul>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Fitur Sisi User: Pencarian & Pemesanan Kamar</div>
+  <p>Sebagai user (penyewa), pengguna dapat mendaftar (register) atau masuk (login), lalu:</p>
+  <ul class="narrative-list">
+    <li><b>Memilih tipe kamar</b> — Premium atau Biasa, dengan opsi langganan laundry.</li>
+    <li><b>Memilih tipe kos</b> — Kost Campur, Kost Laki-laki, atau Kost Perempuan.</li>
+    <li><b>Mengecek total biaya</b> dan memilih opsi pembayaran — BCA, BRI, atau QRIS.</li>
+    <li><b>Memberi ulasan</b> setelah menyewa, yang bisa dilihat oleh calon penyewa lain sebelum memesan.</li>
+  </ul>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Teknologi & Implementasi</div>
+  <p>Program ini dibangun sepenuhnya dengan bahasa C, memanfaatkan <b>struct</b> untuk menyimpan data akun dan kamar, serta <b>file handling</b> untuk menyimpan data secara persisten antar sesi. Seluruh alur interaksi dirancang berbasis menu (menu-driven console interface) dengan sistem login berlapis untuk admin dan user.</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Kesimpulan</div>
+  <p>Kost-In berhasil menunjukkan pemahaman saya terhadap konsep pemrograman C secara menyeluruh — mulai dari struct, file handling, hingga perancangan alur logika program yang kompleks dengan banyak peran dan skenario pengguna. Proyek ini menjadi salah satu portofolio kunci yang mengantarkan saya diterima sebagai Asisten Praktikum di Basic Computing Laboratory.</p>
+</div>
+"""
+
+project_detail(
+    "project-kostin.html", "🏠",
+    "Kost-In: Sistem Manajemen Sewa Kos",
+    "Pengembang (Proyek Rekrutmen)", "Basic Computing Laboratory, Telkom University", "Apr 2023",
+    "C, Struct, File Handling",
+    [],
+    ["C Programming","Struct","File Handling","Console App"],
+    [("work-daskom.html","💻","Practicum Assistant — Basic Computing Laboratory"),
+     ("project-trapgradien.html","🧪","TrapGradien Air Filtration Monitor")],
+    "kostin",
+    override_content=KOSTIN_CONTENT,
+    show_banner=False
+)
+
 # ==================== WORK DETAIL PAGES ====================
 def work_detail(filename, role, org, duration, location, paragraphs, tags, other, slug, captions, override_content=None):
     others_html = ""
@@ -2000,7 +2102,8 @@ work_detail(
     [("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
      ("work-oversight.html","Head of the Oversight Commission"),
-     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory")],
+     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory"),
+     ("work-daskom.html","Practicum Assistant — Basic Computing Laboratory")],
     "mersi",
     ["Sesi pendampingan praktikum di Laboratorium MERSI",
      "Briefing dan koordinasi tim asisten laboratorium",
@@ -2046,7 +2149,8 @@ work_detail(
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
      ("work-oversight.html","Head of the Oversight Commission"),
-     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory")],
+     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory"),
+     ("work-daskom.html","Practicum Assistant — Basic Computing Laboratory")],
     "puiptiot",
     ["Instalasi sensor pada unit filtrasi TrapGradien",
      "Pengambilan data sensor secara real-time",
@@ -2092,7 +2196,8 @@ work_detail(
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
      ("work-oversight.html","Head of the Oversight Commission"),
-     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory")],
+     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory"),
+     ("work-daskom.html","Practicum Assistant — Basic Computing Laboratory")],
     "sasaero",
     ["Suasana kerja di divisi System",
      "Dokumentasi teknis proyek Moving Armor Target System",
@@ -2114,7 +2219,8 @@ work_detail(
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
-     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory")],
+     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory"),
+     ("work-daskom.html","Practicum Assistant — Basic Computing Laboratory")],
     "oversight",
     ["Rapat komisi pengawasan MPM",
      "Evaluasi kinerja organisasi mahasiswa",
@@ -2201,12 +2307,97 @@ work_detail(
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
-     ("work-oversight.html","Head of the Oversight Commission")],
+     ("work-oversight.html","Head of the Oversight Commission"),
+     ("work-daskom.html","Practicum Assistant — Basic Computing Laboratory")],
     "praktikum",
     ["Dokumentasi setelah kegiatan praktikum",
      "Tim keseluruhan asisten praktikum",
      "Kegiatan Training of Trainers (ToT)"],
     override_content=PRAKTIKUM_CONTENT
+)
+
+DASKOM_CONTENT = """
+<div class="narrative-figure">
+  <img src="assets/work/daskom-logo.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-height:160px;">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:1/1; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Logo belum ditambahkan.</div>
+  </div>
+  <figcaption>Logo Basic Computing Laboratory (Daskom), Telkom University</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Tentang Basic Computing Laboratory</div>
+  <p>Basic Computing Laboratory (Laboratorium Dasar Komputer) adalah laboratorium praktikum di bawah School of Electrical Engineering, Telkom University. Lab ini menyediakan praktikum dasar algoritma dan pemrograman C untuk mahasiswa Teknik Elektro, Teknik Fisika, Teknik Telekomunikasi, dan Teknik Biomedis.</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Peran Saya: Asisten Praktikum</div>
+  <p>Sebagai Asisten Praktikum, saya bekerja sama dengan <b>92 asisten</b> lain untuk mengajar dan membimbing total <b>240 praktikan</b> dalam praktikum algoritma dan pemrograman C.</p>
+  <p style="margin-top:16px;">Materi praktikum yang saya ajarkan mencakup 11 modul:</p>
+  <ul class="narrative-list">
+    <li>Modul 1 — Instalasi IDE dan Pengantar Algoritma</li>
+    <li>Modul 2 — Tipe Data dan Komponen Algoritma</li>
+    <li>Modul 3 — Percabangan</li>
+    <li>Modul 4 — Perulangan</li>
+    <li>Modul 5 — Fungsi</li>
+    <li>Modul 6 — Array</li>
+    <li>Modul 7 — Sorting</li>
+    <li>Modul 8 — Searching</li>
+    <li>Modul 9 — Algoritma Rekursif</li>
+    <li>Modul 10 — File Handling</li>
+    <li>Modul 11 — Teknis Dasar Penulisan Laporan</li>
+  </ul>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/work/daskom-praktikan.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Foto belum ditambahkan.</div>
+  </div>
+  <figcaption>Foto bersama praktikan setelah menyelesaikan seluruh modul praktikum</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Divisi Khusus: Rules & Discipline Committee</div>
+  <p>Selain mengajar, saya juga tergabung dalam divisi <b>Rules & Discipline Committee</b> — bertugas menegakkan aturan selama praktikum berlangsung serta memimpin jalannya setiap shift praktikum agar tertib dan sesuai standar laboratorium.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/work/daskom-divisi.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:4/3; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Foto belum ditambahkan.</div>
+  </div>
+  <figcaption>Tim Rules & Discipline Committee</figcaption>
+</div>
+
+<div class="thesis-note">
+  <b>🔗 Proyek yang berkaitan:</b> Kost-In — program manajemen sewa kos berbasis C yang saya buat sebagai bagian dari proses rekrutmen menjadi asisten di sini.
+  <div class="tn-links">
+    <a href="project-kostin.html">🏠 Kost-In: Sistem Manajemen Sewa Kos →</a>
+  </div>
+</div>
+"""
+
+work_detail(
+    "work-daskom.html",
+    "Practicum Assistant",
+    "Basic Computing Laboratory, Telkom University",
+    "Jun 2023 — Jun 2024", "Bandung, Indonesia",
+    [],
+    ["Teaching", "C Programming", "Algorithm"],
+    [("work-mersi.html","Head of Assistant — MERSI"),
+     ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
+     ("work-sasaero.html","Intern — PT SAS Aerosishan"),
+     ("work-oversight.html","Head of the Oversight Commission"),
+     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory")],
+    "daskom",
+    ["Foto bersama praktikan",
+     "Tim Rules & Discipline Committee",
+     "Kegiatan praktikum Daskom"],
+    override_content=DASKOM_CONTENT
 )
 
 # ==================== CERTIFICATES.HTML ====================

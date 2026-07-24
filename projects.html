@@ -152,6 +152,10 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .exp-desc{color:var(--text); opacity:0.8; font-size:0.9rem; line-height:1.7;}
 .exp-desc ul{margin:8px 0 0 18px;}
 .exp-desc li{margin-bottom:4px;}
+.exp-highlight-row{display:flex; gap:20px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px dashed var(--grid-line);}
+.exp-highlight{font-family:'IBM Plex Mono', monospace;}
+.exp-highlight .h-num{color:var(--cyan); font-weight:700; font-size:1.1rem;}
+.exp-highlight .h-label{color:var(--muted); font-size:0.62rem; letter-spacing:0.05em; text-transform:uppercase;}
 @media(max-width:640px){.exp-item{grid-template-columns:1fr; gap:6px;}}
 
 /* SKILLS PAGE */
@@ -579,6 +583,15 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
         <div class="project-title">Moving Armor Target System <span class="project-chevron">→</span></div>
         <div class="project-summary">Dukungan teknis untuk proyek sistem pertahanan di PT SAS Aerosishan.</div>
         <div class="tag-row"><span class="tag-amber">Defense Tech</span><span class="tag-amber">System Dev</span></div>
+      </div>
+    </a>
+
+    <a class="project-card" href="project-kostin.html">
+      <div class="project-banner" style="padding:0; background:#fff;"><img src="assets/projects/kostin-logo.png" alt="" style="width:100%; height:100%; object-fit:contain; padding:14px; box-sizing:border-box;"></div>
+      <div class="project-body">
+        <div class="project-title">Kost-In: Sistem Manajemen Sewa Kos <span class="project-chevron">→</span></div>
+        <div class="project-summary">Program C untuk manajemen kos — dari sisi admin (pemilik kos) maupun user (penyewa).</div>
+        <div class="tag-row"><span class="tag-amber">C Programming</span><span class="tag-amber">Struct</span></div>
       </div>
     </a>
   </div>
