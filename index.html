@@ -529,7 +529,7 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
     <div class="splash-bar-outer"><div class="splash-bar-inner" id="splashBar"></div></div>
     <div class="splash-name-wrap" id="splashName">
       <div class="splash-name">Rendy Ryan Renaldi</div>
-      <div class="splash-name-sub">Engineering Physics Portfolio</div>
+      <div class="splash-name-sub">Rendy Ryan Renaldi Portfolio</div>
     </div>
   </div>
 
@@ -594,6 +594,7 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
     <div class="stat"><div class="stat-num">11</div><div class="stat-label mono">ASSISTANTS LED</div></div>
     <div class="stat"><div class="stat-num">2026</div><div class="stat-label mono">EXPECTED GRADUATE</div></div>
   </div>
+  <p style="margin-top:14px; font-size:0.82rem; color:var(--muted); font-family:'IBM Plex Mono', monospace;">* Currently awaiting Yudisium (graduation exam) results — my official Certificate of Completion (Surat Keterangan Lulus) will be issued once confirmed.</p>
   <div class="cta-row">
     <a class="cta-btn" href="projects.html">View Featured Projects →</a>
     <a class="cta-btn ghost" href="work.html">Work History</a>
@@ -602,71 +603,95 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
 </section>
 
 <section class="section">
-  <div class="section-eyebrow">02 / NOTES</div>
-  <div class="section-title">Latest Articles</div>
-  <p class="section-intro">Short notes on instrumentation, IoT, and other technical topics I've been learning.</p>
+  <div class="section-eyebrow">02 / WORK</div>
+  <div class="section-title">Latest Projects</div>
+  <p class="section-intro">A quick look at the projects I've built. Click any card to see the full detail page.</p>
   <div class="marquee-wrap">
     <div class="marquee-track">
-    <div class="article-card">
+    <a class="article-card" href="project-aqms.html" style="text-decoration:none; color:inherit; display:block;">
       <div class="article-icon">🌫️</div>
-      <div class="article-title">Calibrating Low-Cost Air Quality Sensors</div>
-      <div class="article-desc">Technical notes on PM2.5 sensor drift and how to correct it with simple regression.</div>
-      <div class="article-meta"><span>2026-05</span><span>•</span><span>4 min read</span></div>
-    </div>
-    <div class="article-card">
-      <div class="article-icon">🔋</div>
-      <div class="article-title">Dynamic Power Management on Wearable Devices</div>
-      <div class="article-desc">How DPM can extend battery life without sacrificing sensor accuracy.</div>
-      <div class="article-meta"><span>2026-04</span><span>•</span><span>5 min read</span></div>
-    </div>
-    <div class="article-card">
-      <div class="article-icon">📡</div>
-      <div class="article-title">Intro to Wireless Sensor Networks</div>
-      <div class="article-desc">A summary of the core WSN concepts I picked up during my research at IS-IoT.</div>
-      <div class="article-meta"><span>2026-03</span><span>•</span><span>3 min read</span></div>
-    </div>
-    <div class="article-card">
+      <div class="article-title">Wearable AQMS (Device)</div>
+      <div class="article-desc">An IoT-based wearable air quality monitoring device.</div>
+      <div class="article-meta"><span class="tag-amber">IoT</span></div>
+    </a>
+    <a class="article-card" href="project-kalibrasi.html" style="text-decoration:none; color:inherit; display:block;">
       <div class="article-icon">🧪</div>
-      <div class="article-title">Testing an Air Filtration System with Real-Time Data</div>
-      <div class="article-desc">The data validation process behind the TrapGradien system, and the challenges along the way.</div>
-      <div class="article-meta"><span>2026-02</span><span>•</span><span>6 min read</span></div>
-    </div>
-    <div class="article-card">
-      <div class="article-icon">🛠️</div>
-      <div class="article-title">A Technical Documentation Checklist from the Aerospace World</div>
-      <div class="article-desc">Documentation habits I picked up during my internship in the defense industry.</div>
-      <div class="article-meta"><span>2026-01</span><span>•</span><span>4 min read</span></div>
-    </div>
-    <div class="article-card">
+      <div class="article-title">Sensor Calibration & Data Processing</div>
+      <div class="article-desc">Calibrating 6 sensor parameters against reference instruments.</div>
+      <div class="article-meta"><span class="tag-amber">Data Analysis</span></div>
+    </a>
+    <a class="article-card" href="project-har.html" style="text-decoration:none; color:inherit; display:block;">
+      <div class="article-icon">🏃</div>
+      <div class="article-title">HAR Model Development</div>
+      <div class="article-desc">An activity classification model from IMU data (96.33% accuracy).</div>
+      <div class="article-meta"><span class="tag-amber">Machine Learning</span></div>
+    </a>
+    <a class="article-card" href="project-motion-effect.html" style="text-decoration:none; color:inherit; display:block;">
+      <div class="article-icon">📉</div>
+      <div class="article-title">Effect of Motion on Particulate Measurement</div>
+      <div class="article-desc">Deviation analysis of PM2.5/PM10 under dynamic conditions.</div>
+      <div class="article-meta"><span class="tag-amber">Data Analysis</span></div>
+    </a>
+    <a class="article-card" href="project-trapgradien.html" style="text-decoration:none; color:inherit; display:block;">
+      <div class="article-icon">🧪</div>
+      <div class="article-title">TrapGradien Air Filtration Monitor</div>
+      <div class="article-desc">An IoT sensor system for monitoring air filtration performance.</div>
+      <div class="article-meta"><span class="tag-amber">IoT</span></div>
+    </a>
+    <a class="article-card" href="project-armor.html" style="text-decoration:none; color:inherit; display:block;">
+      <div class="article-icon">🛡️</div>
+      <div class="article-title">Moving Armor Target System</div>
+      <div class="article-desc">Technical support for a defense systems project at PT SAS Aerosishan.</div>
+      <div class="article-meta"><span class="tag-amber">Defense Tech</span></div>
+    </a>
+    <a class="article-card" href="project-kostin.html" style="text-decoration:none; color:inherit; display:block;">
+      <div class="article-icon">🏠</div>
+      <div class="article-title">Kost-In: Room Rental Management System</div>
+      <div class="article-desc">A C program for kos (boarding house) management.</div>
+      <div class="article-meta"><span class="tag-amber">C Programming</span></div>
+    </a>
+    <a class="article-card" href="project-aqms.html" style="text-decoration:none; color:inherit; display:block;">
       <div class="article-icon">🌫️</div>
-      <div class="article-title">Calibrating Low-Cost Air Quality Sensors</div>
-      <div class="article-desc">Technical notes on PM2.5 sensor drift and how to correct it with simple regression.</div>
-      <div class="article-meta"><span>2026-05</span><span>•</span><span>4 min read</span></div>
-    </div>
-    <div class="article-card">
-      <div class="article-icon">🔋</div>
-      <div class="article-title">Dynamic Power Management on Wearable Devices</div>
-      <div class="article-desc">How DPM can extend battery life without sacrificing sensor accuracy.</div>
-      <div class="article-meta"><span>2026-04</span><span>•</span><span>5 min read</span></div>
-    </div>
-    <div class="article-card">
-      <div class="article-icon">📡</div>
-      <div class="article-title">Intro to Wireless Sensor Networks</div>
-      <div class="article-desc">A summary of the core WSN concepts I picked up during my research at IS-IoT.</div>
-      <div class="article-meta"><span>2026-03</span><span>•</span><span>3 min read</span></div>
-    </div>
-    <div class="article-card">
+      <div class="article-title">Wearable AQMS (Device)</div>
+      <div class="article-desc">An IoT-based wearable air quality monitoring device.</div>
+      <div class="article-meta"><span class="tag-amber">IoT</span></div>
+    </a>
+    <a class="article-card" href="project-kalibrasi.html" style="text-decoration:none; color:inherit; display:block;">
       <div class="article-icon">🧪</div>
-      <div class="article-title">Testing an Air Filtration System with Real-Time Data</div>
-      <div class="article-desc">The data validation process behind the TrapGradien system, and the challenges along the way.</div>
-      <div class="article-meta"><span>2026-02</span><span>•</span><span>6 min read</span></div>
-    </div>
-    <div class="article-card">
-      <div class="article-icon">🛠️</div>
-      <div class="article-title">A Technical Documentation Checklist from the Aerospace World</div>
-      <div class="article-desc">Documentation habits I picked up during my internship in the defense industry.</div>
-      <div class="article-meta"><span>2026-01</span><span>•</span><span>4 min read</span></div>
-    </div>
+      <div class="article-title">Sensor Calibration & Data Processing</div>
+      <div class="article-desc">Calibrating 6 sensor parameters against reference instruments.</div>
+      <div class="article-meta"><span class="tag-amber">Data Analysis</span></div>
+    </a>
+    <a class="article-card" href="project-har.html" style="text-decoration:none; color:inherit; display:block;">
+      <div class="article-icon">🏃</div>
+      <div class="article-title">HAR Model Development</div>
+      <div class="article-desc">An activity classification model from IMU data (96.33% accuracy).</div>
+      <div class="article-meta"><span class="tag-amber">Machine Learning</span></div>
+    </a>
+    <a class="article-card" href="project-motion-effect.html" style="text-decoration:none; color:inherit; display:block;">
+      <div class="article-icon">📉</div>
+      <div class="article-title">Effect of Motion on Particulate Measurement</div>
+      <div class="article-desc">Deviation analysis of PM2.5/PM10 under dynamic conditions.</div>
+      <div class="article-meta"><span class="tag-amber">Data Analysis</span></div>
+    </a>
+    <a class="article-card" href="project-trapgradien.html" style="text-decoration:none; color:inherit; display:block;">
+      <div class="article-icon">🧪</div>
+      <div class="article-title">TrapGradien Air Filtration Monitor</div>
+      <div class="article-desc">An IoT sensor system for monitoring air filtration performance.</div>
+      <div class="article-meta"><span class="tag-amber">IoT</span></div>
+    </a>
+    <a class="article-card" href="project-armor.html" style="text-decoration:none; color:inherit; display:block;">
+      <div class="article-icon">🛡️</div>
+      <div class="article-title">Moving Armor Target System</div>
+      <div class="article-desc">Technical support for a defense systems project at PT SAS Aerosishan.</div>
+      <div class="article-meta"><span class="tag-amber">Defense Tech</span></div>
+    </a>
+    <a class="article-card" href="project-kostin.html" style="text-decoration:none; color:inherit; display:block;">
+      <div class="article-icon">🏠</div>
+      <div class="article-title">Kost-In: Room Rental Management System</div>
+      <div class="article-desc">A C program for kos (boarding house) management.</div>
+      <div class="article-meta"><span class="tag-amber">C Programming</span></div>
+    </a>
     
     </div>
   </div>

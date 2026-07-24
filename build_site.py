@@ -822,23 +822,25 @@ SOCIAL_ROW = """
 </div>"""
 
 # ---------------- ARTICLES MARQUEE ----------------
-ARTICLES = [
-    ("🌫️","Calibrating Low-Cost Air Quality Sensors","Technical notes on PM2.5 sensor drift and how to correct it with simple regression.","2026-05","4 min read"),
-    ("🔋","Dynamic Power Management on Wearable Devices","How DPM can extend battery life without sacrificing sensor accuracy.","2026-04","5 min read"),
-    ("📡","Intro to Wireless Sensor Networks","A summary of the core WSN concepts I picked up during my research at IS-IoT.","2026-03","3 min read"),
-    ("🧪","Testing an Air Filtration System with Real-Time Data","The data validation process behind the TrapGradien system, and the challenges along the way.","2026-02","6 min read"),
-    ("🛠️","A Technical Documentation Checklist from the Aerospace World","Documentation habits I picked up during my internship in the defense industry.","2026-01","4 min read"),
+PROJECTS_PREVIEW = [
+    ("🌫️","Wearable AQMS (Device)","An IoT-based wearable air quality monitoring device.","IoT","project-aqms.html"),
+    ("🧪","Sensor Calibration & Data Processing","Calibrating 6 sensor parameters against reference instruments.","Data Analysis","project-kalibrasi.html"),
+    ("🏃","HAR Model Development","An activity classification model from IMU data (96.33% accuracy).","Machine Learning","project-har.html"),
+    ("📉","Effect of Motion on Particulate Measurement","Deviation analysis of PM2.5/PM10 under dynamic conditions.","Data Analysis","project-motion-effect.html"),
+    ("🧪","TrapGradien Air Filtration Monitor","An IoT sensor system for monitoring air filtration performance.","IoT","project-trapgradien.html"),
+    ("🛡️","Moving Armor Target System","Technical support for a defense systems project at PT SAS Aerosishan.","Defense Tech","project-armor.html"),
+    ("🏠","Kost-In: Room Rental Management System","A C program for kos (boarding house) management.","C Programming","project-kostin.html"),
 ]
 
-def articles_marquee():
+def projects_marquee():
     cards = ""
-    for icon, title, desc, date, read in ARTICLES * 2:  # duplicate for seamless loop
-        cards += f"""<div class="article-card">
+    for icon, title, desc, tag, url in PROJECTS_PREVIEW * 2:  # duplicate for seamless loop
+        cards += f"""<a class="article-card" href="{url}" style="text-decoration:none; color:inherit; display:block;">
       <div class="article-icon">{icon}</div>
       <div class="article-title">{title}</div>
       <div class="article-desc">{desc}</div>
-      <div class="article-meta"><span>{date}</span><span>•</span><span>{read}</span></div>
-    </div>
+      <div class="article-meta"><span class="tag-amber">{tag}</span></div>
+    </a>
     """
     return f"""<div class="marquee-wrap">
     <div class="marquee-track">
@@ -885,6 +887,7 @@ index_body = f"""
     <div class="stat"><div class="stat-num">11</div><div class="stat-label mono">ASSISTANTS LED</div></div>
     <div class="stat"><div class="stat-num">2026</div><div class="stat-label mono">EXPECTED GRADUATE</div></div>
   </div>
+  <p style="margin-top:14px; font-size:0.82rem; color:var(--muted); font-family:'IBM Plex Mono', monospace;">* Currently awaiting Yudisium (graduation exam) results — my official Certificate of Completion (Surat Keterangan Lulus) will be issued once confirmed.</p>
   <div class="cta-row">
     <a class="cta-btn" href="projects.html">View Featured Projects →</a>
     <a class="cta-btn ghost" href="work.html">Work History</a>
@@ -893,10 +896,10 @@ index_body = f"""
 </section>
 
 <section class="section">
-  <div class="section-eyebrow">02 / NOTES</div>
-  <div class="section-title">Latest Articles</div>
-  <p class="section-intro">Short notes on instrumentation, IoT, and other technical topics I've been learning.</p>
-  {articles_marquee()}
+  <div class="section-eyebrow">02 / WORK</div>
+  <div class="section-title">Latest Projects</div>
+  <p class="section-intro">A quick look at the projects I've built. Click any card to see the full detail page.</p>
+  {projects_marquee()}
 </section>
 """
 def marquee_line(word, count=14):
@@ -912,7 +915,7 @@ index_splash = f"""
     <div class="splash-bar-outer"><div class="splash-bar-inner" id="splashBar"></div></div>
     <div class="splash-name-wrap" id="splashName">
       <div class="splash-name">Rendy Ryan Renaldi</div>
-      <div class="splash-name-sub">Engineering Physics Portfolio</div>
+      <div class="splash-name-sub">Rendy Ryan Renaldi Portfolio</div>
     </div>
   </div>
 
@@ -1163,7 +1166,7 @@ projects_body = """
 <div class="page-header">
   <div class="section-eyebrow">WORKS</div>
   <div class="section-title">Featured Projects</div>
-  <p class="section-intro">Click any project to see its full detail page. The first 3 projects come from the same undergraduate thesis, split out to highlight different skills.</p>
+  <p class="section-intro">Click any project to see its full detail page.</p>
 </div>
 
 <div class="section" style="border-top:none; padding-top:10px;">
