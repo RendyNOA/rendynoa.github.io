@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pengaruh Gerakan terhadap Pengukuran Partikulat — Rendy Ryan Renaldi</title>
+<title>Effect of Motion on Particulate Measurement — Rendy Ryan Renaldi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -152,6 +152,10 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .exp-desc{color:var(--text); opacity:0.8; font-size:0.9rem; line-height:1.7;}
 .exp-desc ul{margin:8px 0 0 18px;}
 .exp-desc li{margin-bottom:4px;}
+.exp-highlight-row{display:flex; gap:20px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px dashed var(--grid-line);}
+.exp-highlight{font-family:'IBM Plex Mono', monospace;}
+.exp-highlight .h-num{color:var(--cyan); font-weight:700; font-size:1.1rem;}
+.exp-highlight .h-label{color:var(--muted); font-size:0.62rem; letter-spacing:0.05em; text-transform:uppercase;}
 @media(max-width:640px){.exp-item{grid-template-columns:1fr; gap:6px;}}
 
 /* SKILLS PAGE */
@@ -521,73 +525,73 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
 <main>
 
 <div class="page-header">
-  <a class="back-link" href="projects.html">← Kembali ke Projects</a>
+  <a class="back-link" href="projects.html">← Back to Projects</a>
   
-  <div class="section-title">Pengaruh Gerakan terhadap Pengukuran Partikulat</div>
+  <div class="section-title">Effect of Motion on Particulate Measurement</div>
 </div>
 
 <div class="detail-meta">
-  <div><div class="k">ROLE</div><div class="v">Peneliti Utama (Skripsi)</div></div>
-  <div><div class="k">ORGANISASI</div><div class="v">Telkom University</div></div>
-  <div><div class="k">DURASI</div><div class="v">Sep 2025 — Jul 2026 (Expected)</div></div>
-  <div><div class="k">TOOLS</div><div class="v">Python, Analisis Statistik, Sensor Wearable</div></div>
+  <div><div class="k">ROLE</div><div class="v">Principal Researcher (Thesis)</div></div>
+  <div><div class="k">ORGANIZATION</div><div class="v">Telkom University</div></div>
+  <div><div class="k">DURATION</div><div class="v">Sep 2025 — Jul 2026 (Expected)</div></div>
+  <div><div class="k">TOOLS</div><div class="v">Python, Statistical Analysis, Wearable Sensors</div></div>
 </div>
 
 <div class="thesis-note">
-  <b>📖 Bagian dari Tugas Akhir yang sama:</b> "Pengembangan Wearable Air Quality Monitoring System
-  dengan Integrasi Human Activity Recognition untuk Analisis Pengaruh Gerakan terhadap Pengukuran
-  Partikulat" — halaman ini fokus ke bagian <b>Pengaruh Gerakan terhadap Pengukuran Partikulat</b>. Bagian lain dari riset yang sama:
-  <div class="tn-links"><a href="project-aqms.html">🌫️ Wearable AQMS (Perangkat)</a><a href="project-kalibrasi.html">🧪 Kalibrasi Sensor & Pemrosesan Data</a><a href="project-har.html">🏃 Pengembangan Model HAR</a></div>
+  <b>📖 Part of the same undergraduate thesis:</b> "Development of a Wearable Air Quality Monitoring
+  System with Human Activity Recognition Integration for Analyzing the Effect of Motion on
+  Particulate Measurement" — this page focuses on the <b>Effect of Motion on Particulate Measurement</b> section. Other parts of the same research:
+  <div class="tn-links"><a href="project-aqms.html">🌫️ Wearable AQMS (Device)</a><a href="project-kalibrasi.html">🧪 Sensor Calibration & Data Processing</a><a href="project-har.html">🏃 HAR Model Development</a></div>
 </div>
 
 
 <div class="narrative-section">
-  <div class="narrative-heading">Latar Belakang Eksperimen: Mengapa Gerakan Berpengaruh?</div>
-  <p>Sistem Wearable AQMS dirancang untuk dipakai di tubuh pengguna, yang berarti perangkat akan terus bergerak seiring aktivitas harian. Pergerakan ini memicu perubahan orientasi, getaran mekanis, dan turbulensi aliran udara di sekitar inlet sensor partikulat (SPS30) yang mengandalkan prinsip hamburan cahaya laser. Eksperimen ini dirancang untuk menjawab satu pertanyaan kritis secara data: <b>"Apakah guncangan dari tubuh pengguna mendistorsi pembacaan tingkat polusi (PM<sub>2.5</sub> dan PM<sub>10</sub>), dan seberapa besar deviasinya?"</b></p>
+  <div class="narrative-heading">Experiment Background: Why Motion Matters</div>
+  <p>The Wearable AQMS system is designed to be worn on the body, meaning the device is constantly moving along with daily activity. This movement triggers orientation changes, mechanical vibration, and airflow turbulence around the particulate sensor inlet (SPS30), which relies on the laser light-scattering principle. This experiment was designed to answer one critical, data-driven question: <b>"Does the user's body motion distort pollution level readings (PM<sub>2.5</sub> and PM<sub>10</sub>), and how large is that deviation?"</b></p>
 </div>
 
 <div class="narrative-figure">
   <img src="assets/projects/motion-diagram.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
     <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Gambar belum ditambahkan.</div>
+    <div class="ph-text">Image not added yet.</div>
   </div>
-  <figcaption>Ilustrasi metodologi A/B Testing: Perangkat dinamis pada pengguna vs 3 perangkat statis sebagai kontrol lingkungan</figcaption>
+  <figcaption>Illustration of the A/B Testing methodology: dynamic device on the user vs. 3 static devices as an environmental control</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Metodologi Pengujian: Pendekatan Statis vs. Dinamis</div>
-  <p>Untuk mengisolasi efek gerakan dari fluktuasi polusi udara yang sebenarnya, diterapkan metode komparasi langsung (A/B Testing methodology). Perangkat dibagi menjadi dua grup:</p>
+  <div class="narrative-heading">Testing Methodology: Static vs. Dynamic Approach</div>
+  <p>To isolate the effect of motion from actual air pollution fluctuation, a direct A/B Testing methodology was applied. Devices were split into two groups:</p>
   <ul class="narrative-list">
-    <li><b>Grup Dinamis (Mobile 1 & 5):</b> Perangkat yang dikenakan di dada pengguna atau diletakkan pada alat pemutar mekanis.</li>
-    <li><b>Grup Kontrol / Statis (Mobile 3, 4, 6):</b> Tiga perangkat yang diletakkan diam pada posisi tetap untuk merepresentasikan kondisi partikulat lingkungan aktual.</li>
+    <li><b>Dynamic Group (Mobile 1 & 5):</b> Devices worn on the user's chest or mounted on a mechanical rotating rig.</li>
+    <li><b>Control / Static Group (Mobile 3, 4, 6):</b> Three devices kept stationary at a fixed position to represent actual ambient particulate conditions.</li>
   </ul>
-  <p style="margin-top:16px;">Pengujian dilakukan melalui tiga skenario berjenjang: (1) Chamber tertutup, (2) Luar Ruangan (terkontrol), dan (3) Uji Lapangan Nyata yang melibatkan aktivitas Duduk, Berjalan, Berlari, dan Berkendara (Beam).</p>
+  <p style="margin-top:16px;">Testing was carried out across three tiered scenarios: (1) an enclosed chamber, (2) a controlled outdoor setting, and (3) real field testing covering Sitting, Walking, Running, and Riding (Beam) activities.</p>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Analisis Data: Koreksi Baseline (Baseline Correction)</div>
-  <p>Dalam analisis sensor berbiaya rendah, membandingkan selisih nilai secara mentah (ΔPM = PM<sub>dinamis</sub> − PM<sub>statis</sub>) bisa menyesatkan akibat bias bawaan antar-unit sensor yang tersisa pasca-kalibrasi.</p>
-  <p style="margin-top:16px;">Sebagai analis data, anomali ini diatasi dengan menerapkan Koreksi Baseline (E = ΔPM − B). Sebelum dan sesudah pengujian, seluruh perangkat didiamkan bersama (kolokasi) untuk mencari selisih dasarnya (B). Hanya dengan memotong selisih kotor (ΔPM) dengan baseline ini, efek murni dari pergerakan dapat diekstraksi secara presisi.</p>
+  <div class="narrative-heading">Data Analysis: Baseline Correction</div>
+  <p>In low-cost sensor analysis, comparing raw value differences (ΔPM = PM<sub>dynamic</sub> − PM<sub>static</sub>) can be misleading due to inherent bias between sensor units that remains even after calibration.</p>
+  <p style="margin-top:16px;">As the data analyst, this anomaly was addressed by applying Baseline Correction (E = ΔPM − B). Before and after each test, all devices were left together (co-located) to determine their baseline offset (B). Only by subtracting this baseline from the raw difference (ΔPM) could the pure effect of motion be extracted with precision.</p>
 </div>
 
 <div class="narrative-figure">
   <img src="assets/projects/motion-formula.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:1/1; display:none;">
     <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Gambar belum ditambahkan.</div>
+    <div class="ph-text">Image not added yet.</div>
   </div>
-  <figcaption>Formula analitik untuk menetralkan bias antar-sensor menggunakan Koreksi Baseline</figcaption>
+  <figcaption>Analytical formula for neutralizing inter-sensor bias using Baseline Correction</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Hasil Analisis & Korelasi Metrik</div>
-  <p>Hasil komputasi data pasca-koreksi menunjukkan pola yang sangat menarik: kondisi dinamis (pergerakan) secara konsisten cenderung membuat perangkat membaca konsentrasi partikulat lebih rendah (deviasi negatif) dibandingkan kontrol statis.</p>
-  <p style="margin-top:16px;">Lebih lanjut, dilakukan analisis korelasi linear (Pearson's r) antara intensitas gerakan (diwakili metrik Mean Motion Index dari algoritma HAR) terhadap besaran deviasi absolut sensor |E| dalam µg/m³:</p>
+  <div class="narrative-heading">Analysis Results & Metric Correlation</div>
+  <p>The post-correction data computation revealed a very interesting pattern: dynamic conditions (movement) consistently tended to make the device read lower particulate concentrations (negative deviation) compared to the static control.</p>
+  <p style="margin-top:16px;">Further, a linear correlation analysis (Pearson's r) was performed between movement intensity (represented by the Mean Motion Index metric from the HAR algorithm) and the magnitude of the sensor's absolute deviation |E| in µg/m³:</p>
   <ul class="narrative-list">
-    <li><b>Skenario Chamber:</b> Ditemukan korelasi positif yang kuat (r = 0.863 untuk PM<sub>2.5</sub> dan r = 0.580 untuk PM<sub>10</sub>) di seluruh skema percobaan P1–P4.</li>
-    <li><b>Skenario Lapangan:</b> Korelasi positif ini tervalidasi semakin kuat seiring bertambahnya variasi aktivitas — dari r = 0.804 (PM<sub>2.5</sub>) pada Lapangan 1, hingga menguat tajam menjadi r = 0.992 (PM<sub>2.5</sub>) pada Lapangan 2. Semakin ekstrem guncangannya (seperti aktivitas Berlari), semakin besar pula penyimpangan pembacaan alat.</li>
-    <li><b>Deviasi maksimum</b> yang tercatat saat berlari mencapai rentang ~1 hingga nyaris 3 µg/m³ — angka yang cukup signifikan secara statistik meskipun masih berada di dalam margin toleransi error sensor.</li>
+    <li><b>Chamber Scenario:</b> A strong positive correlation was found (r = 0.863 for PM<sub>2.5</sub> and r = 0.580 for PM<sub>10</sub>) across all P1–P4 test schemes.</li>
+    <li><b>Field Scenario:</b> This positive correlation grew even stronger as activity variation increased — from r = 0.804 (PM<sub>2.5</sub>) in Field 1, sharpening to r = 0.992 (PM<sub>2.5</sub>) in Field 2. The more extreme the motion (such as running), the greater the deviation in the device's readings.</li>
+    <li>The <b>maximum deviation</b> recorded while running reached a range of ~1 to nearly 3 µg/m³ — a statistically significant figure, though still within the sensor's error tolerance margin.</li>
   </ul>
 </div>
 
@@ -597,33 +601,33 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
     <img src="assets/projects/motion-scatter-lapangan1.png" alt="" onerror="this.style.display='none';" style="max-width:100%; width:320px; height:auto; border:1px solid var(--grid-line); background:#fff; object-fit:contain;">
     <img src="assets/projects/motion-scatter-lapangan2.png" alt="" onerror="this.style.display='none';" style="max-width:100%; width:320px; height:auto; border:1px solid var(--grid-line); background:#fff; object-fit:contain;">
   </div>
-  <figcaption>Scatter plot korelasi antara Mean Motion Index dengan rata-rata deviasi absolut |E| — Uji Chamber dikelompokkan per skema percobaan P1–P4 (kiri), Uji Lapangan 1 (tengah) dan Uji Lapangan 2 (kanan) dikelompokkan per aktivitas (Jalan, Lari, Beam)</figcaption>
+  <figcaption>Scatter plots of the correlation between Mean Motion Index and average absolute deviation |E| — Chamber Test grouped by trial scheme P1–P4 (left), Field Test 1 (middle) and Field Test 2 (right) grouped by activity (Walking, Running, Beam)</figcaption>
 </div>
 
 <div class="stat-mini-row">
-  <div class="stat-mini"><div class="sm-num">0.992</div><div class="sm-label">r TERTINGGI PM2.5 (LAPANGAN 2)</div></div>
+  <div class="stat-mini"><div class="sm-num">0.992</div><div class="sm-label">HIGHEST r PM2.5 (FIELD 2)</div></div>
   <div class="stat-mini"><div class="sm-num">0.863</div><div class="sm-label">r PM2.5 (CHAMBER)</div></div>
-  <div class="stat-mini"><div class="sm-num">~1—3 µg/m³</div><div class="sm-label">DEVIASI MAKS SAAT LARI</div></div>
-  <div class="stat-mini"><div class="sm-num">3</div><div class="sm-label">SKENARIO PENGUJIAN</div></div>
+  <div class="stat-mini"><div class="sm-num">~1—3 µg/m³</div><div class="sm-label">MAX DEVIATION WHILE RUNNING</div></div>
+  <div class="stat-mini"><div class="sm-num">3</div><div class="sm-label">TEST SCENARIOS</div></div>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Kesimpulan Akhir Proyek</div>
-  <p>Riset ini sukses memetakan blind-spot pada instrumen wearable kualitas udara. Melalui perpaduan ilmu integrasi hardware (IoT), ekstraksi fitur Machine Learning (HAR), hingga data wrangling statistik, proyek ini membuktikan bahwa data kualitas udara personal tidak valid jika ditelan mentah-mentah tanpa memperhitungkan konteks mekanis tubuh penggunanya. Temuan data ini menjadi fondasi fundamental bagi perancangan algoritma kompensasi otomatis (adaptive filtering) untuk perangkat keras pintar di masa depan.</p>
+  <div class="narrative-heading">Final Project Conclusion</div>
+  <p>This research successfully mapped a blind spot in wearable air quality instruments. By combining hardware integration (IoT), Machine Learning feature extraction (HAR), and statistical data wrangling, this project demonstrates that personal air quality data isn't valid if taken at face value without accounting for the mechanical context of the wearer's body. These findings lay the fundamental groundwork for designing automatic compensation algorithms (adaptive filtering) for future smart wearable hardware.</p>
 </div>
 
-<div class="tag-row" style="margin-top:20px;"><span class="tag-amber">Data Analysis</span><span class="tag-amber">Statistik</span><span class="tag-amber">Python</span><span class="tag-amber">Sensor Wearable</span><span class="tag-amber">Skripsi</span></div>
+<div class="tag-row" style="margin-top:20px;"><span class="tag-amber">Data Analysis</span><span class="tag-amber">Statistics</span><span class="tag-amber">Python</span><span class="tag-amber">Wearable Sensor</span><span class="tag-amber">Thesis</span></div>
 
 <div class="other-projects">
-  <div class="label">PROYEK LAINNYA</div>
-  <a class="project-card" href="project-aqms.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🌫️</span><span style="font-size:0.88rem; font-weight:600;">Wearable AQMS (Perangkat)</span></div></a>
-    <a class="project-card" href="project-kalibrasi.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🧪</span><span style="font-size:0.88rem; font-weight:600;">Kalibrasi Sensor & Pemrosesan Data</span></div></a>
-    <a class="project-card" href="project-har.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🏃</span><span style="font-size:0.88rem; font-weight:600;">Pengembangan Model HAR</span></div></a>
+  <div class="label">OTHER PROJECTS</div>
+  <a class="project-card" href="project-aqms.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🌫️</span><span style="font-size:0.88rem; font-weight:600;">Wearable AQMS (Device)</span></div></a>
+    <a class="project-card" href="project-kalibrasi.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🧪</span><span style="font-size:0.88rem; font-weight:600;">Sensor Calibration & Data Processing</span></div></a>
+    <a class="project-card" href="project-har.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🏃</span><span style="font-size:0.88rem; font-weight:600;">HAR Model Development</span></div></a>
     
 </div>
 
 </main>
-<footer>© 2026 RENDY RYAN RENALDI — DIBANGUN DENGAN GITHUB PAGES</footer>
+<footer>© 2026 RENDY RYAN RENALDI — BUILT WITH GITHUB PAGES</footer>
 
 
 <script>

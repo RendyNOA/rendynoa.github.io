@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wearable AQMS (Perangkat) — Rendy Ryan Renaldi</title>
+<title>Wearable AQMS (Device) — Rendy Ryan Renaldi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -152,6 +152,10 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .exp-desc{color:var(--text); opacity:0.8; font-size:0.9rem; line-height:1.7;}
 .exp-desc ul{margin:8px 0 0 18px;}
 .exp-desc li{margin-bottom:4px;}
+.exp-highlight-row{display:flex; gap:20px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px dashed var(--grid-line);}
+.exp-highlight{font-family:'IBM Plex Mono', monospace;}
+.exp-highlight .h-num{color:var(--cyan); font-weight:700; font-size:1.1rem;}
+.exp-highlight .h-label{color:var(--muted); font-size:0.62rem; letter-spacing:0.05em; text-transform:uppercase;}
 @media(max-width:640px){.exp-item{grid-template-columns:1fr; gap:6px;}}
 
 /* SKILLS PAGE */
@@ -521,23 +525,23 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
 <main>
 
 <div class="page-header">
-  <a class="back-link" href="projects.html">← Kembali ke Projects</a>
+  <a class="back-link" href="projects.html">← Back to Projects</a>
   
-  <div class="section-title">Wearable AQMS (Perangkat)</div>
+  <div class="section-title">Wearable AQMS (Device)</div>
 </div>
 
 <div class="detail-meta">
-  <div><div class="k">ROLE</div><div class="v">Peneliti Utama (Skripsi)</div></div>
-  <div><div class="k">ORGANISASI</div><div class="v">Telkom University</div></div>
-  <div><div class="k">DURASI</div><div class="v">Feb 2026 — Mar 2026</div></div>
+  <div><div class="k">ROLE</div><div class="v">Principal Researcher (Thesis)</div></div>
+  <div><div class="k">ORGANIZATION</div><div class="v">Telkom University</div></div>
+  <div><div class="k">DURATION</div><div class="v">Feb 2026 — Mar 2026</div></div>
   <div><div class="k">TOOLS</div><div class="v">ESP32, ESP8266, SPS30, ENS160, AHT21, Nicla Sense ME (Bosch IMU)</div></div>
 </div>
 
 <div class="thesis-note">
-  <b>📖 Bagian dari Tugas Akhir yang sama:</b> "Pengembangan Wearable Air Quality Monitoring System
-  dengan Integrasi Human Activity Recognition untuk Analisis Pengaruh Gerakan terhadap Pengukuran
-  Partikulat" — halaman ini fokus ke bagian <b>Wearable AQMS (Perangkat)</b>. Bagian lain dari riset yang sama:
-  <div class="tn-links"><a href="project-kalibrasi.html">🧪 Kalibrasi Sensor & Pemrosesan Data</a><a href="project-har.html">🏃 Pengembangan Model HAR</a><a href="project-motion-effect.html">📉 Pengaruh Gerakan terhadap Pengukuran Partikulat</a></div>
+  <b>📖 Part of the same undergraduate thesis:</b> "Development of a Wearable Air Quality Monitoring
+  System with Human Activity Recognition Integration for Analyzing the Effect of Motion on
+  Particulate Measurement" — this page focuses on the <b>Wearable AQMS (Device)</b> section. Other parts of the same research:
+  <div class="tn-links"><a href="project-kalibrasi.html">🧪 Sensor Calibration & Data Processing</a><a href="project-har.html">🏃 HAR Model Development</a><a href="project-motion-effect.html">📉 Effect of Motion on Particulate Measurement</a></div>
 </div>
 
 
@@ -545,33 +549,33 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
   <img src="assets/projects/aqms-wear.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:9/16; display:none;">
     <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Foto belum ditambahkan.</div>
+    <div class="ph-text">Photo not added yet.</div>
   </div>
-  <figcaption>Penggunaan Wearable AQMS secara ergonomis pada area dada</figcaption>
+  <figcaption>Ergonomic use of the Wearable AQMS on the chest area</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Mengapa Membangun Wearable AQMS?</div>
-  <p>Sistem pemantau kualitas udara (AQMS) konvensional umumnya bersifat stasioner, sehingga memiliki keterbatasan dalam merekam variasi polusi berskala mikro. Resolusi spasial yang rendah ini menyebabkan eksposur polutan aktual yang dihirup individu saat beraktivitas sering kali tidak terdeteksi. Untuk menjawab tantangan tersebut, dikembangkanlah sistem AQMS berbasis wearable yang dirancang ergonomis untuk ditempatkan pada area dada pengguna — posisi ideal yang paling merepresentasikan eksposur udara pernapasan sekaligus mampu menangkap getaran mekanis tubuh saat bergerak.</p>
+  <div class="narrative-heading">Why Build a Wearable AQMS?</div>
+  <p>Conventional air quality monitoring systems (AQMS) are typically stationary, which limits their ability to capture micro-scale pollution variation. This low spatial resolution means the actual pollutant exposure an individual breathes in during daily activity often goes undetected. To address this, a wearable-based AQMS was developed, ergonomically designed to sit on the user's chest — the ideal position to represent breathing-zone air exposure while also capturing the body's mechanical vibration during movement.</p>
 </div>
 
 <div class="narrative-figure">
   <img src="assets/projects/aqms-wiring.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/10; display:none;">
     <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Foto belum ditambahkan.</div>
+    <div class="ph-text">Photo not added yet.</div>
   </div>
-  <figcaption>Diagram wiring integrasi mikrokontroler dengan multi-sensor dan sistem daya</figcaption>
+  <figcaption>Wiring diagram for integrating the microcontroller with multiple sensors and the power system</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Integrasi Hardware & Arsitektur IoT</div>
-  <p>Perangkat ini bukanlah sekadar pembaca sensor biasa, melainkan sistem IoT terintegrasi yang mengakuisisi data multivariabel secara serentak. Otak komputasi sentral menggunakan mikrokontroler Wemos (ESP32/ESP8266) yang dihubungkan dengan skema wiring terpadu ke berbagai komponen:</p>
+  <div class="narrative-heading">Hardware Integration & IoT Architecture</div>
+  <p>This device isn't just a simple sensor reader — it's a fully integrated IoT system that acquires multivariable data simultaneously. The central compute unit is a Wemos microcontroller (ESP32/ESP8266), wired into an integrated scheme connecting several components:</p>
   <ul class="narrative-list">
-    <li><b>SPS30:</b> Mengukur partikulat PM2.5 dan PM10 secara presisi.</li>
-    <li><b>ENS160 & AHT2x:</b> Mengukur gas volatil (TVOC), estimasi CO2, suhu, dan kelembapan lingkungan.</li>
-    <li><b>Bosch IMU (Nicla Sense ME):</b> Mengakuisisi data akselerometer dan giroskop untuk deteksi pola gerakan tubuh pengguna.</li>
-    <li><b>Power Management:</b> Menggunakan baterai Li-Po 3.7V 2000mAh yang dilengkapi modul charger/boost terintegrasi untuk menyuplai daya sistem secara mandiri (portabel).</li>
+    <li><b>SPS30:</b> Precisely measures PM2.5 and PM10 particulates.</li>
+    <li><b>ENS160 & AHT2x:</b> Measures volatile gases (TVOC), estimated CO2, ambient temperature, and humidity.</li>
+    <li><b>Bosch IMU (Nicla Sense ME):</b> Acquires accelerometer and gyroscope data to detect the user's body movement patterns.</li>
+    <li><b>Power Management:</b> A 3.7V 2000mAh Li-Po battery with an integrated charger/boost module to power the system independently (portable).</li>
   </ul>
 </div>
 
@@ -579,59 +583,59 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
   <img src="assets/projects/aqms-device.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:3/4; display:none;">
     <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Foto belum ditambahkan.</div>
+    <div class="ph-text">Photo not added yet.</div>
   </div>
-  <figcaption>Form-factor perangkat Wearable AQMS yang ringkas dan portabel</figcaption>
+  <figcaption>The Wearable AQMS's compact, portable form-factor</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Fabrikasi Perangkat & Edge Computing</div>
-  <p>Dari segi desain fisik, seluruh komponen dirakit dan difabrikasi ke dalam casing (form-factor) berukuran saku yang kokoh dan ringan. Ukurannya yang compact memastikan aliran udara tetap optimal masuk ke inlet sensor tanpa membebani pergerakan pengguna.</p>
-  <p style="margin-top:16px;">Salah satu inovasi engineering pada sistem ini adalah efisiensi transmisi data. Alih-alih mengirimkan ratusan data mentah IMU per detik yang menguras baterai, perangkat melakukan edge computing (komputasi lokal) untuk menghitung Motion Index secara real-time. Sistem hanya mengekstraksi dan mengirimkan nilai ringkasan pergerakan bersamaan dengan data kualitas udara, menghemat bandwidth komunikasi secara signifikan.</p>
+  <div class="narrative-heading">Device Fabrication & Edge Computing</div>
+  <p>On the physical design side, all components were assembled and fabricated into a sturdy, lightweight, pocket-sized casing (form-factor). Its compact size keeps airflow into the sensor inlet optimal without weighing down the user's movement.</p>
+  <p style="margin-top:16px;">One of the key engineering innovations in this system is data transmission efficiency. Instead of sending hundreds of raw IMU data points per second — which would drain the battery — the device performs edge computing (local computation) to calculate the Motion Index in real time. The system only extracts and transmits a summary movement value alongside the air quality data, significantly saving on communication bandwidth.</p>
 </div>
 
 <div class="narrative-figure">
   <img src="assets/projects/aqms-dashboard.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/6; display:none;">
     <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Foto belum ditambahkan.</div>
+    <div class="ph-text">Photo not added yet.</div>
   </div>
-  <figcaption>Dashboard pemantauan kualitas udara Cloud Gradien secara real-time</figcaption>
+  <figcaption>Real-time Cloud Gradien air quality monitoring dashboard</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Pemantauan Data Real-Time (IoT Dashboard)</div>
-  <p>Data yang berhasil diakuisisi oleh perangkat kemudian ditransmisikan menuju antarmuka cloud (Cloud Gradien) untuk pemantauan visual. Dashboard ini menampilkan seluruh metrik krusial secara real-time — mulai dari Air Quality Index (AQI), tingkat PM2.5, TVOC, hingga status suhu, kelembapan, dan persentase sisa baterai (Battery Criticality).</p>
+  <div class="narrative-heading">Real-Time Data Monitoring (IoT Dashboard)</div>
+  <p>Data acquired by the device is transmitted to a cloud interface (Cloud Gradien) for visual monitoring. This dashboard displays all critical metrics in real time — from the Air Quality Index (AQI), PM2.5 levels, and TVOC, to temperature status, humidity, and remaining battery percentage (Battery Criticality).</p>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Kesimpulan & Dampak Proyek</div>
-  <p>Proyek ini membuktikan keberhasilan pembangunan arsitektur IoT end-to-end — mulai dari perancangan hardware, skema kelistrikan (power management), transmisi cloud, hingga visualisasi antarmuka. Dengan memindahkan beban komputasi IMU langsung ke dalam perangkat (edge computing), Wearable AQMS ini mampu beroperasi secara efisien, portabel, dan stabil saat digunakan oleh pengguna di lapangan, sehingga dapat melakukan pengukuran paparan polusi udara yang lebih personal.</p>
+  <div class="narrative-heading">Conclusion & Project Impact</div>
+  <p>This project demonstrates the successful development of an end-to-end IoT architecture — from hardware design and power management wiring, to cloud transmission and interface visualization. By moving the IMU computation load directly onto the device (edge computing), this Wearable AQMS is able to operate efficiently, portably, and stably when used by people in the field, enabling a more personal measurement of air pollution exposure.</p>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Dokumentasi</div>
+  <div class="narrative-heading">Documentation</div>
 </div>
-<div class="photo-carousel" data-captions="[&quot;Proses soldering dan perakitan komponen elektronik perangkat&quot;, &quot;Dokumentasi pengguna yang telah memakai Wearable AQMS saat pengujian lapangan&quot;]">
+<div class="photo-carousel" data-captions="[&quot;Soldering and assembling the device's electronic components&quot;, &quot;Documentation of users wearing the Wearable AQMS during field testing&quot;]">
   <div class="carousel-viewport" style="aspect-ratio:16/9;">
     <div class="carousel-track"><div class="carousel-slide"><img src="assets/projects/aqms-solder.jpg" alt="" style="object-fit:contain;"></div><div class="carousel-slide"><img src="assets/projects/aqms-users.jpg" alt="" style="object-fit:contain;"></div></div>
-    <button class="carousel-btn prev" aria-label="Sebelumnya">‹</button>
-    <button class="carousel-btn next" aria-label="Selanjutnya">›</button>
+    <button class="carousel-btn prev" aria-label="Previous">‹</button>
+    <button class="carousel-btn next" aria-label="Next">›</button>
   </div>
   <div class="carousel-dots"><button class="carousel-dot active"></button><button class="carousel-dot"></button></div>
   <div class="carousel-caption"></div>
 </div>
-<div class="tag-row" style="margin-top:20px;"><span class="tag-amber">IoT</span><span class="tag-amber">Wearable</span><span class="tag-amber">Embedded Systems</span><span class="tag-amber">Skripsi</span></div>
+<div class="tag-row" style="margin-top:20px;"><span class="tag-amber">IoT</span><span class="tag-amber">Wearable</span><span class="tag-amber">Embedded Systems</span><span class="tag-amber">Thesis</span></div>
 
 <div class="other-projects">
-  <div class="label">PROYEK LAINNYA</div>
+  <div class="label">OTHER PROJECTS</div>
   <a class="project-card" href="project-trapgradien.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🧪</span><span style="font-size:0.88rem; font-weight:600;">TrapGradien Air Filtration Monitor</span></div></a>
     <a class="project-card" href="project-armor.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🛡️</span><span style="font-size:0.88rem; font-weight:600;">Moving Armor Target System</span></div></a>
     
 </div>
 
 </main>
-<footer>© 2026 RENDY RYAN RENALDI — DIBANGUN DENGAN GITHUB PAGES</footer>
+<footer>© 2026 RENDY RYAN RENALDI — BUILT WITH GITHUB PAGES</footer>
 
 
 <script>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pengembangan Model HAR — Rendy Ryan Renaldi</title>
+<title>HAR Model Development — Rendy Ryan Renaldi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -152,6 +152,10 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .exp-desc{color:var(--text); opacity:0.8; font-size:0.9rem; line-height:1.7;}
 .exp-desc ul{margin:8px 0 0 18px;}
 .exp-desc li{margin-bottom:4px;}
+.exp-highlight-row{display:flex; gap:20px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px dashed var(--grid-line);}
+.exp-highlight{font-family:'IBM Plex Mono', monospace;}
+.exp-highlight .h-num{color:var(--cyan); font-weight:700; font-size:1.1rem;}
+.exp-highlight .h-label{color:var(--muted); font-size:0.62rem; letter-spacing:0.05em; text-transform:uppercase;}
 @media(max-width:640px){.exp-item{grid-template-columns:1fr; gap:6px;}}
 
 /* SKILLS PAGE */
@@ -521,23 +525,23 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
 <main>
 
 <div class="page-header">
-  <a class="back-link" href="projects.html">← Kembali ke Projects</a>
+  <a class="back-link" href="projects.html">← Back to Projects</a>
   
-  <div class="section-title">Pengembangan Model HAR</div>
+  <div class="section-title">HAR Model Development</div>
 </div>
 
 <div class="detail-meta">
-  <div><div class="k">ROLE</div><div class="v">Peneliti Utama (Skripsi)</div></div>
-  <div><div class="k">ORGANISASI</div><div class="v">Telkom University</div></div>
-  <div><div class="k">DURASI</div><div class="v">Sep 2025 — Jul 2026 (Expected)</div></div>
+  <div><div class="k">ROLE</div><div class="v">Principal Researcher (Thesis)</div></div>
+  <div><div class="k">ORGANIZATION</div><div class="v">Telkom University</div></div>
+  <div><div class="k">DURATION</div><div class="v">Sep 2025 — Jul 2026 (Expected)</div></div>
   <div><div class="k">TOOLS</div><div class="v">Python, scikit-learn, pandas, numpy</div></div>
 </div>
 
 <div class="thesis-note">
-  <b>📖 Bagian dari Tugas Akhir yang sama:</b> "Pengembangan Wearable Air Quality Monitoring System
-  dengan Integrasi Human Activity Recognition untuk Analisis Pengaruh Gerakan terhadap Pengukuran
-  Partikulat" — halaman ini fokus ke bagian <b>Pengembangan Model HAR</b>. Bagian lain dari riset yang sama:
-  <div class="tn-links"><a href="project-aqms.html">🌫️ Wearable AQMS (Perangkat)</a><a href="project-kalibrasi.html">🧪 Kalibrasi Sensor & Pemrosesan Data</a><a href="project-motion-effect.html">📉 Pengaruh Gerakan terhadap Pengukuran Partikulat</a></div>
+  <b>📖 Part of the same undergraduate thesis:</b> "Development of a Wearable Air Quality Monitoring
+  System with Human Activity Recognition Integration for Analyzing the Effect of Motion on
+  Particulate Measurement" — this page focuses on the <b>HAR Model Development</b> section. Other parts of the same research:
+  <div class="tn-links"><a href="project-aqms.html">🌫️ Wearable AQMS (Device)</a><a href="project-kalibrasi.html">🧪 Sensor Calibration & Data Processing</a><a href="project-motion-effect.html">📉 Effect of Motion on Particulate Measurement</a></div>
 </div>
 
 
@@ -545,55 +549,55 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
   <img src="assets/projects/har-aktivitas.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/12; display:none;">
     <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Gambar belum ditambahkan.</div>
+    <div class="ph-text">Image not added yet.</div>
   </div>
-  <figcaption>Empat aktivitas utama pengguna yang diklasifikasikan oleh sistem: Duduk, Berjalan, Berlari, dan Berkendara/Beam</figcaption>
+  <figcaption>The four main user activities classified by the system: Sitting, Walking, Running, and Riding/Beam</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Konteks & Tujuan Pemodelan</div>
-  <p>Dalam pemantauan kualitas udara berbasis wearable, akurasi sensor sangat rentan terhadap gangguan pergerakan (motion artifact). Untuk meneliti seberapa besar guncangan tubuh memengaruhi pembacaan polusi, sistem harus bisa mengenali sedang apa pengguna saat itu secara otomatis. Oleh karena itu, dikembangkanlah model Machine Learning berbasis Human Activity Recognition (HAR) untuk mengklasifikasikan 4 aktivitas utama pengguna: Duduk, Berjalan, Berlari, dan Berkendara (Beam).</p>
+  <div class="narrative-heading">Context & Modeling Goal</div>
+  <p>In wearable-based air quality monitoring, sensor accuracy is highly vulnerable to motion artifacts. To study how much body movement affects pollution readings, the system needs to automatically recognize what the user is doing at any given moment. That's why a Machine Learning model based on Human Activity Recognition (HAR) was developed to classify 4 main user activities: Sitting, Walking, Running, and Riding (Beam).</p>
 </div>
 
 <div class="narrative-figure">
   <img src="assets/projects/har-windowing.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
     <div class="ph-icon">📊</div>
-    <div class="ph-text">Gambar belum ditambahkan.</div>
+    <div class="ph-text">Image not added yet.</div>
   </div>
-  <figcaption>Visualisasi teknik Windowing pada sinyal sensor mentah, dengan ukuran window 2 detik dan overlap 50%</figcaption>
+  <figcaption>Visualization of the Windowing technique on raw sensor signals, using a 2-second window with 50% overlap</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Akuisisi Data & Windowing</div>
-  <p>Data dikumpulkan dari sensor Inertial Measurement Unit (IMU) — akselerometer dan giroskop 6-sumbu — yang diuji coba pada 10 subjek berbeda. Pemrosesan data mentah time-series (lebih dari 101.000 sampel) tidak bisa langsung diumpankan ke model ML; analisis gerakan manusia membutuhkan segmentasi waktu. Data dipotong menggunakan teknik Windowing (2 detik, overlap 50%), mengubah sinyal mentah berfrekuensi 20Hz menjadi 5.039 baris dataset terstruktur yang siap diekstraksi.</p>
+  <div class="narrative-heading">Data Acquisition & Windowing</div>
+  <p>Data was collected from an Inertial Measurement Unit (IMU) — a 6-axis accelerometer and gyroscope — tested on 10 different subjects. Raw time-series data (over 101,000 samples) can't be fed directly into an ML model; analyzing human movement requires time segmentation. The data was sliced using a Windowing technique (2 seconds, 50% overlap), turning the raw 20Hz signal into 5,039 rows of structured dataset ready for extraction.</p>
 </div>
 
 <div class="narrative-section">
   <div class="narrative-heading">Feature Engineering & Motion Index</div>
-  <p>Untuk mengubah sinyal gelombang menjadi data yang bisa dipelajari algoritma, dilakukan ekstraksi 73 fitur statistik (seperti Mean, Standar Deviasi, Variance, RMS, Skewness, dan Kurtosis) dari setiap window.</p>
-  <p style="margin-top:16px;">Selain fitur standar, diekstraksi pula satu metrik krusial bernama Motion Index — dihitung dari standar deviasi magnitudo akselerometer (acceleration magnitude). Nilai ini berfungsi mengukur intensitas gerakan secara numerik (Duduk = ~0.10, Berlari = ~19.54), yang nantinya dikorelasikan langsung dengan tingkat error pembacaan sensor kualitas udara.</p>
+  <p>To turn waveform signals into data an algorithm can learn from, 73 statistical features (such as Mean, Standard Deviation, Variance, RMS, Skewness, and Kurtosis) were extracted from every window.</p>
+  <p style="margin-top:16px;">Beyond the standard features, one crucial metric was also extracted — the Motion Index — calculated from the standard deviation of acceleration magnitude. This value numerically measures movement intensity (Sitting = ~0.10, Running = ~19.54), which is later correlated directly with the air quality sensor's reading error rate.</p>
 </div>
 
 <div class="narrative-figure">
   <img src="assets/projects/har-akurasi.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
     <div class="ph-icon">📊</div>
-    <div class="ph-text">Grafik belum ditambahkan.</div>
+    <div class="ph-text">Chart not added yet.</div>
   </div>
-  <figcaption>Perbandingan akurasi algoritma klasifikasi (Random Forest, Decision Tree, KNN) pada tahap evaluasi</figcaption>
+  <figcaption>Classification algorithm accuracy comparison (Random Forest, Decision Tree, KNN) at the evaluation stage</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Pelatihan Model: Mencari Titik Temu Akurasi & Efisiensi Komputasi</div>
-  <p>Pelatihan model dilakukan menggunakan beberapa algoritma klasifikasi: Random Forest, Decision Tree, dan K-Nearest Neighbors. Random Forest menghasilkan akurasi tertinggi (98.51%), namun untuk perangkat IoT (edge computing), model tersebut terlalu kompleks dan memakan banyak memori. Efisiensi sistem menjadi prioritas, sehingga Decision Tree (DT) akhirnya dipilih sebagai algoritma final. Meskipun akurasinya sedikit di bawah RF, DT masih mencatat performa luar biasa di angka 96.33% dengan keunggulan struktur model yang jauh lebih ringan dan mudah dikonversi menjadi logika if-else di dalam bahasa C/C++ mikrokontroler.</p>
+  <div class="narrative-heading">Model Training: Balancing Accuracy & Computational Efficiency</div>
+  <p>Model training used several classification algorithms: Random Forest, Decision Tree, and K-Nearest Neighbors. Random Forest produced the highest accuracy (98.51%), but for an IoT device (edge computing), that model was too complex and memory-hungry. System efficiency was the priority, so Decision Tree (DT) was ultimately chosen as the final algorithm. Although its accuracy is slightly below RF's, DT still delivered outstanding performance at 96.33%, with the advantage of a far lighter model structure that's easy to convert into if-else logic within the microcontroller's C/C++ code.</p>
 </div>
 
 <div class="stat-mini-row">
-  <div class="stat-mini"><div class="sm-num">96.33%</div><div class="sm-label">AKURASI DECISION TREE</div></div>
-  <div class="stat-mini"><div class="sm-num">73</div><div class="sm-label">FITUR PER WINDOW</div></div>
-  <div class="stat-mini"><div class="sm-num">5.039</div><div class="sm-label">WINDOW DATASET</div></div>
-  <div class="stat-mini"><div class="sm-num">0.96</div><div class="sm-label">RATA-RATA F1-SCORE</div></div>
+  <div class="stat-mini"><div class="sm-num">96.33%</div><div class="sm-label">DECISION TREE ACCURACY</div></div>
+  <div class="stat-mini"><div class="sm-num">73</div><div class="sm-label">FEATURES PER WINDOW</div></div>
+  <div class="stat-mini"><div class="sm-num">5,039</div><div class="sm-label">DATASET WINDOWS</div></div>
+  <div class="stat-mini"><div class="sm-num">0.96</div><div class="sm-label">AVERAGE F1-SCORE</div></div>
 </div>
 
 <div class="narrative-figure">
@@ -601,32 +605,32 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
     <img src="assets/projects/har-confusion.png" alt="" onerror="this.style.display='none';" style="max-width:100%; width:360px; height:auto; border:1px solid var(--grid-line); background:#fff; object-fit:contain;">
     <img src="assets/projects/har-feature-importance.png" alt="" onerror="this.style.display='none';" style="max-width:100%; width:360px; height:auto; border:1px solid var(--grid-line); background:#fff; object-fit:contain;">
   </div>
-  <figcaption>Confusion Matrix dari model Decision Tree (kiri) dan Grafik Feature Importance yang menunjukkan fitur paling berpengaruh (kanan)</figcaption>
+  <figcaption>Confusion Matrix for the Decision Tree model (left) and the Feature Importance chart showing the most influential features (right)</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Evaluasi Metrik & Feature Importance</div>
-  <p>Evaluasi ketat dilakukan menggunakan Classification Report (Precision, Recall, F1-Score rata-rata di angka 0.96) dan analisis Confusion Matrix. Model terbukti sangat tangguh membedakan aktivitas kontras (Duduk vs Lari), meskipun terdapat sedikit irisan prediksi (false positive) antara aktivitas Jalan dan Berkendara karena kemiripan getaran mekanis pada beberapa momen.</p>
-  <p style="margin-top:16px;">Melalui analisis Feature Importance, tervalidasi bahwa fitur acc_mag_var (Variansi Magnitudo Akselerometer) memegang bobot terbesar dalam pengambilan keputusan algoritma, membuktikan bahwa fluktuasi percepatan adalah prediktor terbaik untuk mengenali pola manusia.</p>
+  <div class="narrative-heading">Metric Evaluation & Feature Importance</div>
+  <p>A rigorous evaluation was carried out using a Classification Report (Precision, Recall, F1-Score averaging 0.96) and Confusion Matrix analysis. The model proved highly robust at distinguishing contrasting activities (Sitting vs Running), though there was some prediction overlap (false positives) between Walking and Riding due to similar mechanical vibration at certain moments.</p>
+  <p style="margin-top:16px;">Feature Importance analysis confirmed that the acc_mag_var feature (Accelerometer Magnitude Variance) carried the greatest weight in the algorithm's decision-making, proving that acceleration fluctuation is the best predictor for recognizing human movement patterns.</p>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Kesimpulan</div>
-  <p>Pengembangan model HAR ini sukses mentransformasi data pergerakan kasar menjadi konteks aktivitas (Movement Category) dan intensitas gerak (Motion Index) secara real-time. Keberhasilan deploy model Machine Learning yang ringan ke dalam mikrokontroler membuktikan bahwa kecerdasan buatan dapat berjalan mulus di perangkat wearable, sekaligus membuka jalan untuk memvalidasi kualitas data sensor udara di tahap analisis akhir.</p>
+  <div class="narrative-heading">Conclusion</div>
+  <p>This HAR model development successfully transformed raw movement data into activity context (Movement Category) and motion intensity (Motion Index) in real time. Successfully deploying a lightweight Machine Learning model onto the microcontroller proves that artificial intelligence can run smoothly on a wearable device, while also paving the way to validate air sensor data quality in the final analysis stage.</p>
 </div>
 
 <div class="tag-row" style="margin-top:20px;"><span class="tag-amber">Machine Learning</span><span class="tag-amber">Data Analysis</span><span class="tag-amber">Python</span><span class="tag-amber">Feature Engineering</span><span class="tag-amber">Classification</span></div>
 
 <div class="other-projects">
-  <div class="label">PROYEK LAINNYA</div>
-  <a class="project-card" href="project-aqms.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🌫️</span><span style="font-size:0.88rem; font-weight:600;">Wearable AQMS (Perangkat)</span></div></a>
-    <a class="project-card" href="project-kalibrasi.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🧪</span><span style="font-size:0.88rem; font-weight:600;">Kalibrasi Sensor & Pemrosesan Data</span></div></a>
-    <a class="project-card" href="project-motion-effect.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">📉</span><span style="font-size:0.88rem; font-weight:600;">Pengaruh Gerakan terhadap Pengukuran Partikulat</span></div></a>
+  <div class="label">OTHER PROJECTS</div>
+  <a class="project-card" href="project-aqms.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🌫️</span><span style="font-size:0.88rem; font-weight:600;">Wearable AQMS (Device)</span></div></a>
+    <a class="project-card" href="project-kalibrasi.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🧪</span><span style="font-size:0.88rem; font-weight:600;">Sensor Calibration & Data Processing</span></div></a>
+    <a class="project-card" href="project-motion-effect.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">📉</span><span style="font-size:0.88rem; font-weight:600;">Effect of Motion on Particulate Measurement</span></div></a>
     
 </div>
 
 </main>
-<footer>© 2026 RENDY RYAN RENALDI — DIBANGUN DENGAN GITHUB PAGES</footer>
+<footer>© 2026 RENDY RYAN RENALDI — BUILT WITH GITHUB PAGES</footer>
 
 
 <script>

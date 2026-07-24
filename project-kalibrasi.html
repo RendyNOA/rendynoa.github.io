@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kalibrasi Sensor & Pemrosesan Data Lingkungan — Rendy Ryan Renaldi</title>
+<title>Environmental Sensor Calibration & Data Processing — Rendy Ryan Renaldi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -152,6 +152,10 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .exp-desc{color:var(--text); opacity:0.8; font-size:0.9rem; line-height:1.7;}
 .exp-desc ul{margin:8px 0 0 18px;}
 .exp-desc li{margin-bottom:4px;}
+.exp-highlight-row{display:flex; gap:20px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px dashed var(--grid-line);}
+.exp-highlight{font-family:'IBM Plex Mono', monospace;}
+.exp-highlight .h-num{color:var(--cyan); font-weight:700; font-size:1.1rem;}
+.exp-highlight .h-label{color:var(--muted); font-size:0.62rem; letter-spacing:0.05em; text-transform:uppercase;}
 @media(max-width:640px){.exp-item{grid-template-columns:1fr; gap:6px;}}
 
 /* SKILLS PAGE */
@@ -521,23 +525,23 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
 <main>
 
 <div class="page-header">
-  <a class="back-link" href="projects.html">← Kembali ke Projects</a>
+  <a class="back-link" href="projects.html">← Back to Projects</a>
   
-  <div class="section-title">Kalibrasi Sensor & Pemrosesan Data Lingkungan</div>
+  <div class="section-title">Environmental Sensor Calibration & Data Processing</div>
 </div>
 
 <div class="detail-meta">
-  <div><div class="k">ROLE</div><div class="v">Peneliti Utama (Skripsi)</div></div>
-  <div><div class="k">ORGANISASI</div><div class="v">Telkom University</div></div>
-  <div><div class="k">DURASI</div><div class="v">Feb 2026 — Mar 2026</div></div>
+  <div><div class="k">ROLE</div><div class="v">Principal Researcher (Thesis)</div></div>
+  <div><div class="k">ORGANIZATION</div><div class="v">Telkom University</div></div>
+  <div><div class="k">DURATION</div><div class="v">Feb 2026 — Mar 2026</div></div>
   <div><div class="k">TOOLS</div><div class="v">Python (pandas, NumPy, SciPy), Microsoft Excel, Matplotlib, Calibration Chamber</div></div>
 </div>
 
 <div class="thesis-note">
-  <b>📖 Bagian dari Tugas Akhir yang sama:</b> "Pengembangan Wearable Air Quality Monitoring System
-  dengan Integrasi Human Activity Recognition untuk Analisis Pengaruh Gerakan terhadap Pengukuran
-  Partikulat" — halaman ini fokus ke bagian <b>Kalibrasi Sensor & Pemrosesan Data Lingkungan</b>. Bagian lain dari riset yang sama:
-  <div class="tn-links"><a href="project-aqms.html">🌫️ Wearable AQMS (Perangkat)</a><a href="project-har.html">🏃 Pengembangan Model HAR</a><a href="project-motion-effect.html">📉 Pengaruh Gerakan terhadap Pengukuran Partikulat</a></div>
+  <b>📖 Part of the same undergraduate thesis:</b> "Development of a Wearable Air Quality Monitoring
+  System with Human Activity Recognition Integration for Analyzing the Effect of Motion on
+  Particulate Measurement" — this page focuses on the <b>Environmental Sensor Calibration & Data Processing</b> section. Other parts of the same research:
+  <div class="tn-links"><a href="project-aqms.html">🌫️ Wearable AQMS (Device)</a><a href="project-har.html">🏃 HAR Model Development</a><a href="project-motion-effect.html">📉 Effect of Motion on Particulate Measurement</a></div>
 </div>
 
 
@@ -545,22 +549,22 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
   <img src="assets/projects/kalibrasi-diagram-sistem.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/6; display:none;">
     <div class="ph-icon">📊</div>
-    <div class="ph-text">Grafik belum ditambahkan.</div>
+    <div class="ph-text">Chart not added yet.</div>
   </div>
-  <figcaption>Setup calibration chamber / diagram blok sistem kalibrasi</figcaption>
+  <figcaption>Calibration chamber setup / calibration system block diagram</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Mengapa Sensor Perlu Dikalibrasi?</div>
-  <p>Membangun sistem pemantau kualitas udara wearable berarti kita harus menggunakan sensor berbiaya rendah agar bentuknya ringkas (seperti SPS30 dan ENS160). Namun, sensor jenis ini sering kali memiliki bias pembacaan bawaan pabrik. Jika tidak dikalibrasi, akan sangat sulit untuk membedakan apakah perubahan angka yang muncul itu murni karena kondisi lingkungan, gangguan gerakan pengguna, atau sekadar noise dari sensor. Oleh karena itu, 6 parameter lingkungan dari 7 unit perangkat harus diuji dan disamakan terlebih dahulu dengan instrumen referensi berstandar industri (OPC-N3, DT-900A, dan SHT20).</p>
+  <div class="narrative-heading">Why Do Sensors Need Calibration?</div>
+  <p>Building a wearable air quality monitoring system means using low-cost sensors to keep the form factor compact (like the SPS30 and ENS160). However, this class of sensor often carries factory-inherent reading bias. Without calibration, it would be very hard to tell whether a change in readings is purely due to environmental conditions, motion disturbance, or just sensor noise. That's why 6 environmental parameters across 7 device units had to be tested and aligned against industry-standard reference instruments (OPC-N3, DT-900A, and SHT20).</p>
   <table class="data-table">
-    <tr><th>Parameter</th><th>Sensor pada Wearable AQMS</th><th>Instrumen Referensi</th></tr>
+    <tr><th>Parameter</th><th>Sensor on the Wearable AQMS</th><th>Reference Instrument</th></tr>
     <tr><td>PM2.5</td><td>SPS30</td><td>OPC-N3</td></tr>
     <tr><td>PM10</td><td>SPS30</td><td>OPC-N3</td></tr>
     <tr><td>TVOC</td><td>ENS160</td><td>DT-900A</td></tr>
-    <tr><td>eCO2</td><td>ENS160</td><td>Sensor CO2 RS485</td></tr>
-    <tr><td>Suhu</td><td>AHT21</td><td>SHT20</td></tr>
-    <tr><td>Kelembapan</td><td>AHT21</td><td>SHT20</td></tr>
+    <tr><td>eCO2</td><td>ENS160</td><td>RS485 CO2 Sensor</td></tr>
+    <tr><td>Temperature</td><td>AHT21</td><td>SHT20</td></tr>
+    <tr><td>Humidity</td><td>AHT21</td><td>SHT20</td></tr>
   </table>
 </div>
 
@@ -568,42 +572,42 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
   <img src="assets/projects/kalibrasi-ts-pm25.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
     <div class="ph-icon">📊</div>
-    <div class="ph-text">Grafik belum ditambahkan.</div>
+    <div class="ph-text">Chart not added yet.</div>
   </div>
-  <figcaption>Time series kalibrasi PM2.5 (metode decay) — Mobile-1 sampai Mobile-7</figcaption>
+  <figcaption>PM2.5 calibration time series (decay method) — Mobile-1 through Mobile-7</figcaption>
 </div>
 <div class="narrative-figure">
   <img src="assets/projects/kalibrasi-ts-suhu.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
     <div class="ph-icon">📊</div>
-    <div class="ph-text">Grafik belum ditambahkan.</div>
+    <div class="ph-text">Chart not added yet.</div>
   </div>
-  <figcaption>Time series kalibrasi suhu (fase pemanasan) — Mobile-1 sampai Mobile-7</figcaption>
+  <figcaption>Temperature calibration time series (heating phase) — Mobile-1 through Mobile-7</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Metode Pengambilan Data (Akuisisi Sensor)</div>
-  <p>Untuk mendapatkan model yang akurat, data dikumpulkan melalui eksperimen ruang uji (calibration chamber) dengan pendekatan khusus untuk tiap parameter:</p>
+  <div class="narrative-heading">Data Collection Method (Sensor Acquisition)</div>
+  <p>To build an accurate model, data was collected through calibration chamber experiments, each with a tailored approach per parameter:</p>
   <ul class="narrative-list">
-    <li><b>Partikulat (PM2.5 & PM10):</b> Menggunakan metode decay. Polutan dipompa hingga pekat, lalu dibiarkan menurun perlahan menggunakan udara bersih. Ini melatih sensor mengenali rentang polusi dari tinggi ke rendah secara natural.</li>
-    <li><b>Suhu & Kelembapan:</b> Pengujian difokuskan murni pada fase pemanasan (naik). Fase pendinginan (decay) sengaja tidak dilibatkan dalam pemodelan untuk menghindari distorsi data akibat panas sisa atau panas internal dari komponen elektronik mikrokontroler itu sendiri.</li>
+    <li><b>Particulates (PM2.5 & PM10):</b> Used the decay method. Pollutants were pumped in until concentrated, then allowed to gradually decrease using clean air. This trains the sensor to recognize the pollution range from high to low naturally.</li>
+    <li><b>Temperature & Humidity:</b> Testing was focused purely on the heating (rising) phase. The cooling (decay) phase was intentionally excluded from the modeling to avoid data distortion from residual heat or internal heat generated by the microcontroller's own electronic components.</li>
   </ul>
 </div>
 
 <div class="stat-mini-row">
-  <div class="stat-mini"><div class="sm-num">0.9978</div><div class="sm-label">R² PM2.5 (KUADRATIK)</div></div>
-  <div class="stat-mini"><div class="sm-num">0.9797</div><div class="sm-label">R² PM10 (KUADRATIK)</div></div>
-  <div class="stat-mini"><div class="sm-num">&lt;0.7%</div><div class="sm-label">MAPE SUHU & KELEMBAPAN</div></div>
-  <div class="stat-mini"><div class="sm-num">6</div><div class="sm-label">PARAMETER DIKALIBRASI</div></div>
+  <div class="stat-mini"><div class="sm-num">0.9978</div><div class="sm-label">R² PM2.5 (QUADRATIC)</div></div>
+  <div class="stat-mini"><div class="sm-num">0.9797</div><div class="sm-label">R² PM10 (QUADRATIC)</div></div>
+  <div class="stat-mini"><div class="sm-num">&lt;0.7%</div><div class="sm-label">TEMP & HUMIDITY MAPE</div></div>
+  <div class="stat-mini"><div class="sm-num">6</div><div class="sm-label">PARAMETERS CALIBRATED</div></div>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Di Balik Angka: Data Cleansing & Evaluasi Model</div>
-  <p>Angka akurasi tinggi di atas bukanlah hasil yang didapat secara instan. Proses ini murni melibatkan data pipeline dan preprocessing yang ketat:</p>
+  <div class="narrative-heading">Behind the Numbers: Data Cleansing & Model Evaluation</div>
+  <p>The high accuracy figures above weren't obtained instantly. This process involved a rigorous data pipeline and preprocessing:</p>
   <ul class="narrative-list">
-    <li><b>Handling Large Datasets:</b> Memproses, menyelaraskan waktu (time-sync/crop), dan mengonsolidasi 22.297 baris data mentah (time-series) yang ditarik secara serentak dari seluruh perangkat IoT.</li>
-    <li><b>Data Cleansing & Transformation:</b> Memfilter sekitar 800 titik data anomali (outliers) menggunakan pendekatan statistik (Interquartile Range / IQR dan Rolling MAD) untuk menjaga integritas data. Proses ini menghasilkan 12.225 data super bersih (clean dataset) yang siap digunakan untuk training model.</li>
-    <li><b>Model Error Analysis:</b> Mengevaluasi algoritma prediksi secara iteratif menggunakan metrik error seperti RMSE, MAE, dan MAPE.</li>
+    <li><b>Handling Large Datasets:</b> Processing, time-syncing/cropping, and consolidating 22,297 rows of raw time-series data pulled simultaneously from all IoT devices.</li>
+    <li><b>Data Cleansing & Transformation:</b> Filtering out roughly 800 anomalous data points (outliers) using statistical approaches (Interquartile Range / IQR and Rolling MAD) to preserve data integrity. This process produced 12,225 clean data points ready for model training.</li>
+    <li><b>Model Error Analysis:</b> Iteratively evaluating prediction algorithms using error metrics such as RMSE, MAE, and MAPE.</li>
   </ul>
 </div>
 
@@ -611,50 +615,50 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
   <img src="assets/projects/kalibrasi-scatter.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
     <div class="ph-icon">📊</div>
-    <div class="ph-text">Grafik belum ditambahkan.</div>
+    <div class="ph-text">Chart not added yet.</div>
   </div>
-  <figcaption>Scatter plot hasil koreksi sensor (sesudah kalibrasi) yang rapat di garis ideal</figcaption>
+  <figcaption>Scatter plot of the corrected sensor readings (post-calibration), tightly clustered along the ideal line</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Hasil Pemodelan & Kesimpulan</div>
-  <p>Dari hasil komparasi pemodelan (Linear vs. Kuadratik), Model Kuadratik terbukti paling optimal untuk mengoreksi bias non-linear pada sensor partikulat, sukses menekan angka error (RMSE) secara signifikan. Sebaliknya, untuk suhu, kelembapan, dan gas TVOC, algoritma Model Linear dipilih karena terbukti sudah sangat akurat dan jauh lebih ringan (efisien) untuk diimplementasikan langsung ke dalam komputasi mikrokontroler (on-device).</p>
-  <p style="margin-top:16px;">Melalui rangkaian proses data ini, sistem berhasil mengubah sensor berbiaya rendah menjadi instrumen dengan akurasi tinggi (nilai R² hingga 0.99). Dengan memiliki baseline data yang sangat valid dan bersih ini, analisis kompleks di tahap selanjutnya — yaitu mendeteksi gangguan metrik akibat guncangan dari lari/jalan (Human Activity Recognition) — dapat dieksekusi dengan tingkat kepercayaan yang sangat tinggi.</p>
+  <div class="narrative-heading">Modeling Results & Conclusion</div>
+  <p>Comparing the modeling approaches (Linear vs. Quadratic), the Quadratic model proved most effective at correcting the non-linear bias in the particulate sensors, significantly reducing the error (RMSE). Conversely, for temperature, humidity, and TVOC gas, the Linear model was chosen since it was already highly accurate and much lighter (more efficient) to implement directly in microcontroller computation (on-device).</p>
+  <p style="margin-top:16px;">Through this data processing pipeline, the system successfully turned low-cost sensors into high-accuracy instruments (R² values up to 0.99). With this valid, clean data baseline in place, the more complex analysis in the next stage — detecting metric disturbances caused by running/walking motion (Human Activity Recognition) — could be carried out with a very high level of confidence.</p>
 </div>
 
 <div class="narrative-figure">
   <img src="assets/projects/kalibrasi-rekap-slide.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
     <div class="ph-icon">📊</div>
-    <div class="ph-text">Grafik belum ditambahkan.</div>
+    <div class="ph-text">Chart not added yet.</div>
   </div>
-  <figcaption>Rekapan hasil kalibrasi: heatmap MAPE seluruh unit & parameter, beserta model koreksi final yang dipilih</figcaption>
+  <figcaption>Calibration results summary: MAPE heatmap across all units & parameters, along with the final correction model chosen</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Dokumentasi</div>
+  <div class="narrative-heading">Documentation</div>
 </div>
-<div class="photo-carousel" data-captions="[&quot;Panel HMI monitoring real-time PM2.5, PM10, suhu, dan CO2 saat proses kalibrasi&quot;, &quot;Dokumentasi proses kalibrasi sensor di dalam chamber&quot;, &quot;Setup asli chamber kalibrasi beserta sistem pompa, filter, dan pengatur aliran udara&quot;]">
+<div class="photo-carousel" data-captions="[&quot;HMI panel monitoring real-time PM2.5, PM10, temperature, and CO2 during calibration&quot;, &quot;Documentation of the sensor calibration process inside the chamber&quot;, &quot;The actual calibration chamber setup, including the pump, filter, and airflow control systems&quot;]">
   <div class="carousel-viewport" style="aspect-ratio:16/9;">
     <div class="carousel-track"><div class="carousel-slide"><img src="assets/projects/kalibrasi-banner.jpg" alt="" style="object-fit:contain;"></div><div class="carousel-slide"><img src="assets/projects/kalibrasi-1.jpg" alt="" style="object-fit:contain;"></div><div class="carousel-slide"><img src="assets/projects/kalibrasi-chamber-real.jpg" alt="" style="object-fit:contain;"></div></div>
-    <button class="carousel-btn prev" aria-label="Sebelumnya">‹</button>
-    <button class="carousel-btn next" aria-label="Selanjutnya">›</button>
+    <button class="carousel-btn prev" aria-label="Previous">‹</button>
+    <button class="carousel-btn next" aria-label="Next">›</button>
   </div>
   <div class="carousel-dots"><button class="carousel-dot active"></button><button class="carousel-dot"></button><button class="carousel-dot"></button></div>
   <div class="carousel-caption"></div>
 </div>
-<div class="tag-row" style="margin-top:20px;"><span class="tag-amber">Data Analysis</span><span class="tag-amber">Statistik</span><span class="tag-amber">Regresi</span><span class="tag-amber">Sensor Calibration</span><span class="tag-amber">Python</span></div>
+<div class="tag-row" style="margin-top:20px;"><span class="tag-amber">Data Analysis</span><span class="tag-amber">Statistics</span><span class="tag-amber">Regression</span><span class="tag-amber">Sensor Calibration</span><span class="tag-amber">Python</span></div>
 
 <div class="other-projects">
-  <div class="label">PROYEK LAINNYA</div>
-  <a class="project-card" href="project-aqms.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🌫️</span><span style="font-size:0.88rem; font-weight:600;">Wearable AQMS (Perangkat)</span></div></a>
-    <a class="project-card" href="project-har.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🏃</span><span style="font-size:0.88rem; font-weight:600;">Pengembangan Model HAR</span></div></a>
-    <a class="project-card" href="project-motion-effect.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">📉</span><span style="font-size:0.88rem; font-weight:600;">Pengaruh Gerakan terhadap Pengukuran Partikulat</span></div></a>
+  <div class="label">OTHER PROJECTS</div>
+  <a class="project-card" href="project-aqms.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🌫️</span><span style="font-size:0.88rem; font-weight:600;">Wearable AQMS (Device)</span></div></a>
+    <a class="project-card" href="project-har.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🏃</span><span style="font-size:0.88rem; font-weight:600;">HAR Model Development</span></div></a>
+    <a class="project-card" href="project-motion-effect.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">📉</span><span style="font-size:0.88rem; font-weight:600;">Effect of Motion on Particulate Measurement</span></div></a>
     
 </div>
 
 </main>
-<footer>© 2026 RENDY RYAN RENALDI — DIBANGUN DENGAN GITHUB PAGES</footer>
+<footer>© 2026 RENDY RYAN RENALDI — BUILT WITH GITHUB PAGES</footer>
 
 
 <script>

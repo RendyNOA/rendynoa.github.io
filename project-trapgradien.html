@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -152,6 +152,10 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .exp-desc{color:var(--text); opacity:0.8; font-size:0.9rem; line-height:1.7;}
 .exp-desc ul{margin:8px 0 0 18px;}
 .exp-desc li{margin-bottom:4px;}
+.exp-highlight-row{display:flex; gap:20px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px dashed var(--grid-line);}
+.exp-highlight{font-family:'IBM Plex Mono', monospace;}
+.exp-highlight .h-num{color:var(--cyan); font-weight:700; font-size:1.1rem;}
+.exp-highlight .h-label{color:var(--muted); font-size:0.62rem; letter-spacing:0.05em; text-transform:uppercase;}
 @media(max-width:640px){.exp-item{grid-template-columns:1fr; gap:6px;}}
 
 /* SKILLS PAGE */
@@ -521,98 +525,98 @@ footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Ple
 <main>
 
 <div class="page-header">
-  <a class="back-link" href="projects.html">← Kembali ke Projects</a>
+  <a class="back-link" href="projects.html">← Back to Projects</a>
   
   <div class="section-title">TrapGradien Air Filtration Monitor</div>
 </div>
 
 <div class="detail-meta">
   <div><div class="k">ROLE</div><div class="v">Hardware Engineer</div></div>
-  <div><div class="k">ORGANISASI</div><div class="v">PUI-PT Intelligent Sensing-IoT, Telkom University</div></div>
-  <div><div class="k">DURASI</div><div class="v">Sep 2025 — Jan 2026</div></div>
-  <div><div class="k">TOOLS</div><div class="v">KiCad, ESP8266 (D1 mini), Sensor IoT (PM/RH/T/VOC/CO2), AIoT Dashboard</div></div>
+  <div><div class="k">ORGANIZATION</div><div class="v">PUI-PT Intelligent Sensing-IoT, Telkom University</div></div>
+  <div><div class="k">DURATION</div><div class="v">Sep 2025 — Jan 2026</div></div>
+  <div><div class="k">TOOLS</div><div class="v">KiCad, ESP8266 (D1 mini), IoT Sensors (PM/RH/T/VOC/CO2), AIoT Dashboard</div></div>
 </div>
 
 
 
 
 <div class="narrative-section">
-  <div class="narrative-heading">Tentang TrapGradien: Air Purifier Cerdas Berbasis AIoT</div>
-  <p>TrapGradien adalah sistem purifikasi udara cerdas yang mengombinasikan teknologi presipitator elektrostatik dengan pemantauan berbasis Artificial Intelligent-Internet of Things (AIoT). Prinsip kerjanya memanfaatkan ion positif dan negatif untuk memuati partikel polutan di udara, lalu menjebaknya dalam kolektor debu sebelum dilepaskan kembali sebagai udara bersih — dilengkapi mekanisme auto-clean pada kolektornya.</p>
+  <div class="narrative-heading">About TrapGradien: An AIoT-Based Smart Air Purifier</div>
+  <p>TrapGradien is a smart air purification system that combines electrostatic precipitator technology with Artificial Intelligent-Internet of Things (AIoT) monitoring. It works by using positive and negative ions to charge airborne pollutant particles, then trapping them in a dust collector before releasing clean air back out — complete with an auto-clean mechanism on the collector.</p>
 </div>
 
 <div class="narrative-figure">
   <img src="assets/projects/trapgradien-design.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:4/3; display:none;">
     <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Gambar belum ditambahkan.</div>
+    <div class="ph-text">Image not added yet.</div>
   </div>
-  <figcaption>Rancangan TrapGradien, mekanisme pemurnian udara, serta implementasi pemantauan kualitas udara dengan AIoT</figcaption>
+  <figcaption>TrapGradien design, air purification mechanism, and AIoT air quality monitoring implementation</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Peran Saya: Subsistem Sensor Pengukuran</div>
-  <p>Dalam proyek ini, saya berperan sebagai Hardware Engineer yang bertanggung jawab pada subsistem sensor pengukuran — bagian yang bertugas membaca kondisi udara secara real-time baik di sisi upstream (sebelum dimurnikan) maupun downstream (setelah dimurnikan). Parameter yang dipantau mencakup PM (partikulat), suhu (T), kelembapan (RH), VOC, dan CO2, yang datanya kemudian diproses oleh mikrokontroler sebagai dasar sistem AIoT.</p>
+  <div class="narrative-heading">My Role: Sensor Measurement Subsystem</div>
+  <p>In this project, I served as Hardware Engineer, responsible for the sensor measurement subsystem — the part tasked with reading air conditions in real time on both the upstream (before purification) and downstream (after purification) side. Monitored parameters include PM (particulates), temperature (T), humidity (RH), VOC, and CO2, with the data then processed by the microcontroller as the foundation of the AIoT system.</p>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Desain Board Sensor</div>
-  <p>Saya merancang PCB khusus untuk mengintegrasikan 4 unit sensor ke dalam satu board yang terhubung ke mikrokontroler D1 mini (ESP8266). Desain ini dibuat menggunakan KiCad, mencakup pengaturan jalur sinyal, antarmuka komunikasi antar-sensor, serta penempatan antena untuk konektivitas WiFi.</p>
+  <div class="narrative-heading">Sensor Board Design</div>
+  <p>I designed a dedicated PCB to integrate 4 sensor units into a single board connected to a D1 mini (ESP8266) microcontroller. This design was built using KiCad, covering signal routing, inter-sensor communication interfacing, and antenna placement for WiFi connectivity.</p>
 </div>
 
 <div class="narrative-figure">
   <img src="assets/projects/trapgradien-pcb.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/10; display:none;">
     <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Gambar belum ditambahkan.</div>
+    <div class="ph-text">Image not added yet.</div>
   </div>
-  <figcaption>Layout PCB board sensor TrapGradien (KiCad) — integrasi 4 sensor dengan mikrokontroler D1 mini</figcaption>
+  <figcaption>TrapGradien sensor board PCB layout (KiCad) — integrating 4 sensors with the D1 mini microcontroller</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Arsitektur AIoT: Dari Sensor ke Dashboard</div>
-  <p>Data yang terbaca dari board sensor dikirim melalui WiFi ke router/modem, diteruskan ke cloud server via HTTP, lalu ditampilkan pada antarmuka pengguna (aplikasi/dashboard) yang bisa diakses secara real-time.</p>
+  <div class="narrative-heading">AIoT Architecture: From Sensor to Dashboard</div>
+  <p>Data read from the sensor board is sent over WiFi to a router/modem, forwarded to a cloud server via HTTP, and then displayed on a user interface (app/dashboard) accessible in real time.</p>
 </div>
 
 <div class="narrative-figure">
   <img src="assets/projects/trapgradien-dashboard.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
     <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Gambar belum ditambahkan.</div>
+    <div class="ph-text">Image not added yet.</div>
   </div>
-  <figcaption>Dashboard monitoring TrapGradien secara real-time — Lab P320</figcaption>
+  <figcaption>Real-time TrapGradien monitoring dashboard — Lab P320</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Metodologi Pengembangan: Diagram-V 2 Tahun</div>
-  <p>Pengembangan TrapGradien mengikuti kerangka Diagram-V selama dua tahun penelitian. Tahun pertama (2025) difokuskan pada rancang-bangun dan validasi di lingkungan laboratorium — mulai dari kebutuhan sistem, desain, pembangunan sub-sistem, hingga integrasi (mencapai TKT 4). Tahun kedua (2026) berfokus pada validasi dan demonstrasi sistem di lingkungan yang relevan, hingga mencapai TKT 6.</p>
+  <div class="narrative-heading">Development Methodology: 2-Year V-Model</div>
+  <p>TrapGradien's development follows a V-Model framework across two years of research. The first year (2025) focused on design-build and validation in a laboratory environment — from system requirements, design, and sub-system construction, through to integration (reaching TRL 4). The second year (2026) focuses on system validation and demonstration in a relevant environment, up to reaching TRL 6.</p>
 </div>
 
 <div class="narrative-figure">
   <img src="assets/projects/trapgradien-vdiagram.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
   <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
     <div class="ph-icon">🖼️</div>
-    <div class="ph-text">Gambar belum ditambahkan.</div>
+    <div class="ph-text">Image not added yet.</div>
   </div>
-  <figcaption>Diagram alir (diagram V) penelitian dan pengembangan TrapGradien selama 2 tahun</figcaption>
+  <figcaption>V-diagram flowchart of TrapGradien's 2-year research and development</figcaption>
 </div>
 
 <div class="narrative-section">
-  <div class="narrative-heading">Kesimpulan</div>
-  <p>Subsistem sensor pengukuran yang saya kembangkan berhasil dijalankan dan terintegrasi penuh ke dalam sistem TrapGradien — mulai dari pembacaan sensor di board, pengiriman data melalui WiFi, hingga tampil secara real-time di dashboard monitoring.</p>
+  <div class="narrative-heading">Conclusion</div>
+  <p>The sensor measurement subsystem I developed was successfully run and fully integrated into the TrapGradien system — from sensor readings on the board and data transmission over WiFi, to real-time display on the monitoring dashboard.</p>
 </div>
 
 <div class="tag-row" style="margin-top:20px;"><span class="tag-amber">IoT</span><span class="tag-amber">Hardware</span><span class="tag-amber">PCB Design</span><span class="tag-amber">Air Filtration</span></div>
 
 <div class="other-projects">
-  <div class="label">PROYEK LAINNYA</div>
-  <a class="project-card" href="project-aqms.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🌫️</span><span style="font-size:0.88rem; font-weight:600;">Wearable AQMS (Perangkat)</span></div></a>
+  <div class="label">OTHER PROJECTS</div>
+  <a class="project-card" href="project-aqms.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🌫️</span><span style="font-size:0.88rem; font-weight:600;">Wearable AQMS (Device)</span></div></a>
     <a class="project-card" href="project-armor.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🛡️</span><span style="font-size:0.88rem; font-weight:600;">Moving Armor Target System</span></div></a>
     
 </div>
 
 </main>
-<footer>© 2026 RENDY RYAN RENALDI — DIBANGUN DENGAN GITHUB PAGES</footer>
+<footer>© 2026 RENDY RYAN RENALDI — BUILT WITH GITHUB PAGES</footer>
 
 
 <script>
