@@ -256,6 +256,10 @@ main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-i
 .exp-desc{color:var(--text); opacity:0.8; font-size:0.9rem; line-height:1.7;}
 .exp-desc ul{margin:8px 0 0 18px;}
 .exp-desc li{margin-bottom:4px;}
+.exp-highlight-row{display:flex; gap:20px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px dashed var(--grid-line);}
+.exp-highlight{font-family:'IBM Plex Mono', monospace;}
+.exp-highlight .h-num{color:var(--cyan); font-weight:700; font-size:1.1rem;}
+.exp-highlight .h-label{color:var(--muted); font-size:0.62rem; letter-spacing:0.05em; text-transform:uppercase;}
 @media(max-width:640px){.exp-item{grid-template-columns:1fr; gap:6px;}}
 
 /* SKILLS PAGE */
@@ -863,7 +867,7 @@ index_body = f"""
   </p>
   <div class="stat-row">
     <div class="stat"><div class="stat-num">3.30</div><div class="stat-label mono">IPK / 4.00</div></div>
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label mono">PENGALAMAN KERJA</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label mono">PENGALAMAN KERJA</div></div>
     <div class="stat"><div class="stat-num">11</div><div class="stat-label mono">ASISTEN DIBIMBING</div></div>
     <div class="stat"><div class="stat-num">2026</div><div class="stat-label mono">EXPECTED GRADUATE</div></div>
   </div>
@@ -958,9 +962,14 @@ work_body = """
       <div class="exp-org">Measurement and Instrumentation Systems Laboratory (MERSI), Telkom University</div>
       <div class="exp-desc"><ul>
         <li>Memimpin dan mengoordinasikan tim 11 asisten laboratorium.</li>
-        <li>Mengawasi sesi laboratorium untuk 100+ mahasiswa S1 di bidang Measurement &amp; Instrumentation Systems.</li>
+        <li>Mengawasi sesi laboratorium untuk 190 praktikan di 2 mata kuliah: Sistem Pengukuran & Sistem Instrumentasi.</li>
         <li>Merancang jadwal praktikum dan memantau kualitas sesi praktik.</li>
       </ul></div>
+      <div class="exp-highlight-row">
+        <div class="exp-highlight"><div class="h-num">11</div><div class="h-label">Asisten Dipimpin</div></div>
+        <div class="exp-highlight"><div class="h-num">190</div><div class="h-label">Total Praktikan</div></div>
+        <div class="exp-highlight"><div class="h-num">2</div><div class="h-label">Mata Kuliah</div></div>
+      </div>
       <span class="exp-more">Baca detail lengkap →</span>
     </div>
   </a>
@@ -973,6 +982,10 @@ work_body = """
       <div class="exp-desc"><ul>
         <li>Mengembangkan dan menguji sistem sensor berbasis IoT untuk monitoring performa sistem filtrasi udara TrapGradien.</li>
       </ul></div>
+      <div class="exp-highlight-row">
+        <div class="exp-highlight"><div class="h-num">4</div><div class="h-label">Sensor Terintegrasi</div></div>
+        <div class="exp-highlight"><div class="h-num">1</div><div class="h-label">Produk AIoT</div></div>
+      </div>
       <span class="exp-more">Baca detail lengkap →</span>
     </div>
   </a>
@@ -985,6 +998,10 @@ work_body = """
       <div class="exp-desc"><ul>
         <li>Membantu tim engineering dalam dokumentasi teknis dan pengembangan sistem pada proyek Moving Armor Target System.</li>
       </ul></div>
+      <div class="exp-highlight-row">
+        <div class="exp-highlight"><div class="h-num">MATS</div><div class="h-label">Proyek Utama</div></div>
+        <div class="exp-highlight"><div class="h-num">3</div><div class="h-label">Bulan Magang</div></div>
+      </div>
       <span class="exp-more">Baca detail lengkap →</span>
     </div>
   </a>
@@ -997,6 +1014,26 @@ work_body = """
       <div class="exp-desc"><ul>
         <li>Memimpin komisi pengawasan dalam evaluasi kinerja organisasi eksekutif mahasiswa.</li>
       </ul></div>
+      <div class="exp-highlight-row">
+        <div class="exp-highlight"><div class="h-num">1</div><div class="h-label">Komisi Dipimpin</div></div>
+      </div>
+      <span class="exp-more">Baca detail lengkap →</span>
+    </div>
+  </a>
+
+  <a class="exp-item" href="work-praktikum.html">
+    <div class="exp-date mono">JUN 2024 —<br>JUL 2025</div>
+    <div>
+      <div class="exp-role">Practicum Assistant</div>
+      <div class="exp-org">Instrumentation System Laboratory, Telkom University</div>
+      <div class="exp-desc"><ul>
+        <li>Menyusun Modul, Jurnal, Tugas Pendahuluan, dan Technical Report untuk 3 praktikum: Rangkaian Listrik, Elektronika Dasar, dan Elektronika Digital.</li>
+        <li>Mengajar dan membimbing praktikan hingga menyelesaikan seluruh rangkaian praktikum angkatan 2023.</li>
+      </ul></div>
+      <div class="exp-highlight-row">
+        <div class="exp-highlight"><div class="h-num">190</div><div class="h-label">Praktikan Diajar</div></div>
+        <div class="exp-highlight"><div class="h-num">3</div><div class="h-label">Praktikum Diampu</div></div>
+      </div>
       <span class="exp-more">Baca detail lengkap →</span>
     </div>
   </a>
@@ -1944,6 +1981,13 @@ MERSI_CONTENT = """
   </div>
   <figcaption>Kondisi ketika praktikum berlangsung</figcaption>
 </div>
+
+<div class="thesis-note">
+  <b>📄 Sertifikat terkait:</b> Koordinator Asisten Sistem Pengukuran — lihat di halaman Certificates, kategori "Mengajar & Laboratorium".
+  <div class="tn-links">
+    <a href="certificates.html">📜 Lihat Sertifikat →</a>
+  </div>
+</div>
 """
 
 work_detail(
@@ -1955,7 +1999,8 @@ work_detail(
     ["Leadership", "Instrumentation", "Teaching Assistant"],
     [("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
-     ("work-oversight.html","Head of the Oversight Commission")],
+     ("work-oversight.html","Head of the Oversight Commission"),
+     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory")],
     "mersi",
     ["Sesi pendampingan praktikum di Laboratorium MERSI",
      "Briefing dan koordinasi tim asisten laboratorium",
@@ -2000,7 +2045,8 @@ work_detail(
     ["Hardware", "IoT", "PCB Design"],
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-sasaero.html","Intern — PT SAS Aerosishan"),
-     ("work-oversight.html","Head of the Oversight Commission")],
+     ("work-oversight.html","Head of the Oversight Commission"),
+     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory")],
     "puiptiot",
     ["Instalasi sensor pada unit filtrasi TrapGradien",
      "Pengambilan data sensor secara real-time",
@@ -2045,7 +2091,8 @@ work_detail(
     ["Defense Tech", "System Development", "Prototyping"],
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
-     ("work-oversight.html","Head of the Oversight Commission")],
+     ("work-oversight.html","Head of the Oversight Commission"),
+     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory")],
     "sasaero",
     ["Suasana kerja di divisi System",
      "Dokumentasi teknis proyek Moving Armor Target System",
@@ -2066,11 +2113,100 @@ work_detail(
     ["Leadership", "Governance", "Organisasi"],
     [("work-mersi.html","Head of Assistant — MERSI"),
      ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
-     ("work-sasaero.html","Intern — PT SAS Aerosishan")],
+     ("work-sasaero.html","Intern — PT SAS Aerosishan"),
+     ("work-praktikum.html","Practicum Assistant — Instrumentation System Laboratory")],
     "oversight",
     ["Rapat komisi pengawasan MPM",
      "Evaluasi kinerja organisasi mahasiswa",
      "Kegiatan Engineering Physics Representative Council"]
+)
+
+PRAKTIKUM_CONTENT = """
+<div class="narrative-figure">
+  <img src="assets/work/lab-sismen-logo.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-height:140px;">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:1/1; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Logo belum ditambahkan.</div>
+  </div>
+  <figcaption>Logo Instrumentation System Laboratory (Lab Sismen), Telkom University</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Tentang Instrumentation System Laboratory</div>
+  <p>Instrumentation System Laboratory adalah laboratorium di Telkom University tempat praktikum-praktikum dasar kelistrikan dan elektronika diselenggarakan untuk mahasiswa Teknik Fisika dan program studi terkait.</p>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Peran Saya: Asisten Divisi Praktikum</div>
+  <p>Sebagai Asisten Divisi Praktikum, saya bertanggung jawab menyiapkan seluruh materi pendukung kegiatan praktikum — mulai dari menyusun <b>Modul</b>, <b>Jurnal</b>, <b>Tugas Pendahuluan</b>, hingga <b>Technical Report</b> untuk setiap sesi praktikum yang berjalan.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/work/praktikum-tim.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Foto belum ditambahkan.</div>
+  </div>
+  <figcaption>Tim keseluruhan asisten praktikum</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Cakupan Praktikum: 190 Praktikan</div>
+  <p>Saya mengajar tiga praktikum sekaligus — <b>Rangkaian Listrik</b>, <b>Elektronika Dasar</b>, dan <b>Elektronika Digital</b> — dengan total keseluruhan <b>190 mahasiswa praktikan</b> yang saya bimbing selama masa kontrak 1 tahun 2 bulan (Jun 2024 – Jul 2025).</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/work/praktikum-kegiatan.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Foto belum ditambahkan.</div>
+  </div>
+  <figcaption>Dokumentasi setelah kegiatan praktikum</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Training of Trainers (ToT)</div>
+  <p>Sebelum setiap sesi praktikum dimulai, saya turut ambil bagian dalam Training of Trainers (ToT) — sesi latihan pembelajaran bagi para asisten agar penyampaian materi ke praktikan konsisten dan berkualitas.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/work/praktikum-tot.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:4/3; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Foto belum ditambahkan.</div>
+  </div>
+  <figcaption>Kegiatan Training of Trainers (ToT) sebelum praktikum dimulai</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Kesimpulan</div>
+  <p>Selama masa kontrak, saya berhasil turut menyelesaikan seluruh rangkaian praktikum untuk angkatan 2023 hingga tuntas — memastikan seluruh 190 praktikan mendapatkan bimbingan yang konsisten mulai dari modul pertama, tugas pendahuluan, jurnal praktikum, hingga penyusunan technical report di akhir sesi.</p>
+</div>
+
+<div class="thesis-note">
+  <b>📄 Sertifikat terkait:</b> Asisten Praktikum Rangkaian Listrik & Asisten Praktikum Elektronika — lihat di halaman Certificates, kategori "Mengajar & Laboratorium".
+  <div class="tn-links">
+    <a href="certificates.html">📜 Lihat Sertifikat →</a>
+  </div>
+</div>
+"""
+
+work_detail(
+    "work-praktikum.html",
+    "Practicum Assistant",
+    "Instrumentation System Laboratory, Telkom University",
+    "Jun 2024 — Jul 2025", "Bandung, Indonesia",
+    [],
+    ["Teaching", "Electronics", "Practicum Division"],
+    [("work-mersi.html","Head of Assistant — MERSI"),
+     ("work-puiptiot.html","Hardware Engineer — PUI-PT Intelligent Sensing-IoT"),
+     ("work-sasaero.html","Intern — PT SAS Aerosishan"),
+     ("work-oversight.html","Head of the Oversight Commission")],
+    "praktikum",
+    ["Dokumentasi setelah kegiatan praktikum",
+     "Tim keseluruhan asisten praktikum",
+     "Kegiatan Training of Trainers (ToT)"],
+    override_content=PRAKTIKUM_CONTENT
 )
 
 # ==================== CERTIFICATES.HTML ====================
@@ -2092,7 +2228,7 @@ CERT_CATEGORIES = [
         ("Staff Departemen Kaderisasi — Badan Pengurus Harian HMTF 2024/2025", "Himpunan Mahasiswa Teknik Fisika (HMTF), Universitas Telkom", "Jan 2025", ["org-2a", "org-2b"]),
     ]),
     ("lab", "Mengajar & Laboratorium", [
-        ("Kordinator Asisten & Asisten Praktikum Sistem Pengukuran", "Instrumentation System Laboratory, Universitas Telkom", "Jan 2026", ["teach-1a", "teach-1b"]),
+        ("Koordinator Asisten Sistem Pengukuran", "Instrumentation System Laboratory, Universitas Telkom", "Jan 2026", ["teach-1a", "teach-1b"]),
         ("Asisten Praktikum Rangkaian Listrik", "Instrumentation System Laboratory, Universitas Telkom", "Jan 2025", ["teach-2a", "teach-2b"]),
         ("Asisten Praktikum Elektronika", "Instrumentation System Laboratory, Universitas Telkom", "Jan 2025", ["teach-3a", "teach-3b"]),
         ("Asisten Praktikum Algoritma dan Pemrograman", "Laboratorium Dasar Komputer, Universitas Telkom", "Jan 2024", ["teach-4a", "teach-4b"]),
