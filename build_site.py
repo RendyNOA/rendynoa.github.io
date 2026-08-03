@@ -830,6 +830,7 @@ PROJECTS_PREVIEW = [
     ("🧪","TrapGradien Air Filtration Monitor","An IoT sensor system for monitoring air filtration performance.","IoT","project-trapgradien.html"),
     ("🛡️","Moving Armor Target System","Technical support for a defense systems project at PT SAS Aerosishan.","Defense Tech","project-armor.html"),
     ("🏠","Kost-In: Room Rental Management System","A C program for kos (boarding house) management.","C Programming","project-kostin.html"),
+    ("⚙️","Pump RPM Monitoring System","A CBM system using RPM sensors and machine learning to detect early pump anomalies.","Machine Learning","project-pump.html"),
 ]
 
 def projects_marquee():
@@ -1233,6 +1234,15 @@ projects_body = """
         <div class="tag-row"><span class="tag-amber">C Programming</span><span class="tag-amber">Struct</span></div>
       </div>
     </a>
+
+    <a class="project-card" href="project-pump.html">
+      <div class="project-banner" style="padding:0;"><img src="assets/projects/pump-cad.png" alt="" style="width:100%; height:100%; object-fit:cover;"></div>
+      <div class="project-body">
+        <div class="project-title">Pump RPM Monitoring System <span class="project-chevron">→</span></div>
+        <div class="project-summary">A Condition-Based Monitoring (CBM) system using RPM sensors and machine learning to detect early pump anomalies.</div>
+        <div class="tag-row"><span class="tag-amber">Machine Learning</span><span class="tag-amber">Python</span></div>
+      </div>
+    </a>
   </div>
 </div>
 """
@@ -1585,7 +1595,7 @@ KALIBRASI_CONTENT = """
 project_detail(
     "project-kalibrasi.html", "🧪",
     "Environmental Sensor Calibration & Data Processing",
-    "Principal Researcher (Thesis)", "Telkom University", "Feb 2026 — Mar 2026",
+    "Principal Researcher (Thesis)", "Telkom University", "Feb 2026",
     "Python (pandas, NumPy, SciPy), Microsoft Excel, Matplotlib, Calibration Chamber",
     [],
     ["Data Analysis","Statistics","Regression","Sensor Calibration","Python"],
@@ -1988,6 +1998,69 @@ project_detail(
      ("project-trapgradien.html","🧪","TrapGradien Air Filtration Monitor")],
     "kostin",
     override_content=KOSTIN_CONTENT,
+    show_banner=False
+)
+
+PUMP_CONTENT = """
+<div class="narrative-section">
+  <div class="narrative-heading">About the Project</div>
+  <p>This project developed a Condition-Based Monitoring (CBM) system for centrifugal pump performance optimization in a water distribution system. It focuses on real-time monitoring of pump rotational speed (RPM) to detect early signs of bearing degradation and mechanical anomalies — helping shift maintenance from a fixed schedule to one driven by the pump's actual condition.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/pump-cad.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/10; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Image not added yet.</div>
+  </div>
+  <figcaption>CAD design of the centrifugal pump test rig (Telkom University)</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">My Role: Sensor Assembly & ML Development</div>
+  <p>Working in a team of 5, I was responsible for the RPM sensor assembly — including wiring and hardware integration — and for developing the machine learning program used to analyze the sensor data and flag anomalies.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/pump-field.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:4/3; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Photo not added yet.</div>
+  </div>
+  <figcaption>Taking an RPM reading directly on a centrifugal pump in the field</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Approach: Rule-Based Logic + Machine Learning</div>
+  <p>The system reads real-time RPM data from a dedicated sensor unit, processed with Python. The anomaly detection approach combines a rule-based algorithm (flagging RPM readings outside expected operating thresholds) with a scikit-learn machine learning model to recognize more subtle mechanical anomaly patterns that fixed rules alone might miss.</p>
+</div>
+
+<div class="narrative-figure">
+  <img src="assets/projects/pump-team.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder" style="position:relative; aspect-ratio:3/4; display:none;">
+    <div class="ph-icon">🖼️</div>
+    <div class="ph-text">Photo not added yet.</div>
+  </div>
+  <figcaption>Project presentation with the team</figcaption>
+</div>
+
+<div class="narrative-section">
+  <div class="narrative-heading">Status</div>
+  <p>This project is currently ongoing. The device is actively being used to detect anomalies in real operating conditions, with continued refinement of the monitoring system planned.</p>
+</div>
+"""
+
+project_detail(
+    "project-pump.html", "⚙️",
+    "Pump RPM Monitoring System with Machine Learning",
+    "Machine Learning & Hardware Engineer", "Telkom University", "Sep 2025 — Jan 2026",
+    "Python, scikit-learn, Rule-Based Algorithm, RPM Sensor",
+    [],
+    ["Machine Learning","Python","IoT","Condition Monitoring"],
+    [("project-trapgradien.html","🧪","TrapGradien Air Filtration Monitor"),
+     ("project-aqms.html","🌫️","Wearable AQMS (Device)")],
+    "pump",
+    override_content=PUMP_CONTENT,
     show_banner=False
 )
 
