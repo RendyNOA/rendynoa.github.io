@@ -57,6 +57,29 @@ if (feedsGrid) {
     .join("");
 }
 
+/* ---------- Blog ----------
+   Memakai gaya kartu Feeds. Kartu tanpa link = <div> berlabel "Coming soon". */
+const blogGrid = document.getElementById("blog-grid");
+if (blogGrid) {
+  blogGrid.innerHTML = SITE.blog
+    .map((post) => {
+      const tag = post.link ? "a" : "div";
+      const href = post.link ? ` href="${post.link}"` : "";
+      const more = post.link ? "Read →" : "Coming soon";
+      return `
+        <${tag} class="feed-card"${href}>
+          ${imageTag(post)}
+          <div class="feed-card-body">
+            <span class="feed-card-date mono">${formatDate(post.date)}</span>
+            <h2>${post.title}</h2>
+            <p>${post.text}</p>
+            <span class="feed-card-more mono">${more}</span>
+          </div>
+        </${tag}>`;
+    })
+    .join("");
+}
+
 /* ---------- Timeline Experience ---------- */
 const TYPE_LABEL = { work: "Work", org: "Organization" };
 

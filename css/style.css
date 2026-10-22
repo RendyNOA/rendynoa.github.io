@@ -290,8 +290,20 @@ main {
   padding: 16px 18px 18px;
 }
 
+.feed-card-body h2,
 .feed-card-body h3 {
+  font-size: 1.1rem;
   margin-bottom: 4px;
+}
+
+.feed-card-date {               /* tanggal di kartu Blog */
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-bottom: 6px;
+}
+
+div.feed-card .feed-card-more {
+  color: var(--muted);          /* "Coming soon" abu-abu: bukan link */
 }
 
 .feed-card-body p {
@@ -306,14 +318,14 @@ main {
   font-size: 0.8rem;
 }
 
-/* Efek saat disorot mouse atau dipilih dengan Tab */
-.feed-card:hover,
-.feed-card:focus-visible {
+/* Efek saat disorot mouse atau dipilih dengan Tab (hanya kartu yang berupa link <a>) */
+a.feed-card:hover,
+a.feed-card:focus-visible {
   border-color: var(--accent);
   transform: translateY(-3px);  /* kartu naik sedikit */
 }
 
-.feed-card:hover img {
+a.feed-card:hover img {
   transform: scale(1.04);       /* gambar membesar sedikit di dalam kartu */
 }
 
@@ -322,9 +334,9 @@ main {
   .feed-card img {
     transition: none;
   }
-  .feed-card:hover,
-  .feed-card:focus-visible,
-  .feed-card:hover img {
+  a.feed-card:hover,
+  a.feed-card:focus-visible,
+  a.feed-card:hover img {
     transform: none;
   }
 }
