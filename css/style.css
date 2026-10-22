@@ -368,6 +368,59 @@ a.feed-card:hover img {
   }
 }
 
+/* ---------- 5i. "Coming soon" (kartu Blog di beranda + halaman Blog) ----------
+   Tiga lapis, ditumpuk di kotak yang sama:
+     1. latar   : gambar blog.jpg (background-image pada .coming-soon)
+     2. lapisan : ::before, warna gelap semi-transparan menutupi gambar
+     3. teks    : .coming-soon-label, di atas lapisan
+   Untuk menghapus nanti: hapus "comingSoon: true" di data.js dan isi daftar blog.
+   Blok CSS ini boleh dibiarkan atau dihapus seluruhnya. */
+.coming-soon {
+  position: relative;           /* patokan untuk lapisan dan teks yang "absolute" */
+  display: grid;
+  place-items: center;          /* teks tepat di tengah */
+  aspect-ratio: 3 / 2;          /* sama dengan gambar kartu lain */
+  background-color: var(--surface);                 /* tampil kalau blog.jpg belum ada */
+  background-image: url("../assets/img/blog.jpg");  /* path relatif terhadap file CSS ini */
+  background-size: cover;       /* isi seluruh kotak, kelebihan dipotong */
+  background-position: center;
+  overflow: hidden;
+}
+
+/* Lapisan gelap. Warna = --bg (#121417) dengan opacity 70%:
+   rgba(merah, hijau, biru, alpha) → alpha 0 = tembus penuh, 1 = pekat penuh. */
+.coming-soon::before {
+  content: "";
+  position: absolute;
+  inset: 0;                     /* menutupi seluruh kotak */
+  background: rgba(18, 20, 23, 0.7);
+}
+
+.coming-soon-label {
+  position: relative;           /* "relative" + z-index: teks naik di atas lapisan ::before */
+  z-index: 1;
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 6px 16px;
+}
+
+/* Versi panel besar di halaman Blog: selebar grid */
+.coming-soon-panel {
+  grid-column: 1 / -1;          /* dari garis kolom pertama sampai terakhir */
+  aspect-ratio: 21 / 9;
+  min-height: 240px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.coming-soon-panel .coming-soon-label {
+  font-size: 1rem;
+}
+
 /* ---------- 5d. Tag skill (dipakai di beberapa halaman) ---------- */
 .tags {
   list-style: none;

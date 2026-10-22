@@ -33,6 +33,12 @@ function tagList(items) {
   return `<ul class="tags">${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
 }
 
+// Kotak "Coming soon": latar gambar + lapisan gelap + teks (gaya di bagian 5i style.css).
+// extraClass dipakai untuk versi panel besar di halaman Blog.
+function comingSoonBox(extraClass = "") {
+  return `<span class="coming-soon ${extraClass}"><span class="coming-soon-label mono">Coming soon</span></span>`;
+}
+
 // Gambar dengan opsi fit: "contain" untuk logo (lihat petunjuk di data.js)
 function imageTag(item) {
   const fitClass = item.fit === "contain" ? ` class="fit-contain"` : "";
@@ -47,7 +53,7 @@ if (feedsGrid) {
   feedsGrid.innerHTML = SITE.feeds
     .map((feed) => `
       <a class="feed-card" href="${feed.link}">
-        <img src="${feed.image}" alt="" loading="lazy">
+        ${feed.comingSoon ? comingSoonBox() : `<img src="${feed.image}" alt="" loading="lazy">`}
         <div class="feed-card-body">
           <h3>${feed.title}</h3>
           <p>${feed.text}</p>
@@ -60,7 +66,10 @@ if (feedsGrid) {
 /* ---------- Blog ----------
    Memakai gaya kartu Feeds. Kartu tanpa link = <div> berlabel "Coming soon". */
 const blogGrid = document.getElementById("blog-grid");
-if (blogGrid) {
+if (blogGrid && SITE.blog.length === 0) {
+  // Belum ada tulisan: tampilkan satu panel "Coming soon" selebar grid
+  blogGrid.innerHTML = comingSoonBox("coming-soon-panel");
+} else if (blogGrid) {
   blogGrid.innerHTML = SITE.blog
     .map((post) => {
       const tag = post.link ? "a" : "div";

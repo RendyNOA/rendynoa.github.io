@@ -22,9 +22,9 @@ Nama file sebaiknya huruf kecil tanpa spasi: GitHub Pages membedakan `foto.JPG` 
 | Bagian di data.js | Item | Gambar sekarang |
 |---|---|---|
 | feeds | Work Experience | `assets/work/mersi-praktikum.jpg` |
-| feeds | Projects | `assets/projects/aqms-device.jpg` |
+| feeds | Projects | `assets/projects/pump-field.jpg` |
 | feeds | Certificates | `assets/certificates/pelatihan-3.jpg` |
-| feeds | Blog | PLACEHOLDER |
+| feeds | Blog | "Coming soon" dengan latar `assets/img/blog.jpg` (diatur di `css/style.css` bagian 5i, bukan di data.js) |
 | work | Measurement and Instrumentation Lab | `assets/work/mersi-praktikum.jpg` |
 | work | PUI-PT Intelligent Sensing-IoT | `assets/work/puiptiot-logo.png` |
 | work | PT SAS Aero Sishan | `assets/work/sasaero-banner.jpg` |
@@ -45,6 +45,6 @@ Nama file sebaiknya huruf kecil tanpa spasi: GitHub Pages membedakan `foto.JPG` 
 | projects | HAR | `assets/projects/har-aktivitas.png` |
 | projects | Kost-In | `assets/projects/kostin-logo.png` |
 | certificates | (semua) | `assets/certificates/*.jpg`, kecuali Basic Intensive English Program (belum ada gambar) |
-| blog | 3 contoh | PLACEHOLDER |
+| blog | (belum ada tulisan) | Halaman Blog menampilkan panel "Coming soon" dengan latar `assets/img/blog.jpg` |
 
 Gambar di halaman detail (`work-*.html`, `project-*.html`) didata saat Tahap 10.

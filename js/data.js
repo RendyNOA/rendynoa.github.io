@@ -31,11 +31,13 @@ const SITE = {
     { title: "Work Experience", text: "Internships, laboratory roles and organizations.",
       image: "assets/work/mersi-praktikum.jpg", link: "experience.html" },
     { title: "Projects", text: "Instrumentation, calibration and monitoring projects.",
-      image: "assets/projects/aqms-device.jpg", link: "projects.html" },
+      image: "assets/projects/pump-field.jpg", link: "projects.html" },
     { title: "Certificates", text: "Work, workshop, language and organization certificates.",
       image: "assets/certificates/pelatihan-3.jpg", link: "certificates.html" },
+    // comingSoon: true = tampilkan lapisan "Coming soon" (latar: assets/img/blog.jpg, diatur di CSS).
+    // Hapus baris comingSoon saat blog sudah berisi; kartu kembali memakai "image" biasa.
     { title: "Blog", text: "Notes and write-ups.",
-      image: PLACEHOLDER, link: "blog.html" },
+      image: PLACEHOLDER, link: "blog.html", comingSoon: true },
   ],
 
   /* ---------- Experience: kolom kiri ---------- */
@@ -219,16 +221,14 @@ const SITE = {
       images: ["assets/certificates/org-2a.jpg", "assets/certificates/org-2b.jpg"] },
   ],
 
-  /* ---------- Blog (CONTOH — ganti dengan tulisan Anda) ---------- */
+  /* ---------- Blog ----------
+     Selama daftar ini kosong [], halaman Blog menampilkan panel "Coming soon".
+     Untuk menambah tulisan, salin contoh di bawah (hapus tanda // di depannya):
+
+     { title: "Judul tulisan", date: "2026-11",
+       text: "Ringkasan satu-dua kalimat.",
+       image: "assets/img/nama-gambar.jpg", link: "blog-nama-tulisan.html" },
+  */
   blog: [
-    { title: "Sample post — replace this title", date: "2026-10",
-      text: "This is a sample card. Replace the title, summary, date and image with your own post.",
-      image: PLACEHOLDER, link: null },
-    { title: "Sample post — second example", date: "2026-10",
-      text: "Blog cards are generated from the blog list in js/data.js.",
-      image: PLACEHOLDER, link: null },
-    { title: "Sample post — third example", date: "2026-10",
-      text: "Set link to a page such as \"blog-my-post.html\" once the post exists.",
-      image: PLACEHOLDER, link: null },
   ],
 };
