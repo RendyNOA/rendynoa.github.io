@@ -33,7 +33,7 @@ const SITE = {
     { title: "Projects", text: "Instrumentation, calibration and monitoring projects.",
       image: "assets/projects/aqms-device.jpg", link: "projects.html" },
     { title: "Certificates", text: "Work, workshop, language and organization certificates.",
-      image: PLACEHOLDER, link: "certificates.html" },
+      image: "assets/certificates/pelatihan-3.jpg", link: "certificates.html" },
     { title: "Blog", text: "Notes and write-ups.",
       image: PLACEHOLDER, link: "blog.html" },
   ],

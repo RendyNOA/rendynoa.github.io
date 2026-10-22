@@ -23,7 +23,7 @@ Nama file sebaiknya huruf kecil tanpa spasi: GitHub Pages membedakan `foto.JPG` 
 |---|---|---|
 | feeds | Work Experience | `assets/work/mersi-praktikum.jpg` |
 | feeds | Projects | `assets/projects/aqms-device.jpg` |
-| feeds | Certificates | PLACEHOLDER |
+| feeds | Certificates | `assets/certificates/pelatihan-3.jpg` |
 | feeds | Blog | PLACEHOLDER |
 | work | Measurement and Instrumentation Lab | `assets/work/mersi-praktikum.jpg` |
 | work | PUI-PT Intelligent Sensing-IoT | `assets/work/puiptiot-logo.png` |
