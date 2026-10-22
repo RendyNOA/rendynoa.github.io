@@ -892,9 +892,15 @@ button.cert-card:focus-visible {
   font-weight: 600;
 }
 
+@media (min-width: 768px) {
+  .detail-meta {
+    grid-template-columns: 2fr 1fr 1fr 1fr;   /* kolom Organization lebih lebar */
+  }
+}
+
 .detail-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 16px;
   margin-bottom: 32px;
 }
@@ -909,6 +915,12 @@ button.cert-card:focus-visible {
   object-fit: cover;
   border-radius: var(--radius);
   border: 1px solid var(--border);
+}
+
+/* Foto potret (wajah di atas): potong dari bawah, bukan dari tengah.
+   Pakai: <img class="pos-top" ...> */
+.detail-gallery img.pos-top {
+  object-position: center top;
 }
 
 /* Satu foto saja: tampil lebih lebar dan tidak dipotong terlalu tipis */
@@ -940,6 +952,10 @@ button.cert-card:focus-visible {
 .detail-section ul:not(.tags) {
   padding-left: 1.2em;
   margin: 0;
+}
+
+.detail-section ul + p {        /* paragraf sesudah daftar diberi jarak */
+  margin-top: 1em;
 }
 
 .detail-section ul:not(.tags) li + li {   /* + = item yang tepat sesudah item lain; tag tidak ikut */
