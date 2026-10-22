@@ -869,9 +869,9 @@ button.cert-card:focus-visible {
 }
 
 .detail-meta {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
-  gap: 16px;
+  display: flex;                /* flex + wrap: cocok untuk 3 maupun 4 info */
+  flex-wrap: wrap;
+  gap: 16px 24px;
   margin: 24px 0 32px;
   padding: 16px 18px;
   background: var(--surface);
@@ -892,10 +892,12 @@ button.cert-card:focus-visible {
   font-weight: 600;
 }
 
-@media (min-width: 768px) {
-  .detail-meta {
-    grid-template-columns: 2fr 1fr 1fr 1fr;   /* kolom Organization lebih lebar */
-  }
+.detail-meta > div {
+  flex: 1 1 140px;              /* tumbuh mengisi ruang, lebar dasar 140px */
+}
+
+.detail-meta > div:first-child {
+  flex-grow: 2;                 /* info pertama (Organization) mendapat ruang 2x lipat */
 }
 
 .detail-gallery {
@@ -929,6 +931,15 @@ button.cert-card:focus-visible {
   max-height: 460px;
 }
 
+/* Grafik/diagram: tampil utuh (tidak dipotong), latar putih seperti aslinya.
+   Pakai: <div class="detail-gallery charts"> */
+.detail-gallery.charts img,
+.detail-gallery figure:only-child img.chart {
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: #fff;
+}
+
 .detail-gallery figcaption {
   color: var(--muted);
   font-size: 0.85rem;
@@ -960,6 +971,98 @@ button.cert-card:focus-visible {
 
 .detail-section ul:not(.tags) li + li {   /* + = item yang tepat sesudah item lain; tag tidak ikut */
   margin-top: 8px;
+}
+
+/* Kotak catatan (misalnya "bagian dari tugas akhir yang sama") */
+.detail-note {
+  margin: 0 0 32px;
+  padding: 16px 18px;
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--muted);
+  font-size: 0.925rem;
+}
+
+.detail-note p {
+  margin-bottom: 10px;
+}
+
+.detail-note strong {
+  color: var(--text);
+}
+
+.detail-note .note-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.detail-note .note-links a {
+  font-size: 0.85rem;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.detail-note .note-links a:hover {
+  border-color: var(--accent);
+}
+
+/* Deretan angka penting */
+.detail-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+  gap: 12px;
+  margin: 0 0 32px;
+}
+
+.detail-stats div {
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.detail-stats strong {
+  display: block;
+  font-family: var(--mono);
+  font-size: 1.35rem;
+  color: var(--accent);
+}
+
+.detail-stats span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* Tabel. Dibungkus .table-scroll supaya bisa digeser ke samping di HP. */
+.table-scroll {
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;    /* garis sel menyatu, tidak dobel */
+  font-size: 0.9rem;
+}
+
+.detail-table th,
+.detail-table td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.detail-table th {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
 }
 
 .detail-related {
