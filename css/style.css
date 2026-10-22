@@ -657,6 +657,180 @@ a.tl-card:focus-visible {       /* hanya kartu yang bisa diklik (<a>) yang berub
   }
 }
 
+/* ---------- 5g. Certificates ---------- */
+.cert-jump {                     /* tombol pintas kategori */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 8px;
+}
+
+.cert-jump a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+
+.cert-jump a:hover {
+  border-color: var(--accent);
+}
+
+.cert-jump .mono {
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+.cert-section {
+  padding-top: 32px;
+  scroll-margin-top: 16px;      /* jarak atas saat dilompati lewat tombol pintas */
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.cert-card {
+  /* <button> punya gaya bawaan browser; baris-baris ini menyamakannya dengan kartu lain */
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+div.cert-card {
+  cursor: default;              /* kartu tanpa gambar tidak bisa diklik */
+}
+
+button.cert-card:hover,
+button.cert-card:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.cert-thumb {
+  position: relative;           /* patokan posisi penanda "+1" */
+  display: block;
+  background: #0d0f12;
+  padding: 10px;
+}
+
+.cert-thumb img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;          /* sertifikat tampil utuh, tidak terpotong */
+}
+
+.cert-more {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 0.72rem;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+
+.cert-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px 16px;
+}
+
+.cert-title {
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.cert-issuer {
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.cert-date {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-top: 4px;
+}
+
+/* Penampil gambar (<dialog>) */
+.viewer {
+  width: min(960px, 100% - 32px);
+  max-height: calc(100vh - 32px);
+  padding: 0;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.viewer::backdrop {             /* lapisan gelap di belakang dialog */
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.viewer-top,
+.viewer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+.viewer-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.viewer-img {
+  width: 100%;
+  max-height: calc(100vh - 160px);
+  object-fit: contain;
+  background: #0d0f12;
+}
+
+.viewer button {
+  font: inherit;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+.viewer button:hover,
+.viewer button:focus-visible {
+  border-color: var(--accent);
+}
+
+.viewer-nav .mono {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.viewer.single .viewer-nav {
+  display: none;                /* hanya 1 gambar: Prev/Next tidak perlu */
+}
+
 /* ---------- 6. Loading screen (tirai) ----------
    Urutan waktu: nama tampil → 0.3s nama memudar → 0.35s tirai mulai membuka
    → selesai di 1.25s (di bawah batas 1.5 detik). */

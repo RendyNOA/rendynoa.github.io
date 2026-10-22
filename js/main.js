@@ -107,6 +107,118 @@ if (timelineEl) {
     .join("");
 }
 
+/* ---------- Certificates ----------
+   Urutan kategori mengikuti daftar ini. Kategori baru di data.js
+   perlu ditambahkan juga di sini supaya tampil. */
+const CERT_CATEGORIES = ["Work Experience", "Workshop", "Language", "Entrepreneurship", "Organization"];
+
+// "Work Experience" → "work-experience" (dipakai sebagai id/alamat #pintas)
+function slugify(text) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+
+function certCard(cert, index) {
+  const date = `<span class="cert-date mono">${cert.date}</span>`;
+  const text = `
+    <span class="cert-title">${cert.title}</span>
+    <span class="cert-issuer">${cert.issuer}</span>
+    ${date}`;
+
+  // Belum ada gambar: kartu biasa, tidak bisa diklik
+  if (cert.images.length === 0) {
+    return `
+      <div class="cert-card">
+        <span class="cert-thumb"><img src="${PLACEHOLDER}" alt=""></span>
+        <span class="cert-body">${text}</span>
+      </div>`;
+  }
+
+  // Lebih dari satu gambar: tampilkan penanda "+1", "+2", ...
+  const extra = cert.images.length > 1
+    ? `<span class="cert-more mono">+${cert.images.length - 1}</span>`
+    : "";
+  return `
+    <button type="button" class="cert-card" data-cert="${index}">
+      <span class="cert-thumb"><img src="${cert.images[0]}" alt="" loading="lazy">${extra}</span>
+      <span class="cert-body">${text}</span>
+    </button>`;
+}
+
+const certList = document.getElementById("certificate-list");
+if (certList) {
+  const jump = document.getElementById("cert-jump");
+
+  // Tombol pintas di atas: "Workshop (2)" → lompat ke bagian #workshop
+  jump.innerHTML = CERT_CATEGORIES
+    .map((category) => {
+      const count = SITE.certificates.filter((cert) => cert.category === category).length;
+      return `<a href="#${slugify(category)}">${category} <span class="mono">${count}</span></a>`;
+    })
+    .join("");
+
+  // Satu <section> per kategori. index = posisi sertifikat di SITE.certificates,
+  // disimpan di data-cert supaya penampil tahu gambar mana yang dibuka.
+  certList.innerHTML = CERT_CATEGORIES
+    .map((category) => {
+      const cards = SITE.certificates
+        .map((cert, index) => (cert.category === category ? certCard(cert, index) : ""))
+        .join("");
+      return `
+        <section class="cert-section" id="${slugify(category)}">
+          <h2>${category}</h2>
+          <div class="cert-grid">${cards}</div>
+        </section>`;
+    })
+    .join("");
+
+  /* --- Penampil gambar --- */
+  const viewer = document.getElementById("cert-viewer");
+  const viewerImg = document.getElementById("viewer-img");
+  const viewerTitle = document.getElementById("viewer-title");
+  const viewerCount = document.getElementById("viewer-count");
+  let current = null;   // sertifikat yang sedang dibuka
+  let page = 0;         // gambar ke berapa (0 = pertama)
+
+  function showPage() {
+    const total = current.images.length;
+    viewerImg.src = current.images[page];
+    viewerImg.alt = `${current.title} — image ${page + 1} of ${total}`;
+    viewerCount.textContent = `${page + 1} / ${total}`;
+    viewer.classList.toggle("single", total === 1);   // sembunyikan Prev/Next kalau hanya 1
+  }
+
+  function step(direction) {
+    const total = current.images.length;
+    page = (page + direction + total) % total;        // % = sisa bagi: setelah terakhir kembali ke awal
+    showPage();
+  }
+
+  // Klik kartu → buka penampil
+  certList.addEventListener("click", (event) => {
+    const card = event.target.closest("[data-cert]");
+    if (!card) return;
+    current = SITE.certificates[Number(card.dataset.cert)];
+    page = 0;
+    viewerTitle.textContent = current.title;
+    showPage();
+    viewer.showModal();
+  });
+
+  // Tombol di dalam penampil, dan klik di area gelap di luar gambar
+  viewer.addEventListener("click", (event) => {
+    const action = event.target.closest("[data-viewer]")?.dataset.viewer;
+    if (action === "close" || event.target === viewer) viewer.close();
+    if (action === "prev") step(-1);
+    if (action === "next") step(1);
+  });
+
+  // Panah kiri/kanan di keyboard saat penampil terbuka (Esc sudah otomatis menutup)
+  viewer.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") step(-1);
+    if (event.key === "ArrowRight") step(1);
+  });
+}
+
 /* ---------- Daftar Projects ----------
    Urutan tampil = urutan di SITE.projects (paling relevan di atas). */
 const projectList = document.getElementById("project-list");
