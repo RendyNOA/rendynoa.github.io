@@ -94,6 +94,25 @@ p {
   filter: brightness(1.1);   /* sedikit lebih terang saat disorot mouse */
 }
 
+/* Link "Skip to content": tersembunyi di atas layar, muncul saat dipilih dengan Tab.
+   Pengguna keyboard bisa langsung melompati menu ke isi halaman. */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;                   /* di luar layar */
+  z-index: 200;                 /* di atas tirai loading (100) */
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 12px;                    /* turun ke dalam layar saat dipilih */
+}
+
 /* Garis fokus saat bernavigasi pakai keyboard (Tab) */
 a:focus-visible {
   outline: 2px solid var(--accent);
@@ -142,6 +161,14 @@ a:focus-visible {
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {   /* halaman yang sedang dibuka */
   color: var(--text);
+}
+
+/* HP kecil (≤ 480px): menu sedikit lebih kecil supaya kelima link muat satu baris */
+@media (max-width: 480px) {
+  .site-nav {
+    gap: 4px 14px;
+    font-size: 0.875rem;
+  }
 }
 
 /* ---------- 5. Isi halaman ---------- */
