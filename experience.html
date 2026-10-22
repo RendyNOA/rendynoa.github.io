@@ -26,19 +26,17 @@
 
   <main class="container">
     <h1>Experience</h1>
-    <p class="page-intro">Work, internship and laboratory roles on the left; organizations on the right.</p>
+    <p class="page-intro">Internships, laboratory roles and organizational experience, grouped by start year. Select a card for details.</p>
 
-    <!-- Timeline dua kolom, dibuat dari SITE.work dan SITE.organizations (Tahap 6). -->
-    <div class="timeline">
-      <section aria-labelledby="work-title">
-        <h2 id="work-title">Work Experience</h2>
-        <div id="work-list"><p class="todo">Work cards will appear here (Stage 6).</p></div>
-      </section>
-      <section aria-labelledby="org-title">
-        <h2 id="org-title">Organizational Experience</h2>
-        <div id="org-list"><p class="todo">Organization cards will appear here (Stage 6).</p></div>
-      </section>
+    <!-- Judul kolom (hanya tampil di layar lebar) -->
+    <div class="timeline-head" aria-hidden="true">
+      <h2>Work Experience</h2>
+      <h2>Organizational Experience</h2>
     </div>
+
+    <!-- Timeline: diisi otomatis dari SITE.work dan SITE.organizations di js/data.js.
+         Dikelompokkan per tahun mulai, terbaru di atas. -->
+    <div id="timeline" class="timeline"></div>
   </main>
 
   <footer class="site-footer">

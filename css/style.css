@@ -329,6 +329,211 @@ main {
   }
 }
 
+/* ---------- 5d. Tag skill (dipakai di beberapa halaman) ---------- */
+.tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags li {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;         /* angka besar = ujung bulat penuh (bentuk pil) */
+  padding: 2px 9px;
+}
+
+/* ---------- 5e. Timeline Experience ----------
+   HP (dasar): garis di kiri, semua kartu satu kolom.
+   Layar lebar (@media di bawah): garis di tengah, Work kiri, Organization kanan. */
+.timeline-head {
+  display: none;                /* judul kolom hanya untuk layar lebar */
+}
+
+.timeline {
+  position: relative;           /* patokan posisi untuk garis (::before) */
+  margin-top: 32px;
+  padding-left: 32px;           /* ruang untuk garis di kiri */
+}
+
+/* Garis vertikal. ::before = elemen "bayangan" yang dibuat CSS, tanpa HTML tambahan. */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 7px;
+  width: 2px;
+  background: var(--border);
+}
+
+.tl-year {
+  display: grid;
+  gap: 16px;
+  padding-bottom: 40px;
+}
+
+.tl-year-label {
+  position: relative;
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* Titik di atas garis, sejajar label tahun */
+.tl-year-label::before {
+  content: "";
+  position: absolute;
+  left: -30px;                  /* mundur ke posisi garis */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;           /* 50% = lingkaran */
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.tl-col {
+  display: grid;
+  align-content: start;         /* kartu menumpuk dari atas, tidak ditarik memanjang */
+  gap: 16px;
+}
+
+.tl-card {
+  display: flex;                /* foto kecil di kiri, teks di kanan */
+  gap: 14px;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+
+a.tl-card:hover,
+a.tl-card:focus-visible {       /* hanya kartu yang bisa diklik (<a>) yang berubah */
+  border-color: var(--accent);
+}
+
+.tl-card img {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;               /* foto tidak boleh menyusut walau teks panjang */
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.tl-card img.fit-contain {      /* untuk logo: tampil utuh di atas latar putih */
+  object-fit: contain;
+  background: #fff;
+  padding: 6px;
+}
+
+.tl-card-body {
+  min-width: 0;                 /* izinkan teks panjang terlipat, bukan mendorong kartu melebar */
+}
+
+.tl-type {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.tl-org .tl-type {
+  color: var(--muted);          /* bedakan label Work dan Organization di HP */
+}
+
+.tl-card h4 {
+  margin: 0 0 2px;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.tl-place {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.tl-period {
+  margin: 4px 0 10px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+@media (min-width: 768px) {
+  .timeline-head,
+  .tl-year {
+    display: grid;
+    grid-template-columns: 1fr 96px 1fr;   /* kiri | jalur garis | kanan */
+  }
+
+  .timeline-head {
+    margin-top: 32px;
+  }
+
+  .timeline-head h2 {
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  .timeline-head h2:last-child {
+    grid-column: 3;             /* judul kedua pindah ke kolom kanan */
+  }
+
+  .timeline {
+    padding-left: 0;
+    margin-top: 16px;
+  }
+
+  .timeline::before {
+    left: 50%;
+    transform: translateX(-50%);   /* tepat di tengah */
+  }
+
+  /* Baris 1: label tahun di tengah. Baris 2: Work kiri, Organization kanan. */
+  .tl-year {
+    grid-template-areas:
+      "year year year"
+      "work .    org";
+  }
+
+  .tl-year-label {
+    grid-area: year;
+    justify-self: center;
+    background: var(--bg);      /* menutupi garis di belakang label */
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 2px 12px;
+  }
+
+  .tl-year-label::before {
+    display: none;              /* titik tidak perlu: label sudah ada di atas garis */
+  }
+
+  .tl-work { grid-area: work; }
+  .tl-org  { grid-area: org; }
+
+  .tl-type {
+    display: none;              /* judul kolom sudah menjelaskan jenisnya */
+  }
+
+  .tl-card img {
+    width: 88px;
+    height: 88px;
+  }
+}
+
 /* ---------- 6. Loading screen (tirai) ----------
    Urutan waktu: nama tampil → 0.3s nama memudar → 0.35s tirai mulai membuka
    → selesai di 1.25s (di bawah batas 1.5 detik). */

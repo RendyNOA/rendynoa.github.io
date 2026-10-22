@@ -13,6 +13,8 @@
   - image: path ke gambar. Ganti dengan foto Anda sendiri,
     contoh "assets/work/foto-baru.jpg". Daftar lengkapnya juga
     ada di assets/IMAGES.md.
+  - fit: "contain" (opsional) untuk gambar berupa LOGO, supaya tampil
+    utuh dan tidak terpotong. Tanpa fit, foto dipotong mengisi kotak.
   - link: halaman detail. null berarti kartu tidak bisa diklik.
   - Setiap item dipisah koma. Jangan hapus tanda { } [ ] ,
 
@@ -48,7 +50,7 @@ const SITE = {
       role: "Research Intern — MBKM Programme",
       start: "2025-09", end: "2025-12",
       skills: ["Sensor Integration", "Calibration Chamber", "Mass Flow Controller", "Multiplexer", "3D Printing"],
-      image: "assets/work/puiptiot-logo.png", link: "work-puiptiot.html" },
+      image: "assets/work/puiptiot-logo.png", fit: "contain", link: "work-puiptiot.html" },
 
     { place: "PT SAS Aero Sishan",
       role: "Systems Division Intern — MATS Project",
