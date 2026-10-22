@@ -104,7 +104,7 @@ a:focus-visible {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;           /* auto kiri-kanan = posisi di tengah */
-  padding: 0 16px;
+  padding-inline: 16px;     /* hanya kiri & kanan; atas-bawah diatur elemen masing-masing */
 }
 
 /* ---------- 4. Header & navigasi ---------- */
@@ -161,7 +161,147 @@ main {
   padding: 16px;
 }
 
-/* ---------- 6. Footer ---------- */
+/* ---------- 5b. Hero (beranda) ----------
+   Mobile-first: aturan dasar = layar HP (satu kolom).
+   Aturan dua kolom ada di @media di bawahnya. */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);   /* satu kolom yang tidak boleh melebar melebihi layar */
+  gap: 32px;
+  padding-bottom: 56px;
+}
+
+.hero-photo img {
+  width: 100%;
+  max-width: 220px;          /* di HP foto kecil, supaya nama langsung terlihat */
+  height: auto;             /* jaga proporsi; width/height di HTML hanya mencegah "lompatan" saat memuat */
+  aspect-ratio: 4 / 5;
+  object-fit: cover;         /* isi kotak tanpa gepeng; kelebihan gambar dipotong */
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.social-links {
+  list-style: none;          /* hilangkan titik bullet */
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+}
+
+.social-links a {
+  display: grid;
+  place-items: center;       /* ikon tepat di tengah kotak */
+  width: 44px;               /* 44px = ukuran sentuh minimal yang nyaman di HP */
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+}
+
+.social-links a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.social-links svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;      /* garis ikon mengikuti warna teks (color) link-nya */
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-location {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.hero-role {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hero-text p:not(.hero-role):not(.hero-location) {
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.hero-text .button {
+  margin-top: 8px;
+}
+
+/* Layar 768px ke atas (tablet & laptop): dua kolom berdampingan */
+@media (min-width: 768px) {
+  .hero {
+    grid-template-columns: minmax(240px, 5fr) 7fr;   /* fr = bagian dari sisa ruang: 5 banding 7 */
+    align-items: center;
+    gap: 56px;
+    min-height: calc(100vh - 160px);                 /* hero hampir memenuhi layar pertama */
+  }
+
+  .hero-photo img {
+    max-width: 360px;
+  }
+}
+
+/* ---------- 6. Loading screen (tirai) ----------
+   Urutan waktu: nama tampil → 0.3s nama memudar → 0.35s tirai mulai membuka
+   → selesai di 1.25s (di bawah batas 1.5 detik). */
+.curtain {
+  position: fixed;
+  inset: 0;                  /* = top/right/bottom/left 0: menutupi seluruh layar */
+  z-index: 100;              /* di atas semua elemen lain */
+  display: flex;
+  pointer-events: none;      /* tidak menghalangi klik */
+  animation: curtain-done 0s linear 1.3s forwards;
+}
+
+.curtain-panel {
+  flex: 1;                   /* dua panel berbagi lebar layar sama rata */
+  background: var(--surface);
+  animation: 0.9s cubic-bezier(0.7, 0, 0.2, 1) 0.35s forwards;
+}
+
+.curtain-panel.left  { animation-name: open-left;  border-right: 1px solid var(--border); }
+.curtain-panel.right { animation-name: open-right; }
+
+.curtain-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);   /* geser balik setengah ukurannya = tepat di tengah */
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  animation: fade-out 0.3s ease 0.2s forwards;
+}
+
+/* @keyframes = "naskah" animasi: kondisi akhir yang dituju */
+@keyframes open-left    { to { transform: translateX(-100%); } }
+@keyframes open-right   { to { transform: translateX(100%); } }
+@keyframes fade-out     { to { opacity: 0; } }
+@keyframes curtain-done { to { visibility: hidden; } }
+
+/* Tidak tampil di kunjungan kedua dalam sesi yang sama (lihat <script> di <head> index.html) */
+.intro-seen .curtain {
+  display: none;
+}
+
+/* Pengguna yang mengaktifkan "kurangi animasi" di HP/OS-nya: tirai tidak ditampilkan */
+@media (prefers-reduced-motion: reduce) {
+  .curtain {
+    display: none;
+  }
+}
+
+/* ---------- 7. Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--border);
   color: var(--muted);
