@@ -843,6 +843,132 @@ button.cert-card:focus-visible {
   display: none;                /* hanya 1 gambar: Prev/Next tidak perlu */
 }
 
+/* ---------- 5h. Halaman detail (work-*, project-*, org-*) ---------- */
+.detail {
+  max-width: 820px;             /* teks panjang lebih nyaman dibaca di kolom sempit */
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.detail-eyebrow {
+  color: var(--accent);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.detail-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+  gap: 16px;
+  margin: 24px 0 32px;
+  padding: 16px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.detail-meta dt {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.detail-meta dd {
+  margin: 2px 0 0;              /* dd punya margin kiri bawaan browser; dihapus */
+  font-weight: 600;
+}
+
+.detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.detail-gallery figure {
+  margin: 0;                    /* figure punya margin bawaan browser; dihapus */
+}
+
+.detail-gallery img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+/* Satu foto saja: tampil lebih lebar dan tidak dipotong terlalu tipis */
+.detail-gallery figure:only-child img {
+  aspect-ratio: auto;
+  max-height: 460px;
+}
+
+.detail-gallery figcaption {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+.detail-section {
+  margin-bottom: 32px;
+}
+
+.detail-section h2,
+.detail-related h2 {
+  font-size: 1.2rem;
+}
+
+.detail-section p,
+.detail-section li {
+  color: var(--muted);
+}
+
+.detail-section ul:not(.tags) {
+  padding-left: 1.2em;
+  margin: 0;
+}
+
+.detail-section ul:not(.tags) li + li {   /* + = item yang tepat sesudah item lain; tag tidak ikut */
+  margin-top: 8px;
+}
+
+.detail-related {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+
+.detail-related a {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.detail-related a + a {
+  margin-top: 10px;
+}
+
+.detail-related a:hover {
+  border-color: var(--accent);
+}
+
 /* ---------- 6. Loading screen (tirai) ----------
    Urutan waktu: nama tampil → 0.3s nama memudar → 0.35s tirai mulai membuka
    → selesai di 1.25s (di bawah batas 1.5 detik). */
