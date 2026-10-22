@@ -3,16 +3,23 @@
    ============================================================ */
 
 /* ---------- 1. Variabel warna & ukuran ----------
-   SEMENTARA: abu-abu netral. Palet final dipilih di Tahap 3. */
+   Palet A "Graphite & Steel Blue". Kontras terhadap --bg:
+   text 15.2 · muted 7.2 · accent 7.2 (minimal yang disarankan 4.5). */
 :root {
-  --bg: #16181c;          /* latar halaman */
-  --surface: #1f2228;     /* latar kartu */
-  --border: #2e333b;      /* garis tipis */
-  --text: #e6e8eb;        /* teks utama */
-  --muted: #9aa1ab;       /* teks pelengkap */
-  --accent: #8fb3d9;      /* warna aksen (link, tombol) */
+  color-scheme: dark;     /* scrollbar & kontrol bawaan browser ikut gelap */
 
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --bg: #121417;          /* latar halaman */
+  --surface: #1a1d22;     /* latar kartu */
+  --border: #2a2f36;      /* garis tipis */
+  --text: #e7e9ec;        /* teks utama */
+  --muted: #9ba3ad;       /* teks pelengkap */
+  --accent: #7fa6c9;      /* warna aksen (link, tombol, penanda) */
+  --on-accent: #0e1114;   /* teks DI ATAS warna aksen (tombol) */
+
+  --font: "IBM Plex Sans", system-ui, sans-serif;   /* teks biasa */
+  --mono: "IBM Plex Mono", ui-monospace, monospace; /* tanggal, tag, label */
+
+  --radius: 10px;         /* kelengkungan sudut kartu & tombol */
   --max-width: 1080px;    /* lebar maksimal isi halaman */
 }
 
@@ -38,6 +45,59 @@ img {
 
 a {
   color: var(--accent);
+}
+
+/* ---------- 2b. Tipografi ----------
+   clamp(MIN, IDEAL, MAX): ukuran ikut lebar layar (vw),
+   tapi tidak pernah lebih kecil dari MIN atau lebih besar dari MAX. */
+h1, h2, h3 {
+  line-height: 1.2;
+  margin: 0 0 0.5em;      /* em = relatif ke ukuran huruf elemen itu sendiri */
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);   /* rem = relatif ke ukuran huruf dasar (16px) */
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+.mono {                   /* pakai class ini untuk tanggal, tag, label */
+  font-family: var(--mono);
+}
+
+/* ---------- 2c. Tombol ---------- */
+.button {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+
+.button:hover {
+  filter: brightness(1.1);   /* sedikit lebih terang saat disorot mouse */
+}
+
+/* Garis fokus saat bernavigasi pakai keyboard (Tab) */
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* ---------- 3. Wadah isi halaman ---------- */
