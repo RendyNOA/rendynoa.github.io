@@ -1,796 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Environmental Sensor Calibration & Data Processing — Rendy Ryan Renaldi</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#1E1810; --panel:#2A2116; --panel-raised:#392D1E;
-  --grid-line: rgba(214,178,120,0.14);
-  --cyan:#D9AE6E; --amber:#C99A65; --danger:#C06A4E;
-  --text:#EFE5D4; --muted:#AB9A7C;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(210,165,100,0.20), transparent 55%),
-    radial-gradient(ellipse at 100% 100%, rgba(120,80,45,0.35), transparent 60%),
-    radial-gradient(ellipse at 0% 100%, rgba(60,45,28,0.5), transparent 55%),
-    var(--bg);
-  color:var(--text); font-family:'IBM Plex Sans', sans-serif; min-height:100vh;
-  position:relative;
-}
-body::before{
-  content:"";
-  position:fixed; inset:-100px; z-index:1; pointer-events:none;
-  opacity:0.06; mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-body::after{
-  content:"";
-  position:fixed; inset:0; z-index:2; pointer-events:none;
-  box-shadow:inset 0 0 180px 50px rgba(0,0,0,0.5);
-}
-.mono{font-family:'IBM Plex Mono', monospace;}
-a{color:inherit;}
-.corner{position:fixed;width:16px;height:16px;border-color:var(--muted);opacity:0.45;z-index:5;}
-.corner.tl{top:14px;left:14px;border-top:2px solid;border-left:2px solid;}
-.corner.tr{top:14px;right:14px;border-top:2px solid;border-right:2px solid;}
-.corner.bl{bottom:14px;left:14px;border-bottom:2px solid;border-left:2px solid;}
-.corner.br{bottom:14px;right:14px;border-bottom:2px solid;border-right:2px solid;}
-
-.glow-orb{display:none;}
-
-/* SITE NAV */
-.site-nav{
-  position:sticky; top:0; z-index:20;
-  background:rgba(30,24,16,0.92); backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--grid-line);
-  display:flex; align-items:center; justify-content:space-between;
-  padding:12px 24px; flex-wrap:wrap; gap:12px;
-}
-.site-nav .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
-.site-nav .brand img{width:34px; height:34px; border-radius:50%; border:1px solid var(--cyan); object-fit:cover;}
-.site-nav .brand span{font-family:'IBM Plex Mono', monospace; font-size:0.85rem; font-weight:600; color:var(--text);}
-.site-nav nav{display:flex; gap:4px; flex-wrap:wrap;}
-.site-nav nav a{
-  font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.06em;
-  color:var(--muted); text-decoration:none; padding:8px 14px; border:1px solid transparent;
-  transition:all .15s ease;
-}
-.site-nav nav a:hover{color:var(--text);}
-.site-nav nav a.active{color:var(--cyan); border-color:var(--cyan); background:rgba(201,168,118,0.08);}
-
-main{max-width:960px; margin:0 auto; padding:0 20px 80px; position:relative; z-index:1;}
-
-/* PAGE HEADER (non-home pages) */
-.section-eyebrow{
-  font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.14em;
-  color:var(--cyan); text-transform:uppercase; margin-bottom:10px;
-}
-.section-title{font-size:2rem; font-weight:700; margin-bottom:10px;}
-.section-intro{color:var(--muted); max-width:600px; line-height:1.7; margin-bottom:10px;}
-
-/* HERO (home only) */
-.hero{text-align:center; padding:0 0 34px; position:relative; z-index:1;}
-.hero-banner{
-  position:relative; height:200px; margin:0 -20px 0; overflow:hidden;
-  background:var(--panel-raised);
-  border-bottom:1px solid var(--grid-line);
-}
-.hero-banner img{width:100%; height:100%; object-fit:cover; display:block;}
-.hero-banner .banner-overlay{
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(30,24,16,0.15), var(--bg) 92%);
-}
-.hero-banner .banner-placeholder{
-  display:none; position:absolute; inset:0; flex-direction:column; align-items:center; justify-content:center;
-  gap:8px; color:var(--muted);
-  background:repeating-linear-gradient(135deg, rgba(214,178,120,0.05) 0 10px, transparent 10px 20px);
-}
-.hero-banner .banner-placeholder .ph-icon{font-size:1.8rem; opacity:0.6;}
-.hero-banner .banner-placeholder .ph-text{font-size:0.75rem; font-family:'IBM Plex Mono', monospace;}
-.hero-banner .banner-placeholder .ph-path{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--cyan);}
-.avatar-wrap{position:relative; width:148px; height:148px; margin:-84px auto 24px;}
-.avatar-ring{position:absolute; inset:0; border-radius:50%; border:1px solid var(--cyan); opacity:0.4; animation:pulseRing 2.6s ease-out infinite;}
-@keyframes pulseRing{0%{transform:scale(0.92); opacity:0.5;} 70%{transform:scale(1.18); opacity:0;} 100%{transform:scale(1.18); opacity:0;}}
-.avatar{width:132px; height:132px; border-radius:50%; position:absolute; top:8px; left:8px; object-fit:cover; border:2px solid var(--cyan); box-shadow:0 4px 16px rgba(0,0,0,0.35);}
-.eyebrow-chip{display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.14em; color:var(--cyan); border:1px solid rgba(201,168,118,0.3); background:rgba(201,168,118,0.06); padding:5px 14px; margin-bottom:16px; text-transform:uppercase;}
-.hero-name{font-size:clamp(2rem,4.4vw,2.8rem); font-weight:700; color:var(--text);}
-.hero-role{color:var(--muted); font-size:1.02rem; margin-top:10px; max-width:540px; margin-left:auto; margin-right:auto; line-height:1.6;}
-.social-row{display:flex; justify-content:center; gap:12px; margin-top:26px; flex-wrap:wrap;}
-.social-btn{display:flex; align-items:center; gap:8px; font-family:'IBM Plex Mono', monospace; font-size:0.78rem; background:var(--panel); border:1px solid var(--grid-line); color:var(--text); text-decoration:none; padding:10px 16px; transition:all .15s ease;}
-.social-btn:hover{border-color:var(--cyan); color:var(--cyan);}
-.social-btn svg{width:15px; height:15px; fill:currentColor;}
-
-.section{padding:44px 0 44px 28px; border-top:1px solid var(--grid-line); position:relative;}
-.section::before{
-  content:""; position:absolute; left:0; top:44px; bottom:44px; width:1px;
-  background:linear-gradient(to bottom, var(--cyan), var(--grid-line) 70%, transparent);
-}
-.section::after{
-  content:""; position:absolute; left:-3px; top:40px; width:7px; height:7px;
-  border-radius:50%; background:var(--cyan);
-}
-.page-header{padding:50px 0 10px 28px; position:relative;}
-.page-header::before{
-  content:""; position:absolute; left:0; top:6px; bottom:14px; width:1px;
-  background:linear-gradient(to bottom, var(--cyan), var(--grid-line) 70%, transparent);
-}
-.page-header::after{
-  content:""; position:absolute; left:-3px; top:2px; width:7px; height:7px;
-  border-radius:50%; background:var(--cyan);
-}
-.about-text{color:var(--text); opacity:0.85; line-height:1.85; font-size:1rem; max-width:760px;}
-.stat-row{display:flex; gap:34px; margin-top:26px; flex-wrap:wrap;}
-.stat{font-family:'IBM Plex Mono', monospace;}
-.stat-num{font-size:1.5rem; color:var(--cyan); font-weight:700;}
-.stat-label{font-size:0.72rem; color:var(--muted); letter-spacing:0.06em;}
-
-.cta-row{display:flex; gap:12px; margin-top:30px; flex-wrap:wrap;}
-.cta-btn{
-  font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.05em;
-  text-decoration:none; padding:12px 20px; border:1px solid var(--cyan); color:var(--cyan);
-  transition:all .15s ease;
-}
-.cta-btn:hover{background:var(--cyan); color:var(--bg);}
-.cta-btn.ghost{border-color:var(--grid-line); color:var(--text);}
-.cta-btn.ghost:hover{border-color:var(--muted); background:transparent; color:var(--text);}
-
-/* WORK HISTORY PAGE */
-.exp-item{display:grid; grid-template-columns:150px 1fr; gap:22px; padding:24px 0; border-bottom:1px solid var(--grid-line); text-decoration:none; color:inherit; transition:opacity .15s ease;}
-.exp-item:last-child{border-bottom:none;}
-.exp-item:hover{opacity:0.75;}
-.exp-item:hover .exp-more{color:var(--cyan);}
-.exp-more{font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:var(--muted); margin-top:10px; display:inline-block;}
-.exp-date{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--cyan);}
-.exp-role{font-weight:600; font-size:1.05rem; margin-bottom:3px;}
-.exp-org{color:var(--muted); font-size:0.88rem; margin-bottom:10px;}
-.exp-desc{color:var(--text); opacity:0.8; font-size:0.9rem; line-height:1.7;}
-.exp-desc ul{margin:8px 0 0 18px;}
-.exp-desc li{margin-bottom:4px;}
-.exp-highlight-row{display:flex; gap:20px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px dashed var(--grid-line);}
-.exp-highlight{font-family:'IBM Plex Mono', monospace;}
-.exp-highlight .h-num{color:var(--cyan); font-weight:700; font-size:1.1rem;}
-.exp-highlight .h-label{color:var(--muted); font-size:0.62rem; letter-spacing:0.05em; text-transform:uppercase;}
-@media(max-width:640px){.exp-item{grid-template-columns:1fr; gap:6px;}}
-
-/* SKILLS PAGE */
-.skills-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px;}
-.skill-card{background:var(--panel); border:1px solid var(--grid-line); padding:26px 20px; text-align:center; transition:border-color .15s ease, transform .15s ease; box-shadow:0 6px 18px rgba(0,0,0,0.3); cursor:pointer;}
-.skill-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
-.skill-icon{font-size:2rem; margin-bottom:14px;}
-.skill-icon-img{width:44px; height:44px; margin:0 auto 14px; display:block;}
-.skill-name{font-weight:600; font-size:1.02rem; margin-bottom:8px;}
-.skill-desc{color:var(--muted); font-size:0.82rem; line-height:1.5; margin-bottom:14px;}
-.tag-wrap{display:flex; flex-wrap:wrap; gap:6px; justify-content:center;}
-.tag{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; background:rgba(214,178,120,0.10); color:var(--text); padding:4px 10px;}
-
-/* PROJECTS GRID (clickable -> new page) */
-.project-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:18px;}
-.project-card{background:var(--panel); border:1px solid var(--grid-line); overflow:hidden; text-decoration:none; display:block; transition:border-color .15s ease, transform .15s ease; box-shadow:0 6px 18px rgba(0,0,0,0.3);}
-.project-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
-.project-banner{height:90px; display:flex; align-items:center; justify-content:center; font-size:2rem; border-bottom:1px solid var(--grid-line);}
-.project-card:nth-child(1) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(201,168,118,0.14));}
-.project-card:nth-child(2) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(185,142,92,0.14));}
-.project-card:nth-child(3) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(176,100,74,0.14));}
-.project-card:nth-child(4) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(150,160,120,0.14));}
-.project-card:nth-child(5) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(120,130,160,0.14));}
-.project-card:nth-child(6) .project-banner{background:linear-gradient(135deg, var(--panel-raised), rgba(160,120,150,0.14));}
-.project-body{padding:20px;}
-.project-title{font-weight:600; font-size:1rem; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;}
-.project-chevron{color:var(--cyan); font-family:'IBM Plex Mono', monospace; font-size:0.9rem;}
-.project-summary{color:var(--muted); font-size:0.85rem; line-height:1.6;}
-.tag-row{display:flex; gap:6px; flex-wrap:wrap; margin-top:12px;}
-.tag-amber{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--amber); border:1px solid rgba(185,142,92,0.4); padding:3px 9px;}
-
-/* PROJECT DETAIL PAGE */
-.back-link{display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--cyan); text-decoration:none; margin-bottom:22px;}
-.back-link:hover{text-decoration:underline;}
-.detail-banner{height:180px; display:flex; align-items:center; justify-content:center; font-size:4rem; border:1px solid var(--grid-line); background:linear-gradient(135deg, var(--panel-raised), rgba(201,168,118,0.12)); margin-bottom:28px; overflow:hidden;}
-.detail-banner img{max-height:70%; max-width:60%; object-fit:contain;}
-.detail-banner img.banner-photo{width:100%; height:100%; max-width:100%; max-height:100%; object-fit:cover; object-position:center 25%;}
-.detail-meta{display:flex; gap:28px; flex-wrap:wrap; margin:22px 0 28px; padding:20px; background:var(--panel); border:1px solid var(--grid-line);}
-.detail-meta div{font-family:'IBM Plex Mono', monospace;}
-.detail-meta .k{font-size:0.68rem; color:var(--muted); letter-spacing:0.08em; margin-bottom:4px;}
-.detail-meta .v{font-size:0.88rem; color:var(--text);}
-.detail-body p{color:var(--text); opacity:0.85; line-height:1.85; margin-bottom:16px; max-width:760px;}
-.other-projects{margin-top:50px; padding-top:30px; border-top:1px solid var(--grid-line);}
-.other-projects .label{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--muted); letter-spacing:0.1em; margin-bottom:14px;}
-
-.thesis-note{
-  margin:24px 0; padding:16px 18px; background:rgba(201,168,118,0.06);
-  border:1px solid rgba(201,168,118,0.25); font-size:0.85rem; color:var(--text); line-height:1.7;
-}
-.thesis-note b{color:var(--cyan);}
-.thesis-note .tn-links{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
-.thesis-note .tn-links a{
-  font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:var(--cyan);
-  text-decoration:none; border:1px solid rgba(201,168,118,0.35); padding:5px 12px;
-}
-.thesis-note .tn-links a:hover{background:rgba(201,168,118,0.1);}
-
-.stat-mini-row{display:flex; gap:28px; flex-wrap:wrap; margin:20px 0;}
-.stat-mini{font-family:'IBM Plex Mono', monospace;}
-.stat-mini .sm-num{font-size:1.3rem; color:var(--cyan); font-weight:700;}
-.stat-mini .sm-label{font-size:0.68rem; color:var(--muted); letter-spacing:0.05em;}
-.data-table{width:100%; border-collapse:collapse; margin:18px 0 6px; font-size:0.88rem;}
-.data-table th, .data-table td{padding:10px 14px; border:1px solid var(--grid-line); text-align:left;}
-.data-table th{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.06em; color:var(--cyan); text-transform:uppercase; background:var(--panel-raised);}
-.data-table td{color:var(--text); opacity:0.9;}
-.data-table tr:nth-child(even) td{background:rgba(201,168,118,0.04);}
-
-.narrative-section{margin:34px 0;}
-.narrative-section:first-child{margin-top:0;}
-.narrative-heading{font-size:1.25rem; font-weight:700; color:var(--text); margin-bottom:12px;}
-.narrative-section p{color:var(--text); opacity:0.85; line-height:1.85; font-size:0.95rem; margin-bottom:0;}
-.narrative-list{list-style:none; margin:14px 0 0; padding:0;}
-.narrative-list li{
-  color:var(--text); opacity:0.85; line-height:1.8; font-size:0.95rem;
-  padding-left:18px; position:relative; margin-bottom:14px;
-}
-.narrative-list li:last-child{margin-bottom:0;}
-.narrative-list li::before{content:"—"; position:absolute; left:0; color:var(--cyan);}
-.narrative-list li b{color:var(--cyan); font-weight:600;}
-.narrative-figure{margin:26px 0;}
-.narrative-figure img{max-width:100%; max-height:380px; width:auto; height:auto; display:block; margin:0 auto; border:1px solid var(--grid-line); background:#fff; object-fit:contain;}
-.narrative-figure figcaption{
-  font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--muted);
-  margin-top:8px; text-align:center; line-height:1.5;
-}
-
-.chart-gallery{margin:28px 0;}
-.chart-figure{margin-bottom:24px;}
-.chart-figure:last-child{margin-bottom:0;}
-.chart-figure img{width:100%; height:auto; display:block; border:1px solid var(--grid-line); background:#fff;}
-.chart-figure figcaption{
-  font-family:'IBM Mono', monospace; font-size:0.78rem; color:var(--muted);
-  margin-top:8px; text-align:center; line-height:1.5;
-}
-.analysis-block{
-  margin-top:36px; padding:26px; background:var(--panel);
-  border:1px solid rgba(201,168,118,0.35); border-left:3px solid var(--cyan);
-}
-.analysis-item{margin-bottom:22px;}
-.analysis-item:last-child{margin-bottom:0;}
-.analysis-title{font-weight:700; font-size:0.98rem; margin-bottom:10px; color:var(--text);}
-.analysis-item p{color:var(--text); opacity:0.85; line-height:1.8; font-size:0.9rem; margin:0;}
-.analysis-item b{color:var(--cyan); font-weight:600;}
-
-/* PROJECT PHOTO GALLERY */
-.photo-gallery{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:14px; margin:24px 0 30px;}
-.photo-slot{position:relative; aspect-ratio:4/3; border:1px solid var(--grid-line); overflow:hidden; background:var(--panel);}
-.photo-slot img{width:100%; height:100%; object-fit:cover; display:block;}
-.photo-placeholder{
-  display:none; position:absolute; inset:0; flex-direction:column; align-items:center; justify-content:center;
-  gap:8px; border:1px dashed var(--grid-line); color:var(--muted); text-align:center; padding:14px;
-  background:repeating-linear-gradient(135deg, rgba(214,178,120,0.06) 0 10px, transparent 10px 20px);
-}
-.photo-placeholder .ph-icon{font-size:1.6rem; opacity:0.6;}
-.photo-placeholder .ph-text{font-size:0.72rem; line-height:1.5;}
-.photo-placeholder .ph-path{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--cyan); word-break:break-all;}
-
-/* PHOTO CAROUSEL (work detail pages) */
-.photo-carousel{margin:24px 0 30px;}
-.carousel-viewport{position:relative; overflow:hidden; border:1px solid var(--grid-line); background:var(--panel); aspect-ratio:16/9;}
-.carousel-track{display:flex; height:100%; transition:transform .35s ease;}
-.carousel-slide{flex:0 0 100%; height:100%; position:relative;}
-.carousel-slide img{width:100%; height:100%; object-fit:cover; display:block;}
-.carousel-btn{
-  position:absolute; top:50%; transform:translateY(-50%);
-  width:36px; height:36px; border-radius:50%;
-  background:rgba(20,15,10,0.5); border:1px solid var(--grid-line); color:var(--text);
-  display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.1rem;
-  z-index:3; transition:background .15s ease; line-height:1;
-}
-.carousel-btn:hover{background:rgba(20,15,10,0.75);}
-.carousel-btn.prev{left:10px;}
-.carousel-btn.next{right:10px;}
-.carousel-dots{display:flex; gap:8px; justify-content:center; margin-top:14px;}
-.carousel-dot{width:7px; height:7px; border-radius:50%; background:var(--grid-line); cursor:pointer; border:none; padding:0;}
-.carousel-dot.active{background:var(--cyan);}
-.carousel-caption{margin-top:12px; font-size:0.86rem; color:var(--muted); text-align:center; min-height:1.4em; font-family:'IBM Plex Mono', monospace;}
-
-/* SKILL MODAL POPUP */
-.skill-modal-overlay{
-  position:fixed; inset:0; z-index:90; background:rgba(10,7,4,0.65);
-  display:none; align-items:center; justify-content:center; padding:20px;
-}
-.skill-modal-overlay.open{display:flex;}
-.skill-modal{
-  background:var(--panel-raised); border:1px solid var(--grid-line);
-  max-width:420px; width:100%; padding:26px; position:relative;
-  box-shadow:0 20px 50px rgba(0,0,0,0.5);
-}
-.skill-modal-close{
-  position:absolute; top:14px; right:14px; width:28px; height:28px;
-  border-radius:50%; border:1px solid var(--grid-line); background:transparent;
-  color:var(--muted); cursor:pointer; font-size:0.9rem; display:flex; align-items:center; justify-content:center;
-}
-.skill-modal-close:hover{color:var(--text); border-color:var(--cyan);}
-.skill-modal-title{font-weight:700; font-size:1.1rem; margin-bottom:6px;}
-.skill-modal-label{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.1em; color:var(--muted); text-transform:uppercase; margin:16px 0 8px;}
-.skill-modal-label:first-of-type{margin-top:0;}
-.skill-modal-story{font-size:0.86rem; color:var(--text); opacity:0.85; line-height:1.6; margin-bottom:4px;}
-.tool-level-row{display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--grid-line); font-size:0.85rem;}
-.tool-level-row:last-child{border-bottom:none;}
-.tool-level-row .t-name{color:var(--text);}
-.tool-level-row .t-level{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--cyan); border:1px solid rgba(201,168,118,0.3); padding:2px 9px;}
-.skill-modal-link{
-  display:flex; align-items:center; justify-content:space-between; gap:10px;
-  padding:14px 16px; background:var(--panel); border:1px solid var(--grid-line);
-  text-decoration:none; color:var(--text); margin-bottom:10px; transition:border-color .15s ease;
-}
-.skill-modal-link:last-child{margin-bottom:0;}
-.skill-modal-link:hover{border-color:var(--cyan);}
-.skill-modal-link .l-title{font-size:0.9rem; font-weight:600;}
-.skill-modal-link .l-arrow{color:var(--cyan); font-family:'IBM Plex Mono', monospace;}
-
-/* CERTIFICATES PAGE - folder style */
-.folder-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:20px;}
-.cert-folder{
-  position:relative; background:var(--panel); border:1px solid var(--grid-line);
-  padding:32px 20px 24px; text-align:center; cursor:pointer; overflow:hidden;
-  transition:border-color .15s ease, transform .15s ease;
-}
-.cert-folder:hover{border-color:var(--cyan); transform:translateY(-4px);}
-.cert-folder::before{
-  content:""; position:absolute; top:0; left:20px; width:56px; height:6px;
-  background:var(--cyan); opacity:0.55; border-radius:0 0 4px 4px;
-}
-.cert-folder-icon{font-size:2.6rem; margin-bottom:16px; opacity:0.9;}
-.cert-folder-icon-img{width:48px; height:48px; margin:0 auto 16px; display:block;}
-.cert-folder-name{font-weight:700; font-size:1.05rem; margin-bottom:6px;}
-.cert-folder-count{
-  font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--muted);
-  letter-spacing:0.08em; text-transform:uppercase;
-}
-
-.cert-modal-overlay{
-  position:fixed; inset:0; z-index:90; background:rgba(10,7,4,0.65);
-  display:none; align-items:center; justify-content:center; padding:20px;
-}
-.cert-modal-overlay.open{display:flex;}
-.cert-modal{
-  background:var(--panel-raised); border:1px solid var(--grid-line);
-  max-width:520px; width:100%; max-height:80vh; padding:26px; position:relative;
-  box-shadow:0 20px 50px rgba(0,0,0,0.5); display:flex; flex-direction:column;
-}
-.cert-modal-close{
-  position:absolute; top:14px; right:14px; width:28px; height:28px;
-  border-radius:50%; border:1px solid var(--grid-line); background:transparent;
-  color:var(--muted); cursor:pointer; font-size:0.9rem; display:flex; align-items:center; justify-content:center;
-}
-.cert-modal-close:hover{color:var(--text); border-color:var(--cyan);}
-.cert-modal-title{font-weight:700; font-size:1.1rem; margin-bottom:16px; flex:0 0 auto;}
-.cert-modal-scroll{overflow-y:auto; flex:1 1 auto; margin:0 -6px; padding:0 6px;}
-.cert-modal-item{display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--grid-line); cursor:pointer; transition:opacity .15s ease;}
-.cert-modal-item:hover{opacity:0.75;}
-.cert-modal-item:last-child{border-bottom:none;}
-
-.cert-lightbox-overlay{
-  position:fixed; inset:0; z-index:95; background:rgba(5,3,2,0.85);
-  display:none; align-items:center; justify-content:center; padding:30px;
-}
-.cert-lightbox-overlay.open{display:flex;}
-.cert-lightbox-overlay img{max-width:90vw; max-height:90vh; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,0.6);}
-.cert-lightbox-close{
-  position:fixed; top:24px; right:24px; width:40px; height:40px; border-radius:50%;
-  border:1px solid var(--grid-line); background:rgba(20,15,10,0.6); color:var(--text);
-  cursor:pointer; font-size:1.1rem; display:flex; align-items:center; justify-content:center; z-index:96;
-}
-.cert-lightbox-close:hover{border-color:var(--cyan); color:var(--cyan);}
-.cert-lightbox-nav{
-  position:fixed; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%;
-  border:1px solid var(--grid-line); background:rgba(20,15,10,0.6); color:var(--text);
-  cursor:pointer; font-size:1.3rem; z-index:96; align-items:center; justify-content:center;
-}
-.cert-lightbox-nav:hover{border-color:var(--cyan); color:var(--cyan);}
-.cert-lightbox-nav.prev{left:20px;}
-.cert-lightbox-nav.next{right:20px;}
-.cert-lightbox-counter{
-  position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
-  font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--text);
-  background:rgba(20,15,10,0.6); border:1px solid var(--grid-line); padding:6px 14px; z-index:96;
-}
-.m-multi{
-  font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--cyan);
-  border:1px solid rgba(201,168,118,0.3); padding:1px 7px; margin-left:6px; display:inline-block;
-}
-.cert-modal-thumb{width:64px; height:64px; flex:0 0 auto; background:var(--panel); border:1px solid var(--grid-line); position:relative; overflow:hidden;}
-.cert-modal-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
-.cert-modal-thumb .photo-placeholder{gap:2px;}
-.cert-modal-thumb .ph-icon{font-size:1.1rem;}
-.cert-modal-thumb .ph-text, .cert-modal-thumb .ph-path{display:none;}
-.cert-modal-info .m-title{font-weight:600; font-size:0.9rem; margin-bottom:3px;}
-.cert-modal-info .m-issuer{color:var(--muted); font-size:0.78rem; margin-bottom:4px;}
-.cert-modal-info .m-date{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--cyan);}
-
-.cert-category{margin-bottom:36px;}
-.cert-category:last-child{margin-bottom:0;}
-.cert-category-label{
-  font-size:0.74rem; letter-spacing:0.14em; color:var(--cyan); text-transform:uppercase;
-  margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--grid-line);
-}
-.cert-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:18px;}
-.cert-card{background:var(--panel); border:1px solid var(--grid-line); overflow:hidden; transition:border-color .15s ease, transform .15s ease; box-shadow:0 6px 18px rgba(0,0,0,0.3);}
-.cert-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
-.cert-thumb{position:relative; aspect-ratio:4/3; background:var(--panel-raised);}
-.cert-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
-.cert-body{padding:18px;}
-.cert-title{font-weight:600; font-size:0.95rem; margin-bottom:4px;}
-.cert-issuer{color:var(--muted); font-size:0.8rem; margin-bottom:8px;}
-.cert-date{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--cyan);}
-.notice-box{
-  background:rgba(201,154,101,0.10); border:1px solid rgba(201,154,101,0.3);
-  padding:16px 18px; margin-bottom:26px; font-size:0.85rem; color:var(--text); line-height:1.6;
-}
-.notice-box b{color:var(--amber);}
-
-/* LATEST ARTICLES MARQUEE */
-.marquee-wrap{overflow:hidden; position:relative; margin-top:6px;}
-.marquee-wrap::before, .marquee-wrap::after{
-  content:""; position:absolute; top:0; bottom:0; width:60px; z-index:2; pointer-events:none;
-}
-.marquee-wrap::before{left:0; background:linear-gradient(90deg, var(--bg), transparent);}
-.marquee-wrap::after{right:0; background:linear-gradient(270deg, var(--bg), transparent);}
-.marquee-track{display:flex; gap:16px; width:max-content; animation:marqueeScroll 28s linear infinite;}
-.marquee-wrap:hover .marquee-track{animation-play-state:paused;}
-@keyframes marqueeScroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
-.article-card{
-  width:300px; flex:0 0 auto; background:var(--panel); border:1px solid var(--grid-line);
-  padding:18px; transition:border-color .15s ease;
-}
-.article-card:hover{border-color:var(--cyan);}
-.article-icon{font-size:1.6rem; margin-bottom:10px;}
-.article-title{font-weight:600; font-size:0.92rem; margin-bottom:6px; line-height:1.4;}
-.article-desc{color:var(--muted); font-size:0.8rem; line-height:1.55; margin-bottom:10px;}
-.article-meta{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--muted); display:flex; gap:8px; align-items:center;}
-
-/* SPLASH / LOADING SCREEN v2 */
-#splash{
-  position:fixed; inset:0; z-index:100;
-  background:var(--bg);
-  display:flex; flex-direction:column; justify-content:space-between;
-  transition:opacity .7s ease, visibility .7s ease;
-  overflow:hidden;
-}
-#splash.hide{opacity:0; visibility:hidden; pointer-events:none;}
-
-.splash-marquee{
-  overflow:hidden; white-space:nowrap; border-color:var(--grid-line); flex:0 0 auto;
-}
-.splash-marquee.top{border-bottom:1px solid var(--grid-line);}
-.splash-marquee.bottom{border-top:1px solid var(--grid-line);}
-.splash-marquee-track{
-  display:inline-block; width:max-content;
-  font-family:'IBM Plex Mono', monospace; font-size:0.85rem; letter-spacing:0.3em;
-  color:var(--muted); padding:14px 0;
-  animation:splashMarquee 14s linear infinite;
-}
-.splash-marquee-track span{padding:0 30px;}
-@keyframes splashMarquee{from{transform:translateX(0);} to{transform:translateX(-50%);}}
-
-.splash-center{
-  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px;
-  position:relative;
-}
-.splash-pct{
-  font-size:clamp(3.2rem,10vw,6rem); font-weight:700; line-height:1;
-  color:transparent; -webkit-text-stroke:1.5px var(--text); font-family:'IBM Plex Sans', sans-serif;
-  letter-spacing:0.02em;
-}
-.splash-bar-outer{width:min(70vw,340px); height:2px; background:rgba(214,178,120,0.16); overflow:hidden;}
-.splash-bar-inner{height:100%; width:0%; background:var(--cyan);}
-
-.splash-name-wrap{
-  position:absolute; display:flex; flex-direction:column; align-items:center; gap:10px;
-  opacity:0; transition:opacity .6s ease;
-}
-.splash-name-wrap.show{opacity:1;}
-.splash-name{
-  font-size:clamp(1.6rem,4.4vw,2.4rem); font-weight:700;
-  color:var(--cyan);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-}
-.splash-name-sub{
-  font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.24em;
-  color:var(--muted); text-transform:uppercase;
-}
-
-footer{text-align:center; padding:26px; color:var(--muted); font-family:'IBM Plex Mono', monospace; font-size:0.75rem; border-top:1px solid var(--grid-line); position:relative; z-index:1;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Environmental Sensor Calibration and Data Processing — Rendy Ryan Renaldi</title>
+  <meta name="description" content="Calibration of six environmental parameters across seven wearable sensor units against reference instruments, using Python and Excel.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rendy Ryan Renaldi">
+  <meta property="og:title" content="Environmental Sensor Calibration and Data Processing — Rendy Ryan Renaldi">
+  <meta property="og:description" content="Calibration of six environmental parameters across seven wearable sensor units against reference instruments, using Python and Excel.">
+  <meta property="og:url" content="https://rendynoa.github.io/project-kalibrasi.html">
+  <meta property="og:image" content="https://rendynoa.github.io/assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-<div class="site-nav">
-  <a class="brand" href="index.html">
-    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABIAEgDASIAAhEBAxEB/8QAHQABAAEFAQEBAAAAAAAAAAAAAAEEBQYHCAMCCf/EADEQAAEEAQEHAwIEBwAAAAAAAAEAAgMEEQUGBxITITFBIlFhgZFCcaHRCBQVMlNysv/EABkBAQADAQEAAAAAAAAAAAAAAAABAgQDBf/EAB8RAAMAAgIDAQEAAAAAAAAAAAABAgMRBBIhMUEyUf/aAAwDAQACEQMRAD8A3oiIhIUKVCAIqSxqVCtNybN+nDN/jlnY132JyqpjmyMa+NzXMcMhzTkEe4KAlECIAiIgJREQADJwucd+G9a7Jf8A6NsZqEsccDyyezUdh00nQFgd4aCcZHc/AW9tsG3n7J603SXObqBpy/y5b3D+A4x8+3yuX9zOwlzVblXWtT5cOkxScbOYfXMWn28DPk+xVbtQtsvjxvJXVGMu2E2osySTu0ed0o9TnzEEuPfv5WWbvd4GubtNQOm7RUp5NMsYdyHP6xnPV8fcfm3sV0nNBA/TzKOVywM8fG3h++cLRe+/ToLugN1GqGSuqP4i6NwPpPfBH0KzRyadJUvBuy8OJh1L8o6K0+5X1GhXu0pRLWsRtlieOzmkZBVQsQ3RaXc0bdvoVLUuIWmwGRzHd4w9xeGH5AcAsvWs84IiICUREBBGQQOhIWFaDoFWtSn0utxwwRTPcwA9Whzi7H3JCzZWrUwK9hk/YSDgJ+R2/RZ+TLc7Xw28LIpvq/pYpqbNOqx0ec+WvzWte95HEcg9T7/nhYrt5oENTZy3Ta+a06YBjea4veTkdM+VlmpR3Hhz43xFvECHFvYfK8dKki1PaSKLmtc+m0WHtzk9Og/U5+iyQnVJI9LN1iG3/DL6EJr0q8Ljl0cbWn8wF7+URemvB4Le3shFIRCAiAK81qIjiDz/AH4yVKWwUEFKWXBOGN93fsqqTRq9mB0MuSe4f5afj9lcQ0YGFOOh6/UKzhNaYVOXtGrddoCLU26M29HHdlxwRi0xpLT54T1WQ6LslV0Suxtcg2ZHAzS4ySAD0+fK0BtpY2YrfxT1HzUI5KrbUMV3mnLDac3Akx7NLo8g9CQV1U9vqye/lUw4JxvsdsvJvLPVllkqyRk5Gcd8LxV8cPTxAZLO492q33a5Di6MZHf6Lq8e/Rw2USI0ggEeUXIkq9Oi5tlueob6ir/+BwKIrz6IPjxhSBkge/REVgfn3vMvG1vQ2iuMd31aZzT/AKyYH/K79jdxxMefxNDvuERWRB8kcLg5vcd2+4XnMMB/D1aYzhEUoFnsNEdqRo7HDx9R1/XKIi5X+iV6P//Z" alt="RR">
-    <span>RENDY RYAN RENALDI</span>
-  </a>
-  <nav>
-      <a class="" href="index.html">HOME</a>
-      <a class="" href="work.html">WORK HISTORY</a>
-      <a class="" href="skills.html">SKILLS</a>
-      <a class="active" href="projects.html">PROJECTS</a>
-      <a class="" href="certificates.html">CERTIFICATES</a>
-      
-  </nav>
-</div>
-<div class="glow-orb one"></div>
-<div class="glow-orb two"></div>
-<main>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="page-header">
-  <a class="back-link" href="projects.html">← Back to Projects</a>
-  
-  <div class="section-title">Environmental Sensor Calibration & Data Processing</div>
-</div>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">Rendy Ryan Renaldi</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="certificates.html">Certificates</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="detail-meta">
-  <div><div class="k">ROLE</div><div class="v">Principal Researcher (Thesis)</div></div>
-  <div><div class="k">ORGANIZATION</div><div class="v">Telkom University</div></div>
-  <div><div class="k">DURATION</div><div class="v">Feb 2026</div></div>
-  <div><div class="k">TOOLS</div><div class="v">Python (pandas, NumPy, SciPy), Microsoft Excel, Matplotlib, Calibration Chamber</div></div>
-</div>
+  <!-- Halaman detail. Penjelasan tiap bagian template: lihat komentar di work-sasaero.html -->
+  <main id="main" class="container detail">
 
-<div class="thesis-note">
-  <b>📖 Part of the same undergraduate thesis:</b> "Development of a Wearable Air Quality Monitoring
-  System with Human Activity Recognition Integration for Analyzing the Effect of Motion on
-  Particulate Measurement" — this page focuses on the <b>Environmental Sensor Calibration & Data Processing</b> section. Other parts of the same research:
-  <div class="tn-links"><a href="project-aqms.html">🌫️ Wearable AQMS (Device)</a><a href="project-har.html">🏃 HAR Model Development</a><a href="project-motion-effect.html">📉 Effect of Motion on Particulate Measurement</a></div>
-</div>
+    <a class="back-link" href="projects.html">← Back to Projects</a>
 
+    <p class="detail-eyebrow mono">Project · Calibration</p>
+    <h1>Environmental Sensor Calibration and Data Processing</h1>
 
-<div class="narrative-figure">
-  <img src="assets/projects/kalibrasi-diagram-sistem.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/6; display:none;">
-    <div class="ph-icon">📊</div>
-    <div class="ph-text">Chart not added yet.</div>
-  </div>
-  <figcaption>Calibration chamber setup / calibration system block diagram</figcaption>
-</div>
+    <dl class="detail-meta">
+      <div><dt>Context</dt><dd>Undergraduate final project, Telkom University</dd></div>
+      <div><dt>Period</dt><dd>Feb 2026 – Jun 2026</dd></div>
+      <div><dt>Units</dt><dd>7 wearable devices</dd></div>
+    </dl>
 
-<div class="narrative-section">
-  <div class="narrative-heading">Why Do Sensors Need Calibration?</div>
-  <p>Building a wearable air quality monitoring system means using low-cost sensors to keep the form factor compact (like the SPS30 and ENS160). However, this class of sensor often carries factory-inherent reading bias. Without calibration, it would be very hard to tell whether a change in readings is purely due to environmental conditions, motion disturbance, or just sensor noise. That's why 6 environmental parameters across 7 device units had to be tested and aligned against industry-standard reference instruments (OPC-N3, DT-900A, and SHT20).</p>
-  <table class="data-table">
-    <tr><th>Parameter</th><th>Sensor on the Wearable AQMS</th><th>Reference Instrument</th></tr>
-    <tr><td>PM2.5</td><td>SPS30</td><td>OPC-N3</td></tr>
-    <tr><td>PM10</td><td>SPS30</td><td>OPC-N3</td></tr>
-    <tr><td>TVOC</td><td>ENS160</td><td>DT-900A</td></tr>
-    <tr><td>eCO2</td><td>ENS160</td><td>RS485 CO2 Sensor</td></tr>
-    <tr><td>Temperature</td><td>AHT21</td><td>SHT20</td></tr>
-    <tr><td>Humidity</td><td>AHT21</td><td>SHT20</td></tr>
-  </table>
-</div>
+    <div class="detail-note">
+      <p><strong>Part of my undergraduate final project:</strong> "Development of a Wearable Air Quality Monitoring System with Human Activity Recognition Integration for Analyzing the Effect of Motion on Particulate Measurement". This page covers sensor calibration and data processing. Other parts:</p>
+      <div class="note-links">
+        <a href="project-aqms.html">AirGradien device</a>
+        <a href="project-har.html">HAR model</a>
+        <a href="project-motion-effect.html">Effect of motion</a>
+      </div>
+    </div>
 
-<div class="narrative-figure">
-  <img src="assets/projects/kalibrasi-ts-pm25.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
-    <div class="ph-icon">📊</div>
-    <div class="ph-text">Chart not added yet.</div>
-  </div>
-  <figcaption>PM2.5 calibration time series (decay method) — Mobile-1 through Mobile-7</figcaption>
-</div>
-<div class="narrative-figure">
-  <img src="assets/projects/kalibrasi-ts-suhu.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
-    <div class="ph-icon">📊</div>
-    <div class="ph-text">Chart not added yet.</div>
-  </div>
-  <figcaption>Temperature calibration time series (heating phase) — Mobile-1 through Mobile-7</figcaption>
-</div>
+    <div class="detail-gallery">
+      <figure>
+        <img class="chart" src="assets/projects/kalibrasi-diagram-sistem.jpg" alt="Calibration system block diagram" loading="lazy">
+        <figcaption>Calibration chamber setup and calibration system block diagram</figcaption>
+      </figure>
+    </div>
 
-<div class="narrative-section">
-  <div class="narrative-heading">Data Collection Method (Sensor Acquisition)</div>
-  <p>To build an accurate model, data was collected through calibration chamber experiments, each with a tailored approach per parameter:</p>
-  <ul class="narrative-list">
-    <li><b>Particulates (PM2.5 & PM10):</b> Used the decay method. Pollutants were pumped in until concentrated, then allowed to gradually decrease using clean air. This trains the sensor to recognize the pollution range from high to low naturally.</li>
-    <li><b>Temperature & Humidity:</b> Testing was focused purely on the heating (rising) phase. The cooling (decay) phase was intentionally excluded from the modeling to avoid data distortion from residual heat or internal heat generated by the microcontroller's own electronic components.</li>
-  </ul>
-</div>
+    <section class="detail-section">
+      <h2>Why the sensors needed calibration</h2>
+      <p>A compact wearable needs low-cost sensors such as the SPS30 and ENS160, and this class of sensor often carries factory-inherent reading bias. Without calibration, it is hard to tell whether a change in readings comes from the environment, motion disturbance or sensor noise. Six environmental parameters across seven device units were therefore tested against reference instruments.</p>
+      <div class="table-scroll">
+        <table class="detail-table">
+          <thead>
+            <tr><th>Parameter</th><th>Sensor on the wearable</th><th>Reference instrument</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>PM2.5</td><td>SPS30</td><td>OPC-N3</td></tr>
+            <tr><td>PM10</td><td>SPS30</td><td>OPC-N3</td></tr>
+            <tr><td>TVOC</td><td>ENS160</td><td>DT-900A</td></tr>
+            <tr><td>eCO₂</td><td>ENS160</td><td>RS485 CO₂ sensor</td></tr>
+            <tr><td>Temperature</td><td>AHT21</td><td>SHT20</td></tr>
+            <tr><td>Humidity</td><td>AHT21</td><td>SHT20</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-<div class="stat-mini-row">
-  <div class="stat-mini"><div class="sm-num">0.9978</div><div class="sm-label">R² PM2.5 (QUADRATIC)</div></div>
-  <div class="stat-mini"><div class="sm-num">0.9797</div><div class="sm-label">R² PM10 (QUADRATIC)</div></div>
-  <div class="stat-mini"><div class="sm-num">&lt;0.7%</div><div class="sm-label">TEMP & HUMIDITY MAPE</div></div>
-  <div class="stat-mini"><div class="sm-num">6</div><div class="sm-label">PARAMETERS CALIBRATED</div></div>
-</div>
+    <section class="detail-section">
+      <h2>What I did</h2>
+      <ul>
+        <li>Compared readings from the seven wearable units with reference instruments in a calibration chamber.</li>
+        <li>Processed calibration results and selected quadratic PM2.5/PM10 and linear TVOC, temperature and humidity corrections; documented interpretation limits for ENS160 eCO₂ as an estimate.</li>
+        <li>Used Python and Microsoft Excel for timestamp alignment, outlier filtering, calibration analysis and visualisation.</li>
+      </ul>
+    </section>
 
-<div class="narrative-section">
-  <div class="narrative-heading">Behind the Numbers: Data Cleansing & Model Evaluation</div>
-  <p>The high accuracy figures above weren't obtained instantly. This process involved a rigorous data pipeline and preprocessing:</p>
-  <ul class="narrative-list">
-    <li><b>Handling Large Datasets:</b> Processing, time-syncing/cropping, and consolidating 22,297 rows of raw time-series data pulled simultaneously from all IoT devices.</li>
-    <li><b>Data Cleansing & Transformation:</b> Filtering out roughly 800 anomalous data points (outliers) using statistical approaches (Interquartile Range / IQR and Rolling MAD) to preserve data integrity. This process produced 12,225 clean data points ready for model training.</li>
-    <li><b>Model Error Analysis:</b> Iteratively evaluating prediction algorithms using error metrics such as RMSE, MAE, and MAPE.</li>
-  </ul>
-</div>
+    <section class="detail-section">
+      <h2>Data collection method</h2>
+      <ul>
+        <li><strong>Particulates (PM2.5 and PM10):</strong> decay method. Pollutants were pumped in until concentrated, then allowed to decrease gradually with clean air, covering the range from high to low concentration.</li>
+        <li><strong>Temperature and humidity:</strong> only the heating (rising) phase was used. The cooling phase was excluded to avoid distortion from residual heat and heat generated by the microcontroller's own components.</li>
+      </ul>
+    </section>
 
-<div class="narrative-figure">
-  <img src="assets/projects/kalibrasi-scatter.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
-    <div class="ph-icon">📊</div>
-    <div class="ph-text">Chart not added yet.</div>
-  </div>
-  <figcaption>Scatter plot of the corrected sensor readings (post-calibration), tightly clustered along the ideal line</figcaption>
-</div>
+    <div class="detail-gallery charts">
+      <figure>
+        <img src="assets/projects/kalibrasi-ts-pm25.jpg" alt="PM2.5 calibration time series" loading="lazy">
+        <figcaption>PM2.5 calibration time series (decay method), Mobile-1 to Mobile-7</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/projects/kalibrasi-ts-suhu.jpg" alt="Temperature calibration time series" loading="lazy">
+        <figcaption>Temperature calibration time series (heating phase), Mobile-1 to Mobile-7</figcaption>
+      </figure>
+    </div>
 
-<div class="narrative-section">
-  <div class="narrative-heading">Modeling Results & Conclusion</div>
-  <p>Comparing the modeling approaches (Linear vs. Quadratic), the Quadratic model proved most effective at correcting the non-linear bias in the particulate sensors, significantly reducing the error (RMSE). Conversely, for temperature, humidity, and TVOC gas, the Linear model was chosen since it was already highly accurate and much lighter (more efficient) to implement directly in microcontroller computation (on-device).</p>
-  <p style="margin-top:16px;">Through this data processing pipeline, the system successfully turned low-cost sensors into high-accuracy instruments (R² values up to 0.99). With this valid, clean data baseline in place, the more complex analysis in the next stage — detecting metric disturbances caused by running/walking motion (Human Activity Recognition) — could be carried out with a very high level of confidence.</p>
-</div>
+    <div class="detail-stats">
+      <div><strong>0.9978</strong><span>R² PM2.5 (quadratic)</span></div>
+      <div><strong>0.9797</strong><span>R² PM10 (quadratic)</span></div>
+      <div><strong>&lt;0.7%</strong><span>Temperature and humidity MAPE</span></div>
+      <div><strong>6</strong><span>Parameters tested</span></div>
+    </div>
 
-<div class="narrative-figure">
-  <img src="assets/projects/kalibrasi-rekap-slide.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-  <div class="photo-placeholder" style="position:relative; aspect-ratio:16/9; display:none;">
-    <div class="ph-icon">📊</div>
-    <div class="ph-text">Chart not added yet.</div>
-  </div>
-  <figcaption>Calibration results summary: MAPE heatmap across all units & parameters, along with the final correction model chosen</figcaption>
-</div>
+    <section class="detail-section">
+      <h2>Data cleansing and model evaluation</h2>
+      <ul>
+        <li><strong>Large datasets:</strong> processing, time-syncing, cropping and consolidating 22,297 rows of raw time-series data recorded simultaneously from all devices.</li>
+        <li><strong>Cleansing:</strong> filtering roughly 800 outliers using Interquartile Range (IQR) and Rolling MAD, producing 12,225 clean data points for model training.</li>
+        <li><strong>Error analysis:</strong> evaluating prediction models iteratively with RMSE, MAE and MAPE.</li>
+      </ul>
+    </section>
 
-<div class="narrative-section">
-  <div class="narrative-heading">Documentation</div>
-</div>
-<div class="photo-carousel" data-captions="[&quot;HMI panel monitoring real-time PM2.5, PM10, temperature, and CO2 during calibration&quot;, &quot;Documentation of the sensor calibration process inside the chamber&quot;, &quot;The actual calibration chamber setup, including the pump, filter, and airflow control systems&quot;]">
-  <div class="carousel-viewport" style="aspect-ratio:16/9;">
-    <div class="carousel-track"><div class="carousel-slide"><img src="assets/projects/kalibrasi-banner.jpg" alt="" style="object-fit:contain;"></div><div class="carousel-slide"><img src="assets/projects/kalibrasi-1.jpg" alt="" style="object-fit:contain;"></div><div class="carousel-slide"><img src="assets/projects/kalibrasi-chamber-real.jpg" alt="" style="object-fit:contain;"></div></div>
-    <button class="carousel-btn prev" aria-label="Previous">‹</button>
-    <button class="carousel-btn next" aria-label="Next">›</button>
-  </div>
-  <div class="carousel-dots"><button class="carousel-dot active"></button><button class="carousel-dot"></button><button class="carousel-dot"></button></div>
-  <div class="carousel-caption"></div>
-</div>
-<div class="tag-row" style="margin-top:20px;"><span class="tag-amber">Data Analysis</span><span class="tag-amber">Statistics</span><span class="tag-amber">Regression</span><span class="tag-amber">Sensor Calibration</span><span class="tag-amber">Python</span></div>
+    <div class="detail-gallery">
+      <figure>
+        <img class="chart" src="assets/projects/kalibrasi-scatter.jpg" alt="Scatter plot of corrected sensor readings" loading="lazy">
+        <figcaption>Corrected sensor readings after calibration, clustered along the ideal line</figcaption>
+      </figure>
+    </div>
 
-<div class="other-projects">
-  <div class="label">OTHER PROJECTS</div>
-  <a class="project-card" href="project-aqms.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🌫️</span><span style="font-size:0.88rem; font-weight:600;">Wearable AQMS (Device)</span></div></a>
-    <a class="project-card" href="project-har.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">🏃</span><span style="font-size:0.88rem; font-weight:600;">HAR Model Development</span></div></a>
-    <a class="project-card" href="project-motion-effect.html" style="margin-bottom:10px;"><div class="project-body" style="display:flex; align-items:center; gap:12px; padding:14px 18px;"><span style="font-size:1.3rem;">📉</span><span style="font-size:0.88rem; font-weight:600;">Effect of Motion on Particulate Measurement</span></div></a>
-    
-</div>
+    <section class="detail-section">
+      <h2>Results</h2>
+      <p>Comparing linear and quadratic models, the quadratic model was the most effective at correcting the non-linear bias of the particulate sensors, reducing RMSE. For temperature, humidity and TVOC, the linear model was chosen because it was already accurate and lighter to run directly on the microcontroller. The eCO₂ reading of the ENS160 is documented as an estimate.</p>
+      <p>This calibrated data baseline was the foundation for the next stage of the research: analysing the effect of walking and running on particulate readings.</p>
+    </section>
 
-</main>
-<footer>© 2026 RENDY RYAN RENALDI — BUILT WITH GITHUB PAGES</footer>
+    <div class="detail-gallery">
+      <figure>
+        <img class="chart" src="assets/projects/kalibrasi-rekap-slide.jpg" alt="Calibration results summary" loading="lazy">
+        <figcaption>Calibration results summary: MAPE heatmap across all units and parameters, with the final correction models</figcaption>
+      </figure>
+    </div>
 
+    <section class="detail-section">
+      <h2>Documentation</h2>
+      <div class="detail-gallery">
+        <figure>
+          <img src="assets/projects/kalibrasi-banner.jpg" alt="HMI panel during calibration" loading="lazy">
+          <figcaption>HMI panel showing PM2.5, PM10, temperature and CO₂ during calibration</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/projects/kalibrasi-1.jpg" alt="Sensor calibration inside the chamber" loading="lazy">
+          <figcaption>Sensor calibration inside the chamber</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/projects/kalibrasi-chamber-real.jpg" alt="Calibration chamber setup" loading="lazy">
+          <figcaption>Calibration chamber with pump, filter and airflow control</figcaption>
+        </figure>
+      </div>
+    </section>
 
-<script>
-  document.querySelectorAll('.photo-carousel').forEach(function(car){
-    var track = car.querySelector('.carousel-track');
-    var slides = car.querySelectorAll('.carousel-slide');
-    var dots = car.querySelectorAll('.carousel-dot');
-    var caption = car.querySelector('.carousel-caption');
-    var captions = JSON.parse(car.dataset.captions || '[]');
-    var idx = 0;
-    function update(){
-      track.style.transform = 'translateX(-' + (idx*100) + '%)';
-      dots.forEach(function(d,i){ d.classList.toggle('active', i===idx); });
-      caption.textContent = captions[idx] || '';
-    }
-    var prevBtn = car.querySelector('.carousel-btn.prev');
-    var nextBtn = car.querySelector('.carousel-btn.next');
-    if(prevBtn) prevBtn.addEventListener('click', function(){ idx = (idx-1+slides.length)%slides.length; update(); });
-    if(nextBtn) nextBtn.addEventListener('click', function(){ idx = (idx+1)%slides.length; update(); });
-    dots.forEach(function(d,i){ d.addEventListener('click', function(){ idx=i; update(); }); });
-    update();
-  });
+    <section class="detail-section">
+      <h2>Skills and tools</h2>
+      <ul class="tags">
+        <li>Sensor Calibration</li>
+        <li>Python (pandas, NumPy, SciPy)</li>
+        <li>Matplotlib</li>
+        <li>Microsoft Excel</li>
+        <li>Regression</li>
+        <li>Calibration Chamber</li>
+      </ul>
+    </section>
 
-  document.querySelectorAll('.skill-card').forEach(function(card){
-    card.addEventListener('click', function(){
-      var related = JSON.parse(card.dataset.related || '[]');
-      var tools = JSON.parse(card.dataset.tools || '[]');
-      var story = card.dataset.story || '';
-      var overlay = document.getElementById('skillModalOverlay');
-      if(!overlay) return;
-      document.getElementById('skillModalTitle').textContent = card.dataset.skillName || '';
-      document.getElementById('skillModalStory').textContent = story;
+  </main>
 
-      var toolList = document.getElementById('skillModalTools');
-      toolList.innerHTML = '';
-      tools.forEach(function(t){
-        var row = document.createElement('div');
-        row.className = 'tool-level-row';
-        row.innerHTML = '<span class="t-name">' + t.name + '</span><span class="t-level">' + t.level + '</span>';
-        toolList.appendChild(row);
-      });
+  <footer class="site-footer">
+    <div class="container">© <span id="year">2026</span> Rendy Ryan Renaldi</div>
+  </footer>
 
-      var list = document.getElementById('skillModalList');
-      list.innerHTML = '';
-      related.forEach(function(item){
-        var a = document.createElement('a');
-        a.className = 'skill-modal-link';
-        a.href = item.url;
-        a.innerHTML = '<span class="l-title">' + item.title + '</span><span class="l-arrow">→</span>';
-        list.appendChild(a);
-      });
-      overlay.classList.add('open');
-    });
-  });
-  var overlayEl = document.getElementById('skillModalOverlay');
-  if(overlayEl){
-    overlayEl.addEventListener('click', function(e){
-      if(e.target === overlayEl) overlayEl.classList.remove('open');
-    });
-    var closeBtn = document.getElementById('skillModalClose');
-    if(closeBtn) closeBtn.addEventListener('click', function(){ overlayEl.classList.remove('open'); });
-  }
-
-  document.querySelectorAll('.cert-folder').forEach(function(folder){
-    folder.addEventListener('click', function(){
-      var items = JSON.parse(folder.dataset.items || '[]');
-      var overlay = document.getElementById('certModalOverlay');
-      if(!overlay) return;
-      document.getElementById('certModalTitle').textContent = folder.dataset.folderName || '';
-      var list = document.getElementById('certModalScroll');
-      list.innerHTML = '';
-      items.forEach(function(item){
-        var row = document.createElement('div');
-        row.className = 'cert-modal-item';
-        var firstImg = item.images[0];
-        var extraBadge = item.images.length > 1 ? ' <span class="m-multi">+' + (item.images.length-1) + '</span>' : '';
-        row.innerHTML =
-          '<div class="cert-modal-thumb">' +
-            '<img src="assets/certificates/' + firstImg + '.jpg" alt="" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' +
-            '<div class="photo-placeholder"><div class="ph-icon">📄</div></div>' +
-          '</div>' +
-          '<div class="cert-modal-info">' +
-            '<div class="m-title">' + item.title + extraBadge + '</div>' +
-            '<div class="m-issuer">' + item.issuer + '</div>' +
-            '<div class="m-date">' + item.date + '</div>' +
-          '</div>';
-        row.addEventListener('click', function(){
-          openLightbox(item.images, 0);
-        });
-        list.appendChild(row);
-      });
-      overlay.classList.add('open');
-    });
-  });
-  var certOverlay = document.getElementById('certModalOverlay');
-  if(certOverlay){
-    certOverlay.addEventListener('click', function(e){
-      if(e.target === certOverlay) certOverlay.classList.remove('open');
-    });
-    var certClose = document.getElementById('certModalClose');
-    if(certClose) certClose.addEventListener('click', function(){ certOverlay.classList.remove('open'); });
-  }
-
-  var lbImages = [];
-  var lbIndex = 0;
-  function renderLightbox(){
-    var lbImg = document.getElementById('certLightboxImg');
-    var counter = document.getElementById('certLightboxCounter');
-    lbImg.src = 'assets/certificates/' + lbImages[lbIndex] + '.jpg';
-    var navShow = lbImages.length > 1 ? 'flex' : 'none';
-    document.getElementById('certLightboxPrev').style.display = navShow;
-    document.getElementById('certLightboxNext').style.display = navShow;
-    counter.style.display = lbImages.length > 1 ? 'block' : 'none';
-    counter.textContent = (lbIndex+1) + ' / ' + lbImages.length;
-  }
-  function openLightbox(images, startIndex){
-    lbImages = images; lbIndex = startIndex;
-    renderLightbox();
-    document.getElementById('certLightboxOverlay').classList.add('open');
-  }
-  var lightbox = document.getElementById('certLightboxOverlay');
-  if(lightbox){
-    lightbox.addEventListener('click', function(e){
-      if(e.target === lightbox) lightbox.classList.remove('open');
-    });
-    var lbClose = document.getElementById('certLightboxClose');
-    if(lbClose) lbClose.addEventListener('click', function(e){ e.stopPropagation(); lightbox.classList.remove('open'); });
-    var lbPrev = document.getElementById('certLightboxPrev');
-    var lbNext = document.getElementById('certLightboxNext');
-    if(lbPrev) lbPrev.addEventListener('click', function(e){ e.stopPropagation(); lbIndex = (lbIndex-1+lbImages.length)%lbImages.length; renderLightbox(); });
-    if(lbNext) lbNext.addEventListener('click', function(e){ e.stopPropagation(); lbIndex = (lbIndex+1)%lbImages.length; renderLightbox(); });
-  }
-</script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
