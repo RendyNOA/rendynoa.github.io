@@ -26,6 +26,19 @@ function formatPeriod(start, end) {
   return `${formatDate(start)} – ${formatDate(end)}`;
 }
 
+/* ---------- Fungsi bantu tampilan (dipakai beberapa halaman) ---------- */
+
+// ["KiCad", "Python"] → <ul class="tags"><li>KiCad</li><li>Python</li></ul>
+function tagList(items) {
+  return `<ul class="tags">${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+}
+
+// Gambar dengan opsi fit: "contain" untuk logo (lihat petunjuk di data.js)
+function imageTag(item) {
+  const fitClass = item.fit === "contain" ? ` class="fit-contain"` : "";
+  return `<img src="${item.image}" alt=""${fitClass} loading="lazy">`;
+}
+
 /* ---------- Feeds (beranda) ----------
    Ambil daftar SITE.feeds dari data.js, ubah tiap item menjadi
    potongan HTML kartu, lalu masukkan ke <div id="feeds-grid">. */
@@ -51,17 +64,15 @@ const TYPE_LABEL = { work: "Work", org: "Organization" };
 function timelineCard(item) {
   const tag = item.link ? "a" : "div";
   const href = item.link ? ` href="${item.link}"` : "";
-  const skills = item.skills.map((skill) => `<li>${skill}</li>`).join("");
-  const fitClass = item.fit === "contain" ? ` class="fit-contain"` : "";
   return `
     <${tag} class="tl-card"${href}>
-      <img src="${item.image}" alt=""${fitClass} loading="lazy">
+      ${imageTag(item)}
       <div class="tl-card-body">
         <span class="tl-type mono">${TYPE_LABEL[item.type]}</span>
         <h4>${item.role}</h4>
         <p class="tl-place">${item.place}</p>
         <p class="tl-period mono">${formatPeriod(item.start, item.end)}</p>
-        <ul class="tags">${skills}</ul>
+        ${tagList(item.skills)}
       </div>
     </${tag}>`;
 }
@@ -92,6 +103,37 @@ if (timelineEl) {
           <div class="tl-col tl-work">${work.map(timelineCard).join("")}</div>
           <div class="tl-col tl-org">${org.map(timelineCard).join("")}</div>
         </section>`;
+    })
+    .join("");
+}
+
+/* ---------- Daftar Projects ----------
+   Urutan tampil = urutan di SITE.projects (paling relevan di atas). */
+const projectList = document.getElementById("project-list");
+if (projectList) {
+  projectList.innerHTML = SITE.projects
+    .map((project) => {
+      // Periode hanya ditampilkan kalau tercantum (start bukan null)
+      const period = project.start
+        ? `<p class="project-period mono">${formatPeriod(project.start, project.end)}</p>`
+        : "";
+      return `
+        <li>
+          <a class="project-row" href="${project.link}">
+            <div class="project-cat">
+              <span class="brace" aria-hidden="true">{</span>
+              <span class="project-cat-label mono">${project.category}</span>
+            </div>
+            ${imageTag(project)}
+            <div class="project-info">
+              <h2>${project.title}</h2>
+              <p>${project.text}</p>
+              ${period}
+              ${tagList(project.tags)}
+            </div>
+            <span class="project-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>`;
     })
     .join("");
 }

@@ -168,7 +168,7 @@ const SITE = {
       start: null, end: null,
       text: "A C application project, through which I was selected as a C Programming teaching assistant.",
       tags: ["C Programming"],
-      image: "assets/projects/kostin-logo.png", link: "project-kostin.html" },
+      image: "assets/projects/kostin-logo.png", fit: "contain", link: "project-kostin.html" },
   ],
 
   /* ---------- Certificates ----------
