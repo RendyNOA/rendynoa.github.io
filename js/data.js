@@ -116,6 +116,14 @@ const SITE = {
      category: label di dalam penanda "{" di sisi kiri.
      start/end: null kalau periodenya tidak tercantum di CV. */
   projects: [
+    { title: "Hexacopter Safety Analysis — from BOM to Probability",
+      category: "Functional Safety",
+      start: "2026-11", end: "2026-11",
+      text: "Top-down fault tree of loss of controlled flight, quantified from public Pixhawk FMU and ESC bills of materials with MIL-HDBK-217F parts count. Shows that a classic PNPNPN hexacopter is less safe than a quad, while a PPNNPN layout cuts the probability by 54%.",
+      tags: ["Fault Tree Analysis", "MIL-HDBK-217F", "MIL-STD-882E", "Python", "Reliability"],
+      image: "assets/projects/hexacopter-safety-analysis.png",
+      link: "https://rendynoa.github.io/hexacopter-safety-analysis/" },
+
     { title: "Pump RPM Monitoring",
       category: "Equipment Monitoring",
       start: "2025-09", end: "2026-01",
