@@ -180,6 +180,14 @@ const SITE = {
       text: "Activity recognition integrated into the IoT wearable air-quality monitoring final project.",
       tags: ["Machine Learning"],
       image: "assets/projects/har-aktivitas.png", link: "project-har.html" },
+    
+    { title: "Bandung SPMB Admission Predictor",
+      category: "Data Analytics",
+      start: "2026-10", end: "2026-10",
+      text: "Dashboard and probabilistic model that estimate admission chances at Bandung's 75 public junior high schools from official 2023-2026 SPMB data. Reverse-engineered the real report-card weighting (40%, not the 50% reported in the news) by checking the formula against admitted students' scores.",
+      tags: ["Probabilistic Model", "Public Data", "JavaScript", "Excel", "Python"],
+      image: "assets/projects/spmb-predictor.png",
+      link: "https://rendynoa.github.io/Prediksi-SPMB-SMP-Bandung/" },
 
     { title: "Kost-In",
       category: "Software",
