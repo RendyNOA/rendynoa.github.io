@@ -123,6 +123,14 @@ const SITE = {
       tags: ["Fault Tree Analysis", "MIL-HDBK-217F", "MIL-STD-882E", "Python", "Reliability"],
       image: "assets/projects/hexacopter-safety-analysis.png",
       link: "https://rendynoa.github.io/hexacopter-safety-analysis/" },
+          
+    { title: "Physics Sensor Lab — Phone Sensors as Lab Instruments",
+      category: "Physics Education",
+      start: "2026-11", end: "2026-11",
+      text: "Bilingual (EN/ID) web lab that turns a phone's sensors into physics instruments: measure gravitational acceleration, friction on an inclined plane, free fall, and the height of a building with a clinometer. Each module runs Concept, Lab, Formulas and Quiz, with a lesson plan for teachers and a simulation mode for laptops.",
+      tags: ["Physics Education", "JavaScript", "Sensors", "Web App", "Bilingual"],
+      image: "assets/projects/physics-sensor-lab.png",
+      link: "https://rendynoa.github.io/physics-sensor-lab/" },
 
     { title: "Pump RPM Monitoring",
       category: "Equipment Monitoring",
